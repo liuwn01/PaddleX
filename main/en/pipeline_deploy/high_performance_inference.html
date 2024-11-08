@@ -4349,9 +4349,9 @@ You're not viewing the latest version.
 <h1 id="paddlex-high-performance-inference-guide">PaddleX High-Performance Inference Guide<a class="headerlink" href="#paddlex-high-performance-inference-guide" title="Permanent link">&para;</a></h1>
 <p>In real-world production environments, many applications have stringent standards for deployment strategy performance metrics, particularly response speed, to ensure efficient system operation and smooth user experience. To this end, PaddleX provides high-performance inference plugins designed to deeply optimize model inference and pre/post-processing, achieving significant speedups in the end-to-end process. This document will first introduce the installation and usage of the high-performance inference plugins, followed by a list of pipelines and models currently supporting the use of these plugins.</p>
 <h2 id="1-installation-and-usage-of-high-performance-inference-plugins">1. Installation and Usage of High-Performance Inference Plugins<a class="headerlink" href="#1-installation-and-usage-of-high-performance-inference-plugins" title="Permanent link">&para;</a></h2>
-<p>Before using the high-performance inference plugins, ensure you have completed the installation of PaddleX according to the <a href="../installation/installation.html">PaddleX Local Installation Tutorial</a>, and have successfully run the basic inference of the pipeline using either the PaddleX pipeline command line instructions or the Python script instructions.</p>
+<p>Before using the high-performance inference plugins, ensure you have completed the installation of PaddleX according to the <a href="../installation/installation.html">PaddleX Local Installation Tutorial</a>, and have successfully run the quick inference of the pipeline using either the PaddleX pipeline command line instructions or the Python script instructions.</p>
 <h3 id="11-installing-high-performance-inference-plugins">1.1 Installing High-Performance Inference Plugins<a class="headerlink" href="#11-installing-high-performance-inference-plugins" title="Permanent link">&para;</a></h3>
-<p>Find the corresponding installation command based on your processor architecture, operating system, device type, and Python version in the table below and execute it in your deployment environment:</p>
+<p>Find the corresponding installation command based on your processor architecture, operating system, device type, and Python version in the table below and execute it in your deployment environment. Please replace <code>{paddlex version number}</code> with the actual paddlex version number, such as the current latest stable version <code>3.0.0b2</code>. If you need to use the version corresponding to the development branch, replace <code>{paddlex version number}</code> with <code>0.0.0.dev0</code>.</p>
 <table>
   <tr>
     <th>Processor Architecture</th>
@@ -4367,34 +4367,34 @@ You're not viewing the latest version.
   </tr>
   <tr>
     <td>3.8</td>
-    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.8 - --arch x86_64 --os linux --device cpu --py 38</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/{paddlex version number}/install_paddlex_hpi.py | python3.8 - --arch x86_64 --os linux --device cpu --py 38</td>
   </tr>
   <tr>
     <td>3.9</td>
-    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.9 - --arch x86_64 --os linux --device cpu --py 39</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/{paddlex version number}/install_paddlex_hpi.py | python3.9 - --arch x86_64 --os linux --device cpu --py 39</td>
   </tr>
   <tr>
     <td>3.10</td>
-    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.10 - --arch x86_64 --os linux --device cpu --py 310</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/{paddlex version number}/install_paddlex_hpi.py | python3.10 - --arch x86_64 --os linux --device cpu --py 310</td>
   </tr>
   <tr>
     <td rowspan="3">GPU&nbsp;(CUDA&nbsp;11.8&nbsp;+&nbsp;cuDNN&nbsp;8.6)</td>
     <td>3.8</td>
-    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.8 - --arch x86_64 --os linux --device gpu_cuda118_cudnn86 --py 38</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/{paddlex version number}/install_paddlex_hpi.py | python3.8 - --arch x86_64 --os linux --device gpu_cuda118_cudnn86 --py 38</td>
   </tr>
   <tr>
     <td>3.9</td>
-    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.9 - --arch x86_64 --os linux --device gpu_cuda118_cudnn86 --py 39</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/{paddlex version number}/install_paddlex_hpi.py | python3.9 - --arch x86_64 --os linux --device gpu_cuda118_cudnn86 --py 39</td>
   </tr>
   <tr>
     <td>3.10</td>
-    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.10 - --arch x86_64 --os linux --device gpu_cuda118_cudnn86 --py 310</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/{paddlex version number}/install_paddlex_hpi.py | python3.10 - --arch x86_64 --os linux --device gpu_cuda118_cudnn86 --py 310</td>
   </tr>
 </table>
 
 <ul>
-<li>When the device type is GPU, please use the installation instructions corresponding to the CUDA and cuDNN versions that match your environment. Otherwise, you will not be able to use the high-performance inference plugin properly.</li>
 <li>For Linux systems, execute the installation instructions using Bash.</li>
+<li>When using NVIDIA GPUs, please use the installation instructions corresponding to the CUDA and cuDNN versions that match your environment. Otherwise, you will not be able to use the high-performance inference plugin properly.</li>
 <li>When the device type is CPU, the installed high-performance inference plugin only supports inference using the CPU; for other device types, the installed high-performance inference plugin supports inference using the CPU or other devices.</li>
 </ul>
 <h3 id="12-obtaining-serial-numbers-and-activation">1.2 Obtaining Serial Numbers and Activation<a class="headerlink" href="#12-obtaining-serial-numbers-and-activation" title="Permanent link">&para;</a></h3>
@@ -4409,67 +4409,87 @@ You're not viewing the latest version.
 </ul>
 <p>Please note: Each serial number can only be bound to a unique device fingerprint and can only be bound once. This means that if users deploy models on different machines, they must prepare separate serial numbers for each machine.</p>
 <h3 id="13-enabling-high-performance-inference-plugins">1.3 Enabling High-Performance Inference Plugins<a class="headerlink" href="#13-enabling-high-performance-inference-plugins" title="Permanent link">&para;</a></h3>
-<p>Before enabling high-performance plugins, please ensure that the <code>LD_LIBRARY_PATH</code> of the current environment does not specify the TensorRT directory, as the plugins already integrate TensorRT to avoid conflicts caused by different TensorRT versions that may prevent the plugins from functioning properly.</p>
+<p>For Linux systems, if using the high-performance inference plugin in a Docker container, please mount the host machine's <code>/dev/disk/by-uuid</code> and <code>${HOME}/.baidu/paddlex/licenses</code> directories to the container.</p>
 <p>For PaddleX CLI, specify <code>--use_hpip</code> and set the serial number to enable the high-performance inference plugin. If you wish to activate the license online, specify <code>--update_license</code> when using the serial number for the first time. Taking the general image classification pipeline as an example:</p>
-<div class="language-diff highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>paddlex \
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w"> </span>   --pipeline image_classification \
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w"> </span>   --input https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_image_classification_001.jpg \
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w"> </span>   --device gpu:0 \
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gi">+   --use_hpip \</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="gi">+   --serial_number {serial_number}</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>paddlex<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span>--pipeline<span class="w"> </span>image_classification<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>--input<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_image_classification_001.jpg<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>--device<span class="w"> </span>gpu:0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span>--use_hpip<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>--serial_number<span class="w"> </span><span class="o">{</span>serial_number<span class="o">}</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a># If you wish to activate the license online
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>paddlex \
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w"> </span>   --pipeline image_classification \
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w"> </span>   --input https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_image_classification_001.jpg \
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w"> </span>   --device gpu:0 \
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="gi">+   --use_hpip \</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="gi">+   --serial_number {serial_number} \</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="gi">+   --update_license</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># If you wish to perform online activation</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>paddlex<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>--pipeline<span class="w"> </span>image_classification<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span>--input<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_image_classification_001.jpg<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span>--device<span class="w"> </span>gpu:0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span>--use_hpip<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span>--serial_number<span class="w"> </span><span class="o">{</span>serial_number<span class="o">}</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span>--update_license
 </span></code></pre></div>
 <p>For PaddleX Python API, enabling the high-performance inference plugin is similar. Still taking the general image classification pipeline as an example:</p>
-<div class="language-diff highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>from paddlex import create_pipeline
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">paddlex</span> <span class="kn">import</span> <span class="n">create_pipeline</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>pipeline = create_pipeline(
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w"> </span>   pipeline=&quot;image_classification&quot;,
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="gi">+   use_hpip=True,</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="gi">+   serial_number=&quot;{serial_number}&quot;,</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>)
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">create_pipeline</span><span class="p">(</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">pipeline</span><span class="o">=</span><span class="s2">&quot;image_classification&quot;</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">use_hpip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">hpi_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;serial_number&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">{serial_number}</span><span class="s2">&quot;</span><span class="p">},</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>output = pipeline.predict(&quot;https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_image_classification_001.jpg&quot;)
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">output</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_image_classification_001.jpg&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <p>The inference results obtained with the high-performance inference plugin enabled are consistent with those without the plugin enabled. For some models, enabling the high-performance inference plugin for the first time may take a longer time to complete the construction of the inference engine. PaddleX will cache the relevant information in the model directory after the first construction of the inference engine and reuse the cached content in subsequent runs to improve initialization speed.</p>
 <h3 id="14-modifying-high-performance-inference-configurations">1.4 Modifying High-Performance Inference Configurations<a class="headerlink" href="#14-modifying-high-performance-inference-configurations" title="Permanent link">&para;</a></h3>
-<p>PaddleX provides default high-performance inference configurations for each model and stores them in the model's configuration file. Due to the diversity of actual deployment environments, using the default configurations may not achieve ideal performance in specific environments or may even result in inference failures. For situations where the default configurations cannot meet requirements, you can try changing the model's inference backend as follows:</p>
-<ol>
+<p>PaddleX combines model information and runtime environment information to provide default high-performance inference configurations for each model. These default configurations are carefully prepared to be applicable in several common scenarios and achieve relatively optimal performance. Therefore, users typically may not need to be concerned with the specific details of these configurations. However, due to the diversity of actual deployment environments and requirements, the default configuration may not yield ideal performance in certain scenarios and could even result in inference failures. In cases where the default configuration does not meet the requirements, users can manually adjust the configuration by modifying the Hpi field in the inference.yml file within the model directory (if this field does not exist, it needs to be added). The following are two common situations:</p>
+<ul>
 <li>
-<p>Locate the <code>inference.yml</code> file in the model directory and find the <code>Hpi</code> field.</p>
-</li>
-<li>
-<p>Modify the value of <code>selected_backends</code>. Specifically, <code>selected_backends</code> may be set as follows:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">selected_backends</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">paddle_infer</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">onnx_runtime</span>
+<p>Switching inference backends:</p>
+<p>When the default inference backend is not available, the inference backend needs to be switched manually. Users should modify the <code>selected_backends</code> field (if it does not exist, it needs to be added).</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">Hpi</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">selected_backends</span><span class="p p-Indicator">:</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">paddle_infer</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">onnx_runtime</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </span></code></pre></div>
-<p>Each entry is formatted as <code>{device_type}: {inference_backend_name}</code>. The default selects the backend with the shortest inference time in the official test environment. <code>supported_backends</code> lists the inference backends supported by the model in the official test environment for reference.</p>
+<p>Each entry should follow the format <code>{device type}: {inference backend name}</code>.</p>
 <p>The currently available inference backends are:</p>
 <ul>
-<li><code>paddle_infer</code>: The standard Paddle Inference engine. Supports CPU and GPU.</li>
-<li><code>paddle_tensorrt</code>: <a href="https://www.paddlepaddle.org.cn/lite/v2.10/optimize/paddle_trt.html">Paddle-TensorRT</a>, a high-performance deep learning inference library produced by Paddle, which integrates TensorRT in the form of subgraphs for further optimization and acceleration. Supports GPU only.</li>
-<li><code>openvino</code>: <a href="https://github.com/openvinotoolkit/openvino">OpenVINO</a>, a deep learning inference tool provided by Intel, optimized for model inference performance on various Intel hardware. Supports CPU only.</li>
-<li><code>onnx_runtime</code>: <a href="https://onnxruntime.ai/">ONNX Runtime</a>, a cross-platform, high-performance inference engine. Supports CPU and GPU.</li>
-<li><code>tensorrt</code>: <a href="https://developer.nvidia.com/tensorrt">TensorRT</a>, a high-performance deep learning inference library provided by NVIDIA, optimized for NVIDIA GPUs to improve speed. Supports GPU only.</li>
-</ul>
-<p>Here are some key details of the current official test environment:</p>
-<ul>
-<li>CPU: Intel Xeon Gold 5117</li>
-<li>GPU: NVIDIA Tesla T4</li>
-<li>CUDA Version: 11.8</li>
-<li>cuDNN Version: 8.6</li>
-<li>Docker：registry.baidubce.com/paddlepaddle/paddle:latest-dev-cuda11.8-cudnn8.6-trt8.5-gcc82</li>
+<li><code>paddle_infer</code>: The Paddle Inference engine. Supports CPU and GPU. Compared to the PaddleX quick inference, TensorRT subgraphs can be integrated to enhance inference performance on GPUs.</li>
+<li><code>openvino</code>: <a href="https://github.com/openvinotoolkit/openvino">OpenVINO</a>, a deep learning inference tool provided by Intel, optimized for model inference performance on various Intel hardware. Supports CPU only. The high-performance inference plugin automatically converts the model to the ONNX format and uses this engine for inference.</li>
+<li><code>onnx_runtime</code>: <a href="https://onnxruntime.ai/">ONNX Runtime</a>, a cross-platform, high-performance inference engine. Supports CPU and GPU. The high-performance inference plugin automatically converts the model to the ONNX format and uses this engine for inference.</li>
+<li><code>tensorrt</code>: <a href="https://developer.nvidia.com/tensorrt">TensorRT</a>, a high-performance deep learning inference library provided by NVIDIA, optimized for NVIDIA GPUs to improve speed. Supports GPU only. The high-performance inference plugin automatically converts the model to the ONNX format and uses this engine for inference.</li>
 </ul>
 </li>
-</ol>
+<li>
+<p>Modifying dynamic shape configurations for Paddle Inference or TensorRT:</p>
+<p>Dynamic shape is the ability of TensorRT to defer specifying parts or all of a tensor’s dimensions until runtime. If the default dynamic shape configuration does not meet requirements (e.g., the model may require input shapes beyond the default range), users need to modify the <code>trt_dynamic_shapes</code> or <code>dynamic_shapes</code> field in the inference backend configuration:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">Hpi</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">backend_configs</span><span class="p p-Indicator">:</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="c1"># Configuration for the Paddle Inference backend</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">paddle_infer</span><span class="p">:</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">trt_dynamic_shapes</span><span class="p p-Indicator">:</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="nt">x</span><span class="p">:</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">]</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">]</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">32</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1200</span><span class="p p-Indicator">]</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="c1"># Configuration for the TensorRT backend</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="nt">tensorrt</span><span class="p">:</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">dynamic_shapes</span><span class="p p-Indicator">:</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="nt">x</span><span class="p">:</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">]</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">300</span><span class="p p-Indicator">]</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">32</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1200</span><span class="p p-Indicator">]</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</span></code></pre></div>
+<p>In <code>trt_dynamic_shapes</code> or <code>dynamic_shapes</code>, each input tensor requires a specified dynamic shape in the format: <code>{input tensor name}: [{minimum shape}, [{optimal shape}], [{maximum shape}]]</code>. For details on minimum, optimal, and maximum shapes and further information, please refer to the official TensorRT documentation.</p>
+<p>After completing the modifications, please delete the cache files in the model directory (<code>shape_range_info.pbtxt</code> and files starting with <code>trt_serialized</code>).</p>
+</li>
+</ul>
 <h2 id="2-pipelines-and-models-supporting-high-performance-inference-plugins">2. Pipelines and Models Supporting High-Performance Inference Plugins<a class="headerlink" href="#2-pipelines-and-models-supporting-high-performance-inference-plugins" title="Permanent link">&para;</a></h2>
 <table>
   <tr>
@@ -4665,7 +4685,7 @@ You're not viewing the latest version.
     </span>
     <nav>
       
-        <a href="mailto:94225063+zhangyubo0722@users.noreply.github.com">zhangyubo0722</a>
+        <a href="mailto:bob1998425@hotmail.com">Lin Manhui</a>
     </nav>
   </span>
 
