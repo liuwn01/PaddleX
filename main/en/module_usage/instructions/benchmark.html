@@ -4176,54 +4176,61 @@ You're not viewing the latest version.
 <li><code>PADDLE_PDX_INFER_BENCHMARK_WARMUP</code>：设置 warm up，在开始测试前，使用随机数据循环迭代 n 次，默认为 <code>0</code>；</li>
 <li><code>PADDLE_PDX_INFER_BENCHMARK_DATA_SIZE</code>： 设置随机数据的尺寸，默认为 <code>224</code>；</li>
 <li><code>PADDLE_PDX_INFER_BENCHMARK_ITER</code>：使用随机数据进行 Benchmark 测试的循环次数，仅当输入数据为 <code>None</code> 时，将使用随机数据进行测试；</li>
-<li><code>PADDLE_PDX_INFER_BENCHMARK_OUTPUT</code>：用于设置保存本次 benchmark 指标到 <code>txt</code> 文件，如 <code>./benchmark.txt</code>，默认为 <code>None</code>，表示不保存 Benchmark 指标；</li>
+<li><code>PADDLE_PDX_INFER_BENCHMARK_OUTPUT</code>：用于设置保存的目录，如 <code>./benchmark</code>，默认为 <code>None</code>，表示不保存 Benchmark 指标；</li>
 </ul>
 <p>使用示例如下：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">PADDLE_PDX_INFER_BENCHMARK</span><span class="o">=</span>True<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">PADDLE_PDX_INFER_BENCHMARK_WARMUP</span><span class="o">=</span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">PADDLE_PDX_INFER_BENCHMARK_DATA_SIZE</span><span class="o">=</span><span class="m">320</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">PADDLE_PDX_INFER_BENCHMARK_ITER</span><span class="o">=</span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">PADDLE_PDX_INFER_BENCHMARK_OUTPUT</span><span class="o">=</span>./benchmark.txt<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">PADDLE_PDX_INFER_BENCHMARK_OUTPUT</span><span class="o">=</span>./benchmark<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>python<span class="w"> </span>main.py<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span>-c<span class="w"> </span>./paddlex/configs/object_detection/PicoDet-XS.yaml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>predict<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span>-o<span class="w"> </span>Predict.model_dir<span class="o">=</span>None<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>-o<span class="w"> </span>Predict.input<span class="o">=</span>None
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>-o<span class="w"> </span>Predict.batch_size<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span>-o<span class="w"> </span>Predict.input<span class="o">=</span>None
 </span></code></pre></div>
 <p>在开启 Benchmark 后，将自动打印 benchmark 指标：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>+-------------------+-----------------+------+---------------+
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>|       Stage       | Total Time (ms) | Nums | Avg Time (ms) |
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>+-------------------+-----------------+------+---------------+
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>|      ReadCmp      |   49.95107651   |  10  |   4.99510765  |
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>|       Resize      |    8.48054886   |  10  |   0.84805489  |
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>|     Normalize     |   23.08964729   |  10  |   2.30896473  |
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>|     ToCHWImage    |    0.02717972   |  10  |   0.00271797  |
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>| ImageDetPredictor |   75.94108582   |  10  |   7.59410858  |
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>|   DetPostProcess  |    0.26535988   |  10  |   0.02653599  |
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>+-------------------+-----------------+------+---------------+
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>+-------------+-----------------+------+---------------+
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>|    Stage    | Total Time (ms) | Nums | Avg Time (ms) |
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>+-------------+-----------------+------+---------------+
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>|  PreProcess |   81.54845238   |  10  |   8.15484524  |
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>|  Inference  |   75.94108582   |  10  |   7.59410858  |
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>| PostProcess |    0.26535988   |  10  |   0.02653599  |
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>|   End2End   |   161.07797623  |  10  |  16.10779762  |
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>|    WarmUp   |  5496.41847610  |  5   | 1099.28369522 |
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>+-------------+-----------------+------+---------------+
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>+----------------+-----------------+-----------------+------------------------+
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>|   Component    | Total Time (ms) | Number of Calls | Avg Time Per Call (ms) |
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>+----------------+-----------------+-----------------+------------------------+
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>|    ReadCmp     |   102.39458084  |        10       |      10.23945808       |
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>|     Resize     |   11.20400429   |        20       |       0.56020021       |
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>|   Normalize    |   34.11078453   |        20       |       1.70553923       |
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>|   ToCHWImage   |    0.05555153   |        20       |       0.00277758       |
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>|    Copy2GPU    |    9.10568237   |        10       |       0.91056824       |
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>|     Infer      |   98.22225571   |        10       |       9.82222557       |
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>|    Copy2CPU    |   14.30845261   |        10       |       1.43084526       |
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>| DetPostProcess |    0.45251846   |        20       |       0.02262592       |
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>+----------------+-----------------+-----------------+------------------------+
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>+-------------+-----------------+---------------------+----------------------------+
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>|    Stage    | Total Time (ms) | Number of Instances | Avg Time Per Instance (ms) |
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>+-------------+-----------------+---------------------+----------------------------+
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>|  PreProcess |   147.76492119  |          20         |         7.38824606         |
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>|  Inference  |   121.63639069  |          20         |         6.08181953         |
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>| PostProcess |    0.45251846   |          20         |         0.02262592         |
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>|   End2End   |   294.03519630  |          20         |        14.70175982         |
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>|    WarmUp   |  7937.82591820  |          5          |       1587.56518364        |
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>+-------------+-----------------+---------------------+----------------------------+
 </span></code></pre></div>
-<p>在 Benchmark 结果中，会统计该模型全部组件（<code>Component</code>）的总耗时（<code>Total Time</code>，单位为“毫秒”）、调用次数（<code>Nums</code>）、调用平均执行耗时（<code>Avg Time</code>，单位为“毫秒”），以及按预热（<code>WarmUp</code>）、预处理（<code>PreProcess</code>）、模型推理（<code>Inference</code>）、后处理（<code>PostProcess</code>）和端到端（<code>End2End</code>）进行划分的耗时统计，包括每个阶段的总耗时（<code>Total Time</code>，单位为“毫秒”）、样本数（<code>Nums</code>）和单样本平均执行耗时（<code>Avg Time</code>，单位为“毫秒”），同时，保存相关指标会到本地 <code>./benchmark.csv</code> 文件中：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Stage,Total Time (ms),Nums,Avg Time (ms)
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ReadCmp,0.04995107650756836,10,0.004995107650756836
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Resize,0.008480548858642578,10,0.0008480548858642578
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Normalize,0.02308964729309082,10,0.002308964729309082
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ToCHWImage,2.7179718017578125e-05,10,2.7179718017578126e-06
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ImageDetPredictor,0.07594108581542969,10,0.007594108581542969
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>DetPostProcess,0.00026535987854003906,10,2.6535987854003906e-05
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>PreProcess,0.08154845237731934,10,0.008154845237731934
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>Inference,0.07594108581542969,10,0.007594108581542969
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>PostProcess,0.00026535987854003906,10,2.6535987854003906e-05
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>End2End,0.16107797622680664,10,0.016107797622680664
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>WarmUp,5.496418476104736,5,1.0992836952209473
+<p>在 Benchmark 结果中，会统计该模型全部组件（<code>Component</code>）的总耗时（<code>Total Time</code>，单位为“毫秒”）、<strong>调用次数</strong>（<code>Number of Calls</code>）、<strong>调用**平均执行耗时（<code>Avg Time Per Call</code>，单位“毫秒”），以及按预热（<code>WarmUp</code>）、预处理（<code>PreProcess</code>）、模型推理（<code>Inference</code>）、后处理（<code>PostProcess</code>）和端到端（<code>End2End</code>）进行划分的耗时统计，包括每个阶段的总耗时（<code>Total Time</code>，单位为“毫秒”）、**样本数</strong>（<code>Number of Instances</code>）和**单样本**平均执行耗时（<code>Avg Time Per Instance</code>，单位“毫秒”），同时，上述指标会保存到到本地： <code>./benchmark/detail.csv</code> 和 <code>./benchmark/summary.csv</code>：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Component,Total Time (ms),Number of Calls,Avg Time Per Call (ms)
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ReadCmp,0.10199093818664551,10,0.01019909381866455
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Resize,0.011309385299682617,20,0.0005654692649841309
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Normalize,0.035140275955200195,20,0.0017570137977600097
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ToCHWImage,4.744529724121094e-05,20,2.3722648620605467e-06
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Copy2GPU,0.00861215591430664,10,0.000861215591430664
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>Infer,0.820899248123169,10,0.08208992481231689
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>Copy2CPU,0.006002187728881836,10,0.0006002187728881836
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>DetPostProcess,0.0004436969757080078,20,2.218484878540039e-05
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Stage,Total Time (ms),Number of Instance,Avg Time Per Instance (ms)
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>PreProcess,0.14848804473876953,20,0.007424402236938477
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Inference,0.8355135917663574,20,0.04177567958831787
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>PostProcess,0.0004436969757080078,20,2.218484878540039e-05
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>End2End,1.0054960250854492,20,0.05027480125427246
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>WarmUp,8.869974851608276,5,1.7739949703216553
 </span></code></pre></div>
 
 
@@ -4272,7 +4279,7 @@ You're not viewing the latest version.
     </span>
     <nav>
       
-        <a href="mailto:bob1998425@hotmail.com">Lin Manhui</a>
+        <a href="mailto:gaotingquan@baidu.com">gaotingquan</a>
     </nav>
   </span>
 
