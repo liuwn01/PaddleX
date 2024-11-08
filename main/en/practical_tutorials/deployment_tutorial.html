@@ -18,7 +18,7 @@
     
     
       
-        <title>Deployment tutorial - PaddleX Documentation</title>
+        <title>PaddleX 3.0 Pipeline Deployment Tutorial - PaddleX Documentation</title>
       
     
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#paddlex-30-pipeline-deploy-tutorial" class="md-skip">
+        <a href="#paddlex-30-pipeline-deployment-tutorial" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@ You're not viewing the latest version.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deployment tutorial
+              PaddleX 3.0 Pipeline Deployment Tutorial
             
           </span>
         </div>
@@ -4140,6 +4140,176 @@ You're not viewing the latest version.
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-high-performance-inference-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 High-Performance Inference Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 High-Performance Inference Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-obtain-serial-number-and-activation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Obtain Serial Number and Activation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-install-high-performance-inference-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Install High-Performance Inference Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-enabling-high-performance-inference-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Enabling High-Performance Inference Plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-inference-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Inference Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-changing-pipelines-or-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 Changing Pipelines or Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-service-deployment-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Service Deployment Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Service Deployment Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-installing-the-service-deployment-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Installing the Service Deployment Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-starting-the-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Starting the Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-calling-the-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Calling the Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-deployment-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Deployment Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-change-pipelines-or-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Change Pipelines or Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-edge-deployment-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Edge Deployment Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Edge Deployment Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-environment-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Environment Preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-material-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Material Preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-deployment-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Deployment Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4169,8 +4339,402 @@ You're not viewing the latest version.
   
 
 
-<p>简体中文 (deployment_tutorial.md)| English</p>
-<h1 id="paddlex-30-pipeline-deploy-tutorial">PaddleX 3.0 Pipeline Deploy Tutorial<a class="headerlink" href="#paddlex-30-pipeline-deploy-tutorial" title="Permanent link">&para;</a></h1>
+<h1 id="paddlex-30-pipeline-deployment-tutorial">PaddleX 3.0 Pipeline Deployment Tutorial<a class="headerlink" href="#paddlex-30-pipeline-deployment-tutorial" title="Permanent link">&para;</a></h1>
+<p>Before using this tutorial, you need to install PaddleX. For installation instructions, please refer to the <a href="../installation/installation.html">PaddleX Installation</a> guide.</p>
+<p>The three deployment methods of PaddleX are detailed below:</p>
+<ul>
+<li>High-Performance Inference: In actual production environments, many applications have stringent performance standards for deployment strategies, especially in terms of response speed, to ensure efficient system operation and smooth user experience. To this end, PaddleX provides a high-performance inference plugin aimed at deeply optimizing model inference and pre/post-processing for significant end-to-end speedups. For detailed high-performance inference procedures, please refer to the <a href="../pipeline_deploy/high_performance_inference.html">PaddleX High-Performance Inference Guide</a>.</li>
+<li>Service-Oriented Deployment: Service-oriented deployment is a common deployment form in actual production environments. By encapsulating inference functionality as services, clients can access these services through network requests to obtain inference results. PaddleX supports users in achieving low-cost service-oriented deployment in pipelines. For detailed service-oriented deployment procedures, please refer to the <a href="../pipeline_deploy/service_deploy.html">PaddleX Service-Oriented Deployment Guide</a>.</li>
+<li>Edge Deployment: Edge deployment is a method where computing and data processing functions are placed on the user's device itself, allowing the device to directly process data without relying on remote servers. PaddleX supports deploying models on edge devices such as Android. For detailed edge deployment procedures, please refer to the <a href="../pipeline_deploy/edge_deploy.html">PaddleX Edge Deployment Guide</a>.</li>
+</ul>
+<p>This tutorial will introduce the three deployment methods of PaddleX through three practical application examples.</p>
+<h2 id="1-high-performance-inference-example">1 High-Performance Inference Example<a class="headerlink" href="#1-high-performance-inference-example" title="Permanent link">&para;</a></h2>
+<h3 id="11-obtain-serial-number-and-activation">1.1 Obtain Serial Number and Activation<a class="headerlink" href="#11-obtain-serial-number-and-activation" title="Permanent link">&para;</a></h3>
+<p>On the <a href="https://aistudio.baidu.com/paddlex/commercialization">Baidu AIStudio Community - AI Learning and Training Community</a> page, select "Get Now" in the "Consultation and Acquisition of Serial Numbers for Open Source Pipeline Deployment" section, as shown in the figure below:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/pipeline_deploy/image-1.png" /></p>
+<p>Select the pipeline you need to deploy and click "Get". Afterward, you can find the obtained serial number in the "Serial Number Management for Open Source Pipeline Deployment SDK" section below:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/pipeline_deploy/image-2.png" /></p>
+<p>After using the serial number to complete activation, you can use the high-performance inference plugin. PaddleX provides both offline and online activation methods (both only support Linux systems):</p>
+<ul>
+<li>Online Activation: When using the inference API or CLI, specify the serial number and activate online, allowing the program to complete activation automatically.</li>
+<li>Offline Activation: Follow the instructions on the serial number management interface (click "Offline Activation" in "Operations") to obtain the device fingerprint of the machine and bind the serial number with the device fingerprint to obtain a certificate for activation. To use this activation method, you need to manually store the certificate in the <code>${HOME}/.baidu/paddlex/licenses</code> directory on the machine (create the directory if it does not exist) and specify the serial number when using the inference API or CLI.
+Please note: Each serial number can only be bound to a unique device fingerprint and can only be bound once. This means that if users deploy models on different machines, they must prepare separate serial numbers for each machine.</li>
+</ul>
+<h3 id="12-install-high-performance-inference-plugin">1.2 Install High-Performance Inference Plugin<a class="headerlink" href="#12-install-high-performance-inference-plugin" title="Permanent link">&para;</a></h3>
+<p>Find the corresponding installation command in the table below based on processor architecture, operating system, device type, Python version, and other information, and execute it in the deployment environment:</p>
+<table>
+  <tr>
+    <th>Processor Architecture</th>
+    <th>Operating System</th>
+    <th>Device Type</th>
+    <th>Python Version</th>
+    <th>Installation Command</th>
+  </tr>
+  <tr>
+    <td rowspan="7">x86-64</td>
+    <td rowspan="7">Linux</td>
+    <td rowspan="4">CPU</td>
+  </tr>
+  <tr>
+    <td>3.8</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.8 - --arch x86_64 --os linux --device cpu --py 38</td>
+  </tr>
+  <tr>
+    <td>3.9</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.9 - --arch x86_64 --os linux --device cpu --py 39</td>
+  </tr>
+  <tr>
+    <td>3.10</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.10 - --arch x86_64 --os linux --device cpu --py 310</td>
+  </tr>
+  <tr>
+    <td rowspan="3">GPU (CUDA 11.8 + cuDNN 8.6)</td>
+    <td>3.8</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.8 - --arch x86_64 --os linux --device gpu_cuda118_cudnn86 --py 38</td>
+  </tr>
+  <tr>
+    <td>3.9</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.9 - --arch x86_64 --os linux --device gpu_cuda118_cudnn86 --py 39</td>
+  </tr>
+  <tr>
+    <td>3.10</td>
+    <td>curl -s https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py | python3.10 - --arch x86_64 --os linux --device gpu_cuda118_cudnn86 --py 310</td>
+  </tr>
+</table>
+
+<ul>
+<li>When the device type is GPU, please use the installation command corresponding to the CUDA and cuDNN versions that match your environment; otherwise, the high-performance inference plugin will not function properly.</li>
+<li>For Linux systems, use Bash to execute the installation command.</li>
+<li>When the device type is CPU, the installed high-performance inference plugin only supports inference using the CPU; for other device types, the installed high-performance inference plugin supports inference using the CPU or other devices.</li>
+</ul>
+<h3 id="13-enabling-high-performance-inference-plugins">1.3 Enabling High-Performance Inference Plugins<a class="headerlink" href="#13-enabling-high-performance-inference-plugins" title="Permanent link">&para;</a></h3>
+<p>Before enabling high-performance plugins, ensure that the <code>LD_LIBRARY_PATH</code> in the current environment does not specify the shared library directory of TensorRT, as the plugins already integrate TensorRT to avoid conflicts caused by different TensorRT versions that may prevent the plugins from functioning properly.</p>
+<p>For PaddleX CLI, specify <code>--use_hpip</code> and set the serial number to enable the high-performance inference plugin. If you wish to activate online, specify <code>--update_license</code> when using the serial number for the first time, taking the General OCR pipeline as an example:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>paddlex<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span>--pipeline<span class="w"> </span>OCR<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>--input<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_ocr_002.png<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>--device<span class="w"> </span>gpu:0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span>--use_hpip<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>--serial_number<span class="w"> </span><span class="o">{</span>serial_number<span class="o">}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># If you wish to activate online</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>paddlex<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>--pipeline<span class="w"> </span>OCR<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span>--input<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_ocr_002.png<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span>--device<span class="w"> </span>gpu:0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span>--use_hpip<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span>--update_license<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span>--serial_number<span class="w"> </span><span class="o">{</span>serial_number<span class="o">}</span>
+</span></code></pre></div>
+<p>For the PaddleX Python API, the method to enable the high-performance inference plugin is similar. Again, taking the General OCR pipeline as an example:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">paddlex</span> <span class="kn">import</span> <span class="n">create_pipeline</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">create_pipeline</span><span class="p">(</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">pipeline</span><span class="o">=</span><span class="s2">&quot;OCR&quot;</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">use_hpip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">hpi_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;serial_number&quot;</span><span class="p">:</span> <span class="n">xxx</span><span class="p">}</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">output</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_ocr_002.png &quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>The inference results obtained with the high-performance inference plugin are consistent with those without the plugin enabled. For some models, enabling the high-performance inference plugin for the first time may take a longer time to complete the construction of the inference engine. PaddleX will cache relevant information in the model directory after the first construction of the inference engine and reuse the cached content in subsequent initializations to improve speed.</p>
+<h3 id="14-inference-steps">1.4 Inference Steps<a class="headerlink" href="#14-inference-steps" title="Permanent link">&para;</a></h3>
+<p>This inference process is based on <strong>PaddleX CLI, online activation of serial numbers, Python 3.10.0, and using a CPU device</strong> with the high-performance inference plugin. For other usage methods (such as different Python versions, device types, or PaddleX Python API), refer to the <a href="../pipeline_deploy/high_performance_inference.html">PaddleX High-Performance Inference Guide</a> to replace the corresponding commands.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Install the high-performance inference plugin</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/PaddleX3.0/deploy/paddlex_hpi/install_script/latest/install_paddlex_hpi.py<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3.10<span class="w"> </span>-<span class="w"> </span>--arch<span class="w"> </span>x86_64<span class="w"> </span>--os<span class="w"> </span>linux<span class="w"> </span>--device<span class="w"> </span>cpu<span class="w"> </span>--py<span class="w"> </span><span class="m">310</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Ensure that the `LD_LIBRARY_PATH` in the current environment does not specify the shared library directory of TensorRT. You can use the following command to remove it or manually remove it.</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$LD_LIBRARY_PATH</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>TensorRT<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39;:&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/:*$//&#39;</span><span class="k">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Perform inference</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>paddlex<span class="w"> </span>--pipeline<span class="w"> </span>OCR<span class="w"> </span>--input<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_ocr_002.png<span class="w"> </span>--device<span class="w"> </span>gpu:0<span class="w"> </span>--use_hpip<span class="w"> </span>--serial_number<span class="w"> </span><span class="o">{</span>serial_number<span class="o">}</span><span class="w"> </span>--update_license<span class="w"> </span>True<span class="w"> </span>--save_path<span class="w"> </span>./output
+</span></code></pre></div>
+<p>Output:</p>
+<p><img src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/practical_tutorials/deployment/01.png"  width="700" />
+<img src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/practical_tutorials/deployment/02.png"  width="700" /></p>
+<h3 id="15-changing-pipelines-or-models">1.5 Changing Pipelines or Models<a class="headerlink" href="#15-changing-pipelines-or-models" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Changing Pipelines:</li>
+</ul>
+<p>If you want to use a different pipeline with the high-performance inference plugin, simply replace the value passed to <code>--pipeline</code>. Here is an example using the General Object Detection pipeline:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>paddlex<span class="w"> </span>--pipeline<span class="w"> </span>object_detection<span class="w"> </span>--input<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_object_detection_002.png<span class="w"> </span>--device<span class="w"> </span>gpu:0<span class="w"> </span>--use_hpip<span class="w"> </span>--serial_number<span class="w"> </span><span class="o">{</span>serial_number<span class="o">}</span><span class="w"> </span>--update_license<span class="w"> </span>True<span class="w"> </span>--save_path<span class="w"> </span>./output
+</span></code></pre></div>
+<ul>
+<li>Changing Models:</li>
+</ul>
+<p>The OCR pipeline defaults to using the PP-OCRv4_mobile_det and PP-OCRv4_mobile_rec models. If you want to use other models, such as PP-OCRv4_server_det and PP-OCRv4_server_rec, refer to the <a href="../pipeline_usage/tutorials/ocr_pipelines/OCR.html">General OCR Pipeline Tutorial</a>. The specific operations are as follows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 1. Obtain the OCR pipeline configuration file and save it to ./OCR.yaml</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>paddlex<span class="w"> </span>--get_pipeline_config<span class="w"> </span>OCR<span class="w"> </span>--save_path<span class="w"> </span>./OCR.yaml
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># 2. Modify the ./OCR.yaml configuration file</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">#    Change the value of Pipeline.text_det_model to the path of the PP-OCRv4_server_det model</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">#    Change the value of Pipeline.text_rec_model to the path of the PP-OCRv4_server_rec model</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># 3. Use the modified configuration file when performing inference</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>paddlex<span class="w"> </span>--pipeline<span class="w"> </span>./OCR.yaml<span class="w"> </span>--input<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_ocr_002.png<span class="w"> </span>--device<span class="w"> </span>gpu:0<span class="w"> </span>--use_hpip<span class="w"> </span>--serial_number<span class="w"> </span><span class="o">{</span>serial_number<span class="o">}</span><span class="w"> </span>--update_license<span class="w"> </span>True<span class="w"> </span>--save_path<span class="w"> </span>./output
+</span></code></pre></div>
+<p>The General Object Detection pipeline defaults to using the PicoDet-S model. If you want to use another model, such as RT-DETR, refer to the <a href="../pipeline_usage/tutorials/cv_pipelines/object_detection.html">General Object Detection Pipeline Tutorial</a>. The specific operations are as follows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Obtain the OCR pipeline configuration file and save it to ./object_detection.yaml</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>paddlex<span class="w"> </span>--get_pipeline_config<span class="w"> </span>object_detection<span class="w"> </span>--save_path<span class="w"> </span>./object_detection.yaml
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. Modify the ./object_detection.yaml configuration file</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">#    Change the value of Pipeline.model to the path of the RT-DETR model</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># 3. Use the modified configuration file when performing inference</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>paddlex<span class="w"> </span>--pipeline<span class="w"> </span>./object_detection.yaml<span class="w"> </span>--input<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_ocr_002.png<span class="w"> </span>--device<span class="w"> </span>gpu:0<span class="w"> </span>--use_hpip<span class="w"> </span>--serial_number<span class="w"> </span><span class="o">{</span>serial_number<span class="o">}</span><span class="w"> </span>--update_license<span class="w"> </span>True<span class="w"> </span>--save_path<span class="w"> </span>./output
+</span></code></pre></div>
+<p>The operations for other pipelines are similar to those for the above two pipelines. For more details, refer to the pipeline usage tutorials.</p>
+<h2 id="2-service-deployment-example">2 Service Deployment Example<a class="headerlink" href="#2-service-deployment-example" title="Permanent link">&para;</a></h2>
+<h3 id="21-installing-the-service-deployment-plugin">2.1 Installing the Service Deployment Plugin<a class="headerlink" href="#21-installing-the-service-deployment-plugin" title="Permanent link">&para;</a></h3>
+<p>Execute the following command to install the service deployment plugin:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>paddlex --install serving
+</span></code></pre></div>
+<h3 id="22-starting-the-service">2.2 Starting the Service<a class="headerlink" href="#22-starting-the-service" title="Permanent link">&para;</a></h3>
+<p>Start the service through the PaddleX CLI with the command format:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>paddlex<span class="w"> </span>--serve<span class="w"> </span>--pipeline<span class="w"> </span><span class="o">{</span>Pipeline<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>pipeline<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>path<span class="o">}</span><span class="w"> </span><span class="o">[{</span>Other<span class="w"> </span>command-line<span class="w"> </span>options<span class="o">}]</span>
+</span></code></pre></div>
+<p>Taking the General OCR pipeline as an example:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>paddlex<span class="w"> </span>--serve<span class="w"> </span>--pipeline<span class="w"> </span>OCR
+</span></code></pre></div>
+<p>After the service starts successfully, you will see information similar to the following:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>INFO:     Started server process [63108]
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>INFO:     Waiting for application startup.
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>INFO:     Application startup complete.
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+</span></code></pre></div>
+<p><code>--pipeline</code> can be specified as an official pipeline name or a local pipeline configuration file path. PaddleX constructs the pipeline based on this and deploys it as a service. To adjust configurations (such as model path, batch_size, deployment device), please refer to the <strong>"Model Application"</strong> section in the <a href="../pipeline_usage/tutorials/ocr_pipelines/OCR.html">General OCR Pipeline Tutorial</a>.</p>
+<p>The command-line options related to service deployment are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--pipeline</code></td>
+<td>Pipeline name or pipeline configuration file path.</td>
+</tr>
+<tr>
+<td><code>--device</code></td>
+<td>Deployment device for the pipeline. Default is <code>cpu</code> (if GPU is not available) or <code>gpu</code> (if GPU is available).</td>
+</tr>
+<tr>
+<td><code>--host</code></td>
+<td>Hostname or IP address bound to the server. Default is 0.0.0.0.</td>
+</tr>
+<tr>
+<td><code>--port</code></td>
+<td>Port number listened to by the server. Default is 8080.</td>
+</tr>
+<tr>
+<td><code>--use_hpip</code></td>
+<td>Enables the high-performance inference plugin if specified.</td>
+</tr>
+<tr>
+<td><code>--serial_number</code></td>
+<td>Serial number used by the high-performance inference plugin. Only valid when the high-performance inference plugin is enabled. Please note that not all pipelines and models support the use of the high-performance inference plugin. For detailed support, please refer to the <a href="../pipeline_deploy/high_performance_inference.html">PaddleX High-Performance Inference Guide</a>.</td>
+</tr>
+<tr>
+<td><code>--update_license</code></td>
+<td>Performs online activation if specified. Only valid when the high-performance inference plugin is enabled.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-calling-the-service">2.3 Calling the Service<a class="headerlink" href="#23-calling-the-service" title="Permanent link">&para;</a></h3>
+<p>Here, only the Python calling example is shown. For API references and service calling examples in other languages, please refer to the <strong>"Calling the Service"</strong> section in the <strong>"Development Integration/Deployment"</strong> part of each pipeline usage tutorial in the <a href="../pipeline_deploy/service_deploy.html">PaddleX Serving Deployment Guide</a>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span> <span class="nn">base64</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span> <span class="nn">requests</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">API_URL</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8080/ocr&quot;</span> <span class="c1"># Service URL</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;./demo.jpg&quot;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">output_image_path</span> <span class="o">=</span> <span class="s2">&quot;./out.jpg&quot;</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1"># Encode the local image in Base64</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="n">image_bytes</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="n">image_data</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">image_bytes</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="n">image_data</span><span class="p">}</span>  <span class="c1"># Base64-encoded file content or image URL</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="c1"># Call the API</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">API_URL</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="c1"># Process the response data</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;result&quot;</span><span class="p">]</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_image_path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">]))</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output image saved at </span><span class="si">{</span><span class="n">output_image_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Detected texts:&quot;</span><span class="p">)</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;texts&quot;</span><span class="p">])</span>
+</span></code></pre></div>
+<h3 id="24-deployment-steps">2.4 Deployment Steps<a class="headerlink" href="#24-deployment-steps" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Install the service deployment plugin</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>paddlex<span class="w"> </span>--install<span class="w"> </span>serving
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># Start the service</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>paddlex<span class="w"> </span>--serve<span class="w"> </span>--pipeline<span class="w"> </span>OCR
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># Call the service | The code in fast_test.py is a Python calling example from the previous section</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>wget<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_ocr_002.png<span class="w"> </span>-O<span class="w"> </span>demo.jpg
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>python<span class="w"> </span>fast_test.py
+</span></code></pre></div>
+<p>Running Results:</p>
+<p><img src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/practical_tutorials/deployment/03.png"  width="700" />
+<img src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/practical_tutorials/deployment/04.png"  width="700" /></p>
+<h3 id="25-change-pipelines-or-models">2.5 Change Pipelines or Models<a class="headerlink" href="#25-change-pipelines-or-models" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Change Pipelines:</li>
+</ul>
+<p>If you want to deploy another pipeline for service, simply replace the value passed to <code>--pipeline</code>. The following example uses the General Object Detection pipeline:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>paddlex<span class="w"> </span>--serve<span class="w"> </span>--pipeline<span class="w"> </span>object_detection
+</span></code></pre></div>
+<ul>
+<li>Change Models:</li>
+</ul>
+<p>The OCR pipeline defaults to using the PP-OCRv4_mobile_det and PP-OCRv4_mobile_rec models. If you want to switch to other models, such as PP-OCRv4_server_det and PP-OCRv4_server_rec, refer to the <a href="../pipeline_usage/tutorials/ocr_pipelines/OCR.html">General OCR Pipeline Tutorial</a>. The specific steps are as follows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 1. Obtain the OCR pipeline configuration file and save it as ./OCR.yaml</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>paddlex<span class="w"> </span>--get_pipeline_config<span class="w"> </span>OCR<span class="w"> </span>--save_path<span class="w"> </span>./OCR.yaml
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># 2. Modify the ./OCR.yaml configuration file</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1">#    Change the value of Pipeline.text_det_model to the path of the PP-OCRv4_server_det model</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1">#    Change the value of Pipeline.text_rec_model to the path of the PP-OCRv4_server_rec model</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1"># 3. Start the service using the modified configuration file</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>paddlex<span class="w"> </span>--serve<span class="w"> </span>--pipeline<span class="w"> </span>./OCR.yaml
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="c1"># 4. Call the service</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>wget<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_ocr_002.png<span class="w"> </span>-O<span class="w"> </span>demo.jpg
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>python<span class="w"> </span>fast_test.py
+</span></code></pre></div>
+<p>The General Object Detection pipeline defaults to using the PicoDet-S model. If you want to switch to another model, such as RT-DETR, refer to the <a href="../pipeline_usage/tutorials/cv_pipelines/object_detection.html">General Object Detection Pipeline Tutorial</a>. The specific steps are as follows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># 1. Obtain the object detection pipeline configuration file and save it as ./object_detection.yaml</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>paddlex<span class="w"> </span>--get_pipeline_config<span class="w"> </span>object_detection<span class="w"> </span>--save_path<span class="w"> </span>./object_detection.yaml
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># 2. Modify the ./object_detection.yaml configuration file</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1">#    Change the value of Pipeline.model to the path of the RT-DETR model</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># 3. Start the service using the modified configuration file</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>paddlex<span class="w"> </span>--serve<span class="w"> </span>--pipeline<span class="w"> </span>./object_detection.yaml
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c1"># 4. Call the service | fast_test.py needs to be replaced with the Python calling example from the General Object Detection Pipeline Tutorial</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>wget<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_ocr_002.png<span class="w"> </span>-O<span class="w"> </span>demo.jpg
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>python<span class="w"> </span>fast_test.py
+</span></code></pre></div>
+<p>The operations for other pipelines are similar to the above two. For more details, refer to the pipeline usage tutorials.</p>
+<h2 id="3-edge-deployment-example">3 Edge Deployment Example<a class="headerlink" href="#3-edge-deployment-example" title="Permanent link">&para;</a></h2>
+<h3 id="31-environment-preparation">3.1 Environment Preparation<a class="headerlink" href="#31-environment-preparation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Install the CMake compilation tool locally and download the required version of the NDK software package from the <a href="https://developer.android.google.cn/ndk/downloads">Android NDK official website</a>. For example, if developing on a Mac, download the NDK software package for the Mac platform from the Android NDK website.</p>
+<p><strong>Environment Requirements</strong>
+- <code>CMake &gt;= 3.10</code> (the minimum version is not verified, but 3.20 and above are recommended)
+- <code>Android NDK &gt;= r17c</code> (the minimum version is not verified, but r20b and above are recommended)</p>
+<p><strong>Testing Environment Used in This Guide</strong>:
+- <code>cmake == 3.20.0</code>
+- <code>android-ndk == r20b</code></p>
+</li>
+<li>
+<p>Prepare an Android phone and enable USB debugging mode. Enable method: <code>Phone Settings -&gt; Find Developer Options -&gt; Turn on Developer Options and USB Debugging Mode</code>.</p>
+</li>
+<li>
+<p>Install the ADB tool on your computer for debugging. The ADB installation methods are as follows:</p>
+<p>3.1. Install ADB on Mac</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="w"> </span>brew<span class="w"> </span>cask<span class="w"> </span>install<span class="w"> </span>android-platform-tools
+</span></code></pre></div>
+<p>3.2. Install ADB on Linux</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="w"> </span><span class="c1"># Installation method for Debian-based Linux distributions</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wget<span class="w"> </span>adb
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w"> </span><span class="c1"># Installation method for Red Hat-based Linux distributions</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w"> </span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>adb
+</span></code></pre></div>
+<p>3.3. Install ADB on Windows</p>
+<p>To install on Windows, go to Google's Android platform to download the ADB software package for installation: <a href="https://developer.android.com/studio">Link</a></p>
+<p>Open the terminal, connect the phone to the computer, and enter in the terminal</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="w"> </span>adb<span class="w"> </span>devices
+</span></code></pre></div>
+<p>If there is a device output, it indicates successful installation.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="w"> </span>List<span class="w"> </span>of<span class="w"> </span>devices<span class="w"> </span>attached
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w"> </span>744be294<span class="w">    </span>device
+</span></code></pre></div>
+</li>
+</ol>
+<h3 id="32-material-preparation">3.2 Material Preparation<a class="headerlink" href="#32-material-preparation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Clone the <code>feature/paddle-x</code> branch of the <code>Paddle-Lite-Demo</code> repository into the <code>PaddleX-Lite-Deploy</code> directory.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>feature/paddle-x<span class="w"> </span>https://github.com/PaddlePaddle/Paddle-Lite-Demo.git<span class="w"> </span>PaddleX-Lite-Deploy
+</span></code></pre></div>
+</li>
+<li>
+<p>Fill out the <a href="https://paddle.wjx.cn/vm/eaaBo0H.aspx#">survey</a> to download the compressed package, place the compressed package in the specified extraction directory, switch to the specified extraction directory, and execute the extraction command.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># 1. Switch to the specified extraction directory</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nb">cd</span><span class="w"> </span>PaddleX-Lite-Deploy/ocr/android/shell/ppocr_demo
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># 2. Execute the extraction command</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>unzip<span class="w"> </span>ocr.zip
+</span></code></pre></div>
+</li>
+</ol>
+<h3 id="33-deployment-steps">3.3 Deployment Steps<a class="headerlink" href="#33-deployment-steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Switch the working directory to <code>PaddleX-Lite-Deploy/libs</code>, run the <code>download.sh</code> script to download the required Paddle Lite prediction library. This step only needs to be executed once to support each demo.</p>
+</li>
+<li>
+<p>Switch the working directory to <code>PaddleX-Lite-Deploy/ocr/assets</code>, run the <code>download.sh</code> script to download the model files optimized by the <a href="https://www.paddlepaddle.org.cn/lite/v2.10/user_guides/model_optimize_tool.html">paddle_lite_opt tool</a>.</p>
+</li>
+<li>
+<p>Switch the working directory to <code>PaddleX-Lite-Deploy/ocr/android/shell/cxx/ppocr_demo</code>, run the <code>build.sh</code> script to complete the compilation of the executable file.</p>
+</li>
+<li>
+<p>Switch the working directory to <code>PaddleX-Lite-Deploy/ocr/android/shell/cxx/ppocr_demo</code>, run the <code>run.sh</code> script to complete the inference on the edge side.</p>
+</li>
+</ol>
+<p><strong>Notes</strong>:
+  - Before running the <code>build.sh</code> script, you need to change the path specified by <code>NDK_ROOT</code> to the actual installed NDK path.
+  - You can execute the deployment steps using Git Bash on a Windows system.
+  - If compiling on a Windows system, set <code>CMAKE_SYSTEM_NAME</code> in <code>CMakeLists.txt</code> to <code>windows</code>.
+  - If compiling on a Mac system, set <code>CMAKE_SYSTEM_NAME</code> in <code>CMakeLists.txt</code> to <code>darwin</code>.
+  - Maintain an ADB connection when running the <code>run.sh</code> script.
+  - The <code>download.sh</code> and <code>run.sh</code> scripts support passing parameters to specify models. If not specified, the <code>PP-OCRv4_mobile</code> model is used by default. Currently, two models are supported:
+    - <code>PP-OCRv3_mobile</code>
+    - <code>PP-OCRv4_mobile</code></p>
+<p>Here are examples of actual operations:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># 1. Download the required Paddle Lite prediction library</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nb">cd</span><span class="w"> </span>PaddleX-Lite-Deploy/libs
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>sh<span class="w"> </span>download.sh
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># 2. Download the model files optimized by the paddle_lite_opt tool</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="nb">cd</span><span class="w"> </span>../ocr/assets
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>sh<span class="w"> </span>download.sh<span class="w"> </span>PP-OCRv4_mobile
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="c1"># 3. Complete the compilation of the executable file</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="nb">cd</span><span class="w"> </span>../android/shell/ppocr_demo
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>sh<span class="w"> </span>build.sh
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="c1"># 4. Inference</span>
+</span><span id="__span-21-14"><a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>sh<span class="w"> </span>run.sh<span class="w"> </span>PP-OCRv4_mobile
+</span></code></pre></div>
+<p>Detection Results:</p>
+<p><img src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/practical_tutorials/deployment/05.png"  width="500" /></p>
+<p>Recognition Results:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>The detection visualized image saved in ./test_img_result.jpg
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>0       Pure Nutrition Hair Conditioner  0.993706
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>1       Product Information/Parameters   0.991224
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>2       (45 yuan/kg, minimum order 100 kg)    0.938893
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>3       Each bottle 22 yuan, minimum order 1000 bottles)  0.988353
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>4       [Brand]: OEM/ODM Manufacturing   0.97557
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>5       [Product Name]: Pure Nutrition Hair Conditioner  0.986914
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>6       OEM/ODM  0.929891
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>7       [Product Number]: YM-X-3011 0.964156
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>8       [Net Content]: 220ml      0.976404
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>9       [Suitable for]: All skin types  0.987942
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>10      [Main Ingredients]: Cetyl Stearyl Alcohol, Oat β-Glucan,  0.968315
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>11      Cocoamide Propyl Betaine, Panthenol    0.941537
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>12      (Finished Product Packaging)    0.974796
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>13      [Main Function]: Can tighten the hair鳞片, achieving  0.988799
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>14      immediate and lasting improvement in hair gloss, providing sufficient nourishment to dry hair  0.989547
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>15      [Main Function Continued]: Nourishment    0.998413
+</span></code></pre></div>
 
 
 
@@ -4218,7 +4782,7 @@ You're not viewing the latest version.
     </span>
     <nav>
       
-        <a href="mailto:94225063+zhangyubo0722@users.noreply.github.com">zhangyubo0722</a>
+        <a href="mailto:69562787+zhang-prog@users.noreply.github.com">zhang-prog</a>
     </nav>
   </span>
 
@@ -4231,6 +4795,60 @@ You're not viewing the latest version.
 
 
 
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+        data-repo="PaddlePaddle/PaddleX"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNDY1MDkwNzM="
+        data-category="General"
+        data-category-id="DIC_kwDODrFuEc4ChKVF"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
 
                 
               </article>
