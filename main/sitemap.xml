@@ -190,6 +190,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/mainen/module_usage/tutorials/cv_modules/image_feature.html"/>
     </url>
     <url>
+        <loc>https://paddlepaddle.github.io/PaddleX/main/module_usage/tutorials/cv_modules/image_multilabel_classification.html</loc>
+        <lastmod>2024-11-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/main/module_usage/tutorials/cv_modules/image_multilabel_classification.html"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/mainen/module_usage/tutorials/cv_modules/image_multilabel_classification.html"/>
+    </url>
+    <url>
         <loc>https://paddlepaddle.github.io/PaddleX/main/module_usage/tutorials/cv_modules/instance_segmentation.html</loc>
         <lastmod>2024-11-08</lastmod>
         <changefreq>daily</changefreq>
@@ -202,13 +209,6 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/main/module_usage/tutorials/cv_modules/mainbody_detection.html"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/mainen/module_usage/tutorials/cv_modules/mainbody_detection.html"/>
-    </url>
-    <url>
-        <loc>https://paddlepaddle.github.io/PaddleX/main/module_usage/tutorials/cv_modules/ml_classification.html</loc>
-        <lastmod>2024-11-08</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/main/module_usage/tutorials/cv_modules/ml_classification.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/mainen/module_usage/tutorials/cv_modules/ml_classification.html"/>
     </url>
     <url>
         <loc>https://paddlepaddle.github.io/PaddleX/main/module_usage/tutorials/cv_modules/object_detection.html</loc>
@@ -911,6 +911,13 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/mainmodule_usage/tutorials/cv_modules/image_feature.html"/>
     </url>
     <url>
+        <loc>https://paddlepaddle.github.io/PaddleX/main/en/module_usage/tutorials/cv_modules/image_multilabel_classification.html</loc>
+        <lastmod>2024-11-08</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/main/en/module_usage/tutorials/cv_modules/image_multilabel_classification.html"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/mainmodule_usage/tutorials/cv_modules/image_multilabel_classification.html"/>
+    </url>
+    <url>
         <loc>https://paddlepaddle.github.io/PaddleX/main/en/module_usage/tutorials/cv_modules/instance_segmentation.html</loc>
         <lastmod>2024-11-08</lastmod>
         <changefreq>daily</changefreq>
@@ -923,13 +930,6 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/main/en/module_usage/tutorials/cv_modules/mainbody_detection.html"/>
         <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/mainmodule_usage/tutorials/cv_modules/mainbody_detection.html"/>
-    </url>
-    <url>
-        <loc>https://paddlepaddle.github.io/PaddleX/main/en/module_usage/tutorials/cv_modules/ml_classification.html</loc>
-        <lastmod>2024-11-08</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/main/en/module_usage/tutorials/cv_modules/ml_classification.html"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/mainmodule_usage/tutorials/cv_modules/ml_classification.html"/>
     </url>
     <url>
         <loc>https://paddlepaddle.github.io/PaddleX/main/en/module_usage/tutorials/cv_modules/object_detection.html</loc>
