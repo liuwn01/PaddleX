@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://paddlepaddle.github.io/PaddleX/main/pipeline_deploy/edge_deploy.html">
+        <link rel="canonical" href="https://paddlepaddle.github.io/PaddleX/main/practical_tutorials/anomaly_detection_tutorial.html">
       
       
-        <link rel="prev" href="service_deploy.html">
-      
-      
-        <link rel="next" href="../other_devices_support/multi_devices_use_guide.html">
       
       
       <link rel="icon" href="../assets/favicon.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>端侧部署 - PaddleX 文档</title>
+        <title>Anomaly detection tutorial - PaddleX 文档</title>
       
     
     
@@ -88,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#paddlex-demo" class="md-skip">
+        <a href="#paddlex-30" class="md-skip">
           跳转至
         </a>
       
@@ -145,7 +141,7 @@ You're not viewing the latest version.
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              端侧部署
+              Anomaly detection tutorial
             
           </span>
         </div>
@@ -192,13 +188,13 @@ You're not viewing the latest version.
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="edge_deploy.html" hreflang="zh" class="md-select__link">
+            <a href="anomaly_detection_tutorial.html" hreflang="zh" class="md-select__link">
               简体中文
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="../en/pipeline_deploy/edge_deploy.html" hreflang="en" class="md-select__link">
+            <a href="../en/practical_tutorials/anomaly_detection_tutorial.html" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -380,13 +376,11 @@ You're not viewing the latest version.
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="high_performance_inference.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../pipeline_deploy/high_performance_inference.html" class="md-tabs__link">
           
   
     
@@ -495,7 +489,7 @@ You're not viewing the latest version.
     
     
       <li class="md-tabs__item">
-        <a href="../practical_tutorials/document_scene_information_extraction%28layout_detection%29_tutorial.html" class="md-tabs__link">
+        <a href="document_scene_information_extraction%28layout_detection%29_tutorial.html" class="md-tabs__link">
           
   
     
@@ -2668,10 +2662,8 @@ You're not viewing the latest version.
       
   
   
-    
   
   
-  
     
     
       
@@ -2684,22 +2676,21 @@ You're not viewing the latest version.
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2710,7 +2701,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             模型产线部署
@@ -2724,7 +2715,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="high_performance_inference.html" class="md-nav__link">
+      <a href="../pipeline_deploy/high_performance_inference.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2745,7 +2736,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="service_deploy.html" class="md-nav__link">
+      <a href="../pipeline_deploy/service_deploy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2763,30 +2754,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    端侧部署
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="edge_deploy.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../pipeline_deploy/edge_deploy.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2795,86 +2766,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      安装流程与使用方式
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="安装流程与使用方式">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      环境准备
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      物料准备
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      部署步骤
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      参考资料
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      反馈专区
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3978,7 +3869,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/document_scene_information_extraction%28layout_detection%29_tutorial.html" class="md-nav__link">
+      <a href="document_scene_information_extraction%28layout_detection%29_tutorial.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3999,7 +3890,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/image_classification_garbage_tutorial.html" class="md-nav__link">
+      <a href="image_classification_garbage_tutorial.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4020,7 +3911,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/instance_segmentation_remote_sensing_tutorial.html" class="md-nav__link">
+      <a href="instance_segmentation_remote_sensing_tutorial.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4041,7 +3932,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/object_detection_fall_tutorial.html" class="md-nav__link">
+      <a href="object_detection_fall_tutorial.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4062,7 +3953,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/object_detection_fashion_pedia_tutorial.html" class="md-nav__link">
+      <a href="object_detection_fashion_pedia_tutorial.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4083,7 +3974,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/ocr_det_license_tutorial.html" class="md-nav__link">
+      <a href="ocr_det_license_tutorial.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4104,7 +3995,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/ocr_rec_chinese_tutorial.html" class="md-nav__link">
+      <a href="ocr_rec_chinese_tutorial.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4125,7 +4016,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/semantic_segmentation_road_tutorial.html" class="md-nav__link">
+      <a href="semantic_segmentation_road_tutorial.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4146,7 +4037,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/ts_anomaly_detection.html" class="md-nav__link">
+      <a href="ts_anomaly_detection.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4167,7 +4058,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/ts_classification.html" class="md-nav__link">
+      <a href="ts_classification.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4188,7 +4079,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../practical_tutorials/ts_forecast.html" class="md-nav__link">
+      <a href="ts_forecast.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4256,37 +4147,64 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      安装流程与使用方式
+      1. 选择产线
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="安装流程与使用方式">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 快速体验
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 选择模型
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 数据准备和校验
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 数据准备和校验">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#41" class="md-nav__link">
     <span class="md-ellipsis">
-      环境准备
+      4.1 数据准备
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#42" class="md-nav__link">
     <span class="md-ellipsis">
-      物料准备
+      4.2 数据集校验
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#43" class="md-nav__link">
     <span class="md-ellipsis">
-      部署步骤
+      4.3 数据集格式转换/数据集划分（非必选）
     </span>
   </a>
   
@@ -4298,18 +4216,60 @@ You're not viewing the latest version.
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
-      参考资料
+      5. 模型训练和评估
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 模型训练和评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 模型训练
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 模型评估
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 模型调优
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 产线测试
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
-      反馈专区
+      7. 开发集成/部署
     </span>
   </a>
   
@@ -4330,7 +4290,7 @@ You're not viewing the latest version.
                   
 
   
-    <a href="https://github.com/PaddlePaddle/PaddleX/edit/develop/docs/pipeline_deploy/edge_deploy.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/PaddlePaddle/PaddleX/edit/develop/docs/practical_tutorials/anomaly_detection_tutorial.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -4339,311 +4299,312 @@ You're not viewing the latest version.
     
       
     
-    <a href="https://github.com/PaddlePaddle/PaddleX/raw/develop/docs/pipeline_deploy/edge_deploy.md" title="查看本页的源代码" class="md-content__button md-icon">
+    <a href="https://github.com/PaddlePaddle/PaddleX/raw/develop/docs/practical_tutorials/anomaly_detection_tutorial.md" title="查看本页的源代码" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="paddlex-demo">PaddleX 端侧部署 demo 使用指南<a class="headerlink" href="#paddlex-demo" title="Permanent link">&para;</a></h1>
+<p>简体中文 | <a href="anomaly_detection_tutorial_en.html">English</a></p>
+<h1 id="paddlex-30">PaddleX 3.0 图像异常检测产线———食品外观质检教程<a class="headerlink" href="#paddlex-30" title="Permanent link">&para;</a></h1>
+<p>PaddleX 提供了丰富的模型产线，模型产线由一个或多个模型组合实现，每个模型产线都能够解决特定的场景任务问题。PaddleX 所提供的模型产线均支持快速体验，如果效果不及预期，也同样支持使用私有数据微调模型，并且 PaddleX 提供了 Python API，方便将产线集成到个人项目中。在使用之前，您首先需要安装 PaddleX， 安装方式请参考<a href="../installation/installation.html"> PaddleX 安装</a>。此处以一个食品外观质检的任务为例子，介绍模型产线工具的使用流程。</p>
+<h2 id="1">1. 选择产线<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>首先，需要根据您的任务场景，选择对应的 PaddleX 产线，此处为食品外观质检，需要了解到这个任务属于异常检测任务，对应 PaddleX 的通用异常检测产线。如果无法确定任务和产线的对应关系，您可以在 PaddleX 支持的<a href="../support_list/pipelines_list.html">模型产线列表</a>中了解相关产线的能力介绍。</p>
+<h2 id="2">2. 快速体验<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>PaddleX 提供了以下快速体验的方式，可以直接通过 PaddleX wheel 包在本地体验。</p>
 <ul>
-<li><a href="#paddlex-端侧部署-demo-使用指南">PaddleX 端侧部署 demo 使用指南</a></li>
-<li><a href="#安装流程与使用方式">安装流程与使用方式</a><ul>
-<li><a href="#环境准备">环境准备</a></li>
-<li><a href="#物料准备">物料准备</a></li>
-<li><a href="#部署步骤">部署步骤</a></li>
+<li>本地体验方式：
+    <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>paddlex<span class="w"> </span>--pipeline<span class="w"> </span>anomaly_detection<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span>--input<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/uad_hazelnut.png<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span>--save_path<span class="w"> </span>output
+</span></code></pre></div></li>
 </ul>
-</li>
-<li><a href="#参考资料">参考资料</a></li>
-<li><a href="#反馈专区">反馈专区</a></li>
-</ul>
-<p>本指南主要介绍 PaddleX 端侧部署 demo 在 Android shell 上的运行方法。
-本指南适用于下列 6 种模块的 8 个模型：</p>
+<p>快速体验产出推理结果示例：
+  <center></p>
+<p><img src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/practical_tutorials/image_anomaly_detection/01.png" width=600></p>
+<p></center></p>
+<p>当体验完该产线之后，需要确定产线是否符合预期（包含精度、速度等），产线包含的模型是否需要继续微调，如果模型的速度或者精度不符合预期，则需要根据模型选择选择可替换的模型继续测试，确定效果是否满意。如果最终效果均不满意，则需要微调模型。本教程希望产出检测出食品榛子外观异常的模型，显然默认的权重（铁丝网 数据集训练产出的权重）无法满足要求，需要采集和标注数据，然后进行训练微调。</p>
+<h2 id="3">3. 选择模型<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>PaddleX 提供了 1 个端到端的高精度异常检测模型，具体可参考 <a href="../support_list/models_list.html">模型列表</a>，其中部分模型的benchmark如下：</p>
 <table>
-  <tr>
-    <th>模块</th>
-    <th>具体模型</th>
-    <th>CPU</th>
-    <th>GPU</th>
-  </tr>
-  <tr>
-    <td rowspan="2">目标检测</td>
-    <td>PicoDet-S</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>PicoDet-L</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>版面区域检测</td>
-    <td>PicoDet_layout_1x</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>语义分割</td>
-    <td>PP-LiteSeg-T</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td rowspan="2">图像分类</td>
-    <td>PP-LCNet_x1_0</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>MobileNetV3_small_x1_0</td>
-    <td>✅</td>
-    <td>✅</td>
-  </tr>
-  <tr>
-    <td>文本检测</td>
-    <td>PP-OCRv4_mobile_det</td>
-    <td>✅</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>文本识别</td>
-    <td>PP-OCRv4_mobile_rec</td>
-    <td>✅</td>
-    <td></td>
-  </tr>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>Avg（%）</th>
+<th>GPU推理耗时（ms）</th>
+<th>CPU推理耗时（ms）</th>
+<th>模型存储大小</th>
+<th>yaml 文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STFPM</td>
+<td>96.2</td>
+<td>-</td>
+<td>-</td>
+<td>21.5 M</td>
+<td><a href="../../paddlex/configs/anomaly_detection/STFPM.yaml">STFPM.yaml</a></td>
+</tr>
+</tbody>
 </table>
-
-<p><b>备注</b>
-- <code>GPU</code> 指的是 <a href="https://www.paddlepaddle.org.cn/lite/develop/demo_guides/opencl.html">使用 OpenCL 将计算映射到 GPU 上执行</a> ，以充分利用 GPU 硬件算力，提高推理性能。</p>
-<h2 id="_1">安装流程与使用方式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2">环境准备<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>在本地环境安装好 CMake 编译工具，并在 <a href="https://developer.android.google.cn/ndk/downloads">Android NDK 官网</a>下载当前系统符合要求的版本的 NDK 软件包。例如，在 Mac 上开发，需要在 Android NDK 官网下载 Mac 平台的 NDK 软件包。</p>
-<p><b>环境要求</b>
--  <code>CMake &gt;= 3.10</code>（最低版本未经验证，推荐 3.20 及以上）
--  <code>Android NDK &gt;= r17c</code>（最低版本未经验证，推荐 r20b 及以上）</p>
-<p><b>本指南所使用的测试环境：</b>
--  <code>cmake == 3.20.0</code>
--  <code>android-ndk == r20b</code></p>
-</li>
-<li>
-<p>准备一部 Android 手机，并开启 USB 调试模式。开启方法: <code>手机设置 -&gt; 查找开发者选项 -&gt; 打开开发者选项和 USB 调试模式</code>。</p>
-</li>
-<li>
-<p>电脑上安装 ADB 工具，用于调试。ADB 安装方式如下：</p>
-<p>3.1. Mac 电脑安装 ADB</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w"> </span>brew<span class="w"> </span>cask<span class="w"> </span>install<span class="w"> </span>android-platform-tools
+<p><strong>注：以上精度指标为 **<a href="https://www.mvtec.com/company/research/datasets/mvtec-ad">MVTec AD</a></strong> 验证集 平均异常分数。**</p>
+<h2 id="4">4. 数据准备和校验<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 数据准备<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>本教程采用 <code>食品外观质检数据集</code> 作为示例数据集，可通过以下命令获取示例数据集。如果您使用自备的已标注数据集，需要按照 PaddleX 的格式要求对自备数据集进行调整，以满足 PaddleX 的数据格式要求。关于数据格式介绍，您可以参考 <a href="../data_annotations/cv_modules/semantic_segmentation.html">PaddleX 分割任务模块数据标注教程</a>。</p>
+<p>数据集获取命令：
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>/path/to/paddlex
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>wget<span class="w"> </span>https://paddle-model-ecology.bj.bcebos.com/paddlex/data/anomaly_detection_hazelnut.tar<span class="w"> </span>-P<span class="w"> </span>./dataset
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>tar<span class="w"> </span>-xf<span class="w"> </span>./dataset/anomaly_detection_hazelnut.tar<span class="w"> </span>-C<span class="w"> </span>./dataset/
+</span></code></pre></div></p>
+<h3 id="42">4.2 数据集校验<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>在对数据集校验时，只需一行命令：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/anomaly_detection/STFPM.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>check_dataset<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/anomaly_detection_hazelnut
 </span></code></pre></div>
-<p>3.2. Linux 安装 ADB</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w"> </span><span class="c1"># debian系linux发行版的安装方式</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>wget<span class="w"> </span>adb
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w"> </span><span class="c1"># redhat系linux发行版的安装方式</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w"> </span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>adb
+<p>执行上述命令后，PaddleX 会对数据集进行校验，并统计数据集的基本信息。命令运行成功后会在 log 中打印出 <code>Check dataset passed !</code> 信息，同时相关产出会保存在当前目录的 <code>./output/check_dataset</code> 目录下，产出目录中包括可视化的示例样本图片和样本分布直方图。校验结果文件保存在 <code>./output/check_dataset_result.json</code>，校验结果文件具体内容为
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>{
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  &quot;done_flag&quot;: true,
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  &quot;check_pass&quot;: true,
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  &quot;attributes&quot;: {
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    &quot;train_sample_paths&quot;: [
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>      &quot;check_dataset\/demo_img\/294.png&quot;,
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>      &quot;check_dataset\/demo_img\/260.png&quot;,
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>      &quot;check_dataset\/demo_img\/297.png&quot;,
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>      &quot;check_dataset\/demo_img\/170.png&quot;,
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>      &quot;check_dataset\/demo_img\/068.png&quot;,
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>      &quot;check_dataset\/demo_img\/212.png&quot;,
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>      &quot;check_dataset\/demo_img\/204.png&quot;,
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>      &quot;check_dataset\/demo_img\/233.png&quot;,
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>      &quot;check_dataset\/demo_img\/367.png&quot;,
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>      &quot;check_dataset\/demo_img\/383.png&quot;
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    ],
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    &quot;train_samples&quot;: 391,
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    &quot;val_sample_paths&quot;: [
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>      &quot;check_dataset\/demo_img\/012.png&quot;,
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>      &quot;check_dataset\/demo_img\/017.png&quot;,
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>      &quot;check_dataset\/demo_img\/006.png&quot;,
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>      &quot;check_dataset\/demo_img\/013.png&quot;,
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>      &quot;check_dataset\/demo_img\/014.png&quot;,
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>      &quot;check_dataset\/demo_img\/010.png&quot;,
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>      &quot;check_dataset\/demo_img\/007.png&quot;,
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>      &quot;check_dataset\/demo_img\/001.png&quot;,
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>      &quot;check_dataset\/demo_img\/002.png&quot;,
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>      &quot;check_dataset\/demo_img\/009.png&quot;
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>    ],
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>    &quot;val_samples&quot;: 70,
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>    &quot;num_classes&quot;: 1
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>  },
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>  &quot;analysis&quot;: {
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>    &quot;histogram&quot;: &quot;check_dataset\/histogram.png&quot;
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>  },
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>  &quot;dataset_path&quot;: &quot;.\/dataset\/hazelnut&quot;,
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>  &quot;show_type&quot;: &quot;image&quot;,
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>  &quot;dataset_type&quot;: &quot;SegDataset&quot;
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>}
 </span></code></pre></div>
-<p>3.3. Windows 安装 ADB</p>
-<p>win 上安装需要去谷歌的安卓平台下载 ADB 软件包进行安装：<a href="https://developer.android.com/studio">链接</a></p>
-<p>打开终端，手机连接电脑，在终端中输入</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w"> </span>adb<span class="w"> </span>devices
-</span></code></pre></div>
-<p>如果有 device 输出，则表示安装成功。</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w"> </span>List<span class="w"> </span>of<span class="w"> </span>devices<span class="w"> </span>attached
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w"> </span>744be294<span class="w">    </span>device
-</span></code></pre></div>
-</li>
-</ol>
-<h3 id="_3">物料准备<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p>克隆 <code>Paddle-Lite-Demo</code> 仓库的 <code>feature/paddle-x</code> 分支到 <code>PaddleX-Lite-Deploy</code> 目录。</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>feature/paddle-x<span class="w"> </span>https://github.com/PaddlePaddle/Paddle-Lite-Demo.git<span class="w"> </span>PaddleX-Lite-Deploy
-</span></code></pre></div>
-</li>
-<li>
-<p>填写 <b>问卷</b> 下载压缩包，将压缩包放到指定解压目录，切换到指定解压目录后执行解压命令。</p>
+上述校验结果中，check_pass 为 True 表示数据集格式符合要求，其他部分指标的说明如下：</p>
 <ul>
-<li><a href="https://paddle.wjx.cn/vm/OjV8gAb.aspx#">object_detection（目标检测）问卷</a></li>
-<li><a href="https://paddle.wjx.cn/vm/Q2F1L37.aspx#">semantic_segmentation（语义分割）问卷</a></li>
-<li><a href="https://paddle.wjx.cn/vm/rWPncBm.aspx#">image_classification（图像分类）问卷</a></li>
-<li><a href="https://paddle.wjx.cn/vm/eaaBo0H.aspx#">ocr（文字识别）问卷</a></li>
+<li>attributes.num_classes：该数据集类别数为 1，此处类别数量为后续训练需要传入的类别数量；</li>
+<li>attributes.train_samples：该数据集训练集样本数量为 391；</li>
+<li>attributes.val_samples：该数据集验证集样本数量为 70；</li>
+<li>attributes.train_sample_paths：该数据集训练集样本可视化图片相对路径列表；</li>
+<li>attributes.val_sample_paths：该数据集验证集样本可视化图片相对路径列表；</li>
 </ul>
-<p>下面是 object_detection 解压操作示例，其他任务可参考后面的表格。</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. 切换到指定解压目录</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>PaddleX-Lite-Deploy/object_detection/android/shell/cxx/picodet_detection
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. 执行解压命令</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>unzip<span class="w"> </span>object_detection.zip
-</span></code></pre></div>
-<p><table>
-    <tr>
-      <th>任务名</th>
-      <th>解压目录</th>
-      <th>解压命令</th>
-    </tr>
-    <tr>
-      <td>object_detection</td>
-      <td>PaddleX-Lite-Deploy/object_detection/android/shell/cxx/picodet_detection</td>
-      <td>unzip object_detection.zip</td>
-    </tr>
-    <tr>
-      <td>semantic_segmentation</td>
-      <td>PaddleX-Lite-Deploy/semantic_segmentation/android/shell/cxx/semantic_segmentation</td>
-      <td>unzip semantic_segmentation.zip</td>
-    </tr>
-    <tr>
-      <td>image_classification</td>
-      <td>PaddleX-Lite-Deploy/image_classification/android/shell/cxx/image_classification</td>
-      <td>unzip image_classification.zip</td>
-    </tr>
-    <tr>
-      <td>ocr</td>
-      <td>PaddleX-Lite-Deploy/ocr/android/shell/ppocr_demo</td>
-      <td>unzip ocr.zip</td>
-    </tr>
-  </table></p>
+<p>另外，数据集校验还对数据集中所有类别的样本数量分布情况进行了分析，并绘制了分布直方图（histogram.png）：
+<center></p>
+<p><img src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/practical_tutorials/anomaly_detection/02.png" width=600></p>
+<p></center></p>
+<p><strong>注</strong>：只有通过数据校验的数据才可以训练和评估。</p>
+<h3 id="43">4.3 数据集格式转换/数据集划分（非必选）<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<p>如需对数据集格式进行转换或是重新划分数据集，可通过修改配置文件或是追加超参数的方式进行设置。</p>
+<p>数据集校验相关的参数可以通过修改配置文件中 <code>CheckDataset</code> 下的字段进行设置，配置文件中部分参数的示例说明如下：</p>
+<ul>
+<li><code>CheckDataset</code>:<ul>
+<li><code>convert</code>:<ul>
+<li><code>enable</code>: 是否进行数据集格式转换，为 <code>True</code> 时进行数据集格式转换，默认为 <code>False</code>;</li>
+<li><code>src_dataset_type</code>: 如果进行数据集格式转换，则需设置源数据集格式，数据可选源格式为 <code>LabelMe</code> 和 <code>VOC</code>；</li>
+</ul>
 </li>
-</ol>
-<h3 id="_4">部署步骤<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<li><code>split</code>:<ul>
+<li><code>enable</code>: 是否进行重新划分数据集，为 <code>True</code> 时进行数据集格式转换，默认为 <code>False</code>；</li>
+<li><code>train_percent</code>: 如果重新划分数据集，则需要设置训练集的百分比，类型为 0-100 之间的任意整数，需要保证和 <code>val_percent</code> 值加和为 100；</li>
+<li><code>val_percent</code>: 如果重新划分数据集，则需要设置验证集的百分比，类型为 0-100 之间的任意整数，需要保证和 <code>train_percent</code> 值加和为 100；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>数据转换和数据划分支持同时开启，对于数据划分原有标注文件会被在原路径下重命名为 <code>xxx.bak</code>，以上参数同样支持通过追加命令行参数的方式进行设置，例如重新划分数据集并设置训练集与验证集比例：<code>-o CheckDataset.split.enable=True -o CheckDataset.split.train_percent=80 -o CheckDataset.split.val_percent=20</code>。</p>
+<h2 id="5">5. 模型训练和评估<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51">5.1 模型训练<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<p>在训练之前，请确保您已经对数据集进行了校验。完成 PaddleX 模型的训练，只需如下一条命令：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/anomaly_detection/STFPM.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>train<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/anomaly_detection_hazelnut<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span>-o<span class="w"> </span>Train.epochs_iters<span class="o">=</span><span class="m">4000</span>
+</span></code></pre></div>
+<p>在 PaddleX 中模型训练支持：修改训练超参数、单机单卡/多卡训练等功能，只需修改配置文件或追加命令行参数。</p>
+<p>PaddleX 中每个模型都提供了模型开发的配置文件，用于设置相关参数。模型训练相关的参数可以通过修改配置文件中 <code>Train</code> 下的字段进行设置，配置文件中部分参数的示例说明如下：</p>
+<ul>
+<li><code>Global</code>：<ul>
+<li><code>mode</code>：模式，支持数据校验（<code>check_dataset</code>）、模型训练（<code>train</code>）、模型评估（<code>evaluate</code>）；</li>
+<li><code>device</code>：训练设备，可选<code>cpu</code>、<code>gpu</code>、<code>xpu</code>、<code>npu</code>、<code>mlu</code>，除 cpu 外，多卡训练可指定卡号，如：<code>gpu:0,1,2,3</code>；</li>
+</ul>
+</li>
+<li><code>Train</code>：训练超参数设置；<ul>
+<li><code>epochs_iters</code>：训练迭代次数数设置；</li>
+<li><code>learning_rate</code>：训练学习率设置；</li>
+</ul>
+</li>
+</ul>
+<p>更多超参数介绍，请参考 <a href="../module_usage/instructions/config_parameters_common.html">PaddleX 通用模型配置文件参数说明</a>。</p>
+<p><strong>注：</strong>
+- 以上参数可以通过追加令行参数的形式进行设置，如指定模式为模型训练：<code>-o Global.mode=train</code>；指定前 2 卡 gpu 训练：<code>-o Global.device=gpu:0,1</code>；设置训练迭代次数为 5000：<code>-o Train.epochs_iters=5000</code>。
+- 模型训练过程中，PaddleX 会自动保存模型权重文件，默认为<code>output</code>，如需指定保存路径，可通过配置文件中 <code>-o Global.output</code> 字段
+- PaddleX 对您屏蔽了动态图权重和静态图权重的概念。在模型训练的过程中，会同时产出动态图和静态图的权重，在模型推理时，默认选择静态图权重推理。</p>
+<p><strong>训练产出解释:</strong></p>
+<p>在完成模型训练后，所有产出保存在指定的输出目录（默认为<code>./output/</code>）下，通常有以下产出：</p>
+<ul>
+<li>train_result.json：训练结果记录文件，记录了训练任务是否正常完成，以及产出的权重指标、相关文件路径等；</li>
+<li>train.log：训练日志文件，记录了训练过程中的模型指标变化、loss 变化等；</li>
+<li>config.yaml：训练配置文件，记录了本次训练的超参数的配置；</li>
+<li>.pdparams、.pdema、.pdopt.pdstate、.pdiparams、.pdmodel：模型权重相关文件，包括网络参数、优化器、EMA、静态图网络参数、静态图网络结构等；</li>
+</ul>
+<h3 id="52">5.2 模型评估<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<p>在完成模型训练后，可以对指定的模型权重文件在验证集上进行评估，验证模型精度。使用 PaddleX 进行模型评估，只需一行命令：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/anomaly_detection/STFPM.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>evaluate<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/anomaly_detection_hazelnut
+</span></code></pre></div>
+<p>与模型训练类似，模型评估支持修改配置文件或追加命令行参数的方式设置。</p>
+<p><strong>注：</strong> 在模型评估时，需要指定模型权重文件路径，每个配置文件中都内置了默认的权重保存路径，如需要改变，只需要通过追加命令行参数的形式进行设置即可，如<code>-o Evaluate.weight_path=./output/best_model/model.pdparams</code>。</p>
+<h3 id="53">5.3 模型调优<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<p>在学习了模型训练和评估后，我们可以通过调整超参数来提升模型的精度。通过合理调整训练轮数，您可以控制模型的训练深度，避免过拟合或欠拟合；而学习率的设置则关乎模型收敛的速度和稳定性。因此，在优化模型性能时，务必审慎考虑这两个参数的取值，并根据实际情况进行灵活调整，以获得最佳的训练效果。</p>
+<p>推荐在调试参数时遵循控制变量法：</p>
 <ol>
-<li>
-<p>将工作目录切换到 <code>PaddleX_Lite_Deploy/libs</code>，运行 <code>download.sh</code> 脚本，下载所需要的 Paddle Lite 预测库。此步骤只需执行一次，即可支持每个 demo 使用。</p>
-</li>
-<li>
-<p>将工作目录切换到 <code>PaddleX_Lite_Deploy/{Task_Name}/assets</code>，运行 <code>download.sh</code> 脚本，下载 <a href="https://www.paddlepaddle.org.cn/lite/v2.10/user_guides/model_optimize_tool.html">paddle_lite_opt 工具</a> 优化后的模型、测试图片和标签文件等。</p>
-</li>
-<li>
-<p>将工作目录切换到 <code>PaddleX_Lite_Deploy/{Task_Name}/android/shell/cxx/{Demo_Name}</code>，运行 <code>build.sh</code> 脚本，完成可执行文件的编译和运行。</p>
-</li>
-<li>
-<p>将工作目录切换到 <code>PaddleX-Lite-Deploy/{Task_Name}/android/shell/cxx/{Demo_Name}</code>，运行 <code>run.sh</code> 脚本，完成在端侧的预测。</p>
-<p><b>注意：</b>
-- <code>Pipeline_Name</code> 和 <code>Demo_Name</code> 为占位符，具体值可参考本节最后的表格。
-- <code>download.sh</code> 和 <code>run.sh</code> 支持传入模型名来指定模型，若不指定则使用默认模型。目前适配的模型可参考本节最后表格的 <code>Model_Name</code> 列。
-- 若想使用自己训练的模型，参考 <a href="https://paddlepaddle.github.io/Paddle-Lite/develop/model_optimize_tool/">模型转换方法</a> 得到 <code>.nb</code> 模型，放到<code>PaddleX_Lite_Deploy/{Pipeline_Name}/assets/{Model_Name}</code>目录下，  <code>Model_Name</code>为模型名，例如 <code>PaddleX_Lite_Deploy/object_detection/assets/PicoDet-L</code>。
-- 在运行 <code>build.sh</code> 脚本前，需要更改 <code>NDK_ROOT</code> 指定的路径为实际安装的 NDK 路径。
-- 在运行 <code>build.sh</code> 脚本时需保持 ADB 连接。
-- 在 Windows 系统上可以使用 Git Bash 执行部署步骤。
-- 若在 Windows 系统上编译，需要将 <code>CMakeLists.txt</code> 中的 <code>CMAKE_SYSTEM_NAME</code> 设置为 <code>windows</code>。
-- 若在 Mac 系统上编译，需要将 <code>CMakeLists.txt</code> 中的 <code>CMAKE_SYSTEM_NAME</code> 设置为 <code>darwin</code>。</p>
-</li>
+<li>首先固定训练迭代次数为 4000，批大小为 1。</li>
+<li>基于 STFPM 模型启动三个实验，学习率分别为：0.01，0.1，0.4。</li>
+<li>可以发现实验三精度最高的配置为学习率为 0.4，在该训练超参数基础上，增加训练论次数到5000，可以看到达到更优的精度。</li>
 </ol>
-<p>以下为 object_detection 的示例，其他 demo 需按参考本节最后的表格改变第二步和第三步所切换的目录。</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w"> </span><span class="c1"># 1. 下载需要的 Paddle Lite 预测库</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>PaddleX_Lite_Deploy/libs
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w"> </span>sh<span class="w"> </span>download.sh
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w"> </span><span class="c1"># 2. 下载 paddle_lite_opt 工具优化后的模型、测试图片、标签文件</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>../object_detection/assets
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w"> </span>sh<span class="w"> </span>download.sh
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w"> </span><span class="c1"># 支持传入模型名来指定下载的模型 支持的模型列表可参考本节最后表格的 Model_Name 列</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w"> </span><span class="c1"># sh download.sh PicoDet-L</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
-</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w"> </span><span class="c1"># 3. 完成可执行文件的编译</span>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>../android/app/shell/cxx/picodet_detection
-</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w"> </span>sh<span class="w"> </span>build.sh
-</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w"> </span><span class="c1"># 4. 预测</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w"> </span>sh<span class="w"> </span>run.sh
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w"> </span><span class="c1"># 支持传入模型名来指定预测的模型 支持的模型列表可参考本节最后表格的 Model_Name 列</span>
-</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w"> </span><span class="c1"># sh run.sh PicoDet-L</span>
-</span></code></pre></div>
-<p>运行结果如下所示，并生成一张名叫 <code>dog_picodet_detection_result.jpg</code> 的结果图：</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>======= benchmark summary =======
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>input_shape(s) (NCHW): {1, 3, 320, 320}
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>model_dir:./models/PicoDet-S/model.nb
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>warmup:1
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>repeats:10
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>power_mode:1
-</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>thread_num:0
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>&lt;b&gt;* time info(ms) &lt;/b&gt;*
-</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>1st_duration:320.086
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>max_duration:277.331
-</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>min_duration:272.67
-</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>avg_duration:274.91
-</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
-</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>====== output summary ======
-</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>detection, image size: 768, 576, detect object: bicycle, score: 0.905929, location: x=125, y=120, width=441, height=304
-</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>detection, image size: 768, 576, detect object: truck, score: 0.653789, location: x=465, y=72, width=230, height=98
-</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>detection, image size: 768, 576, detect object: dog, score: 0.731584, location: x=128, y=222, width=182, height=319
-</span></code></pre></div>
-<p><img src="https://github.com/PaddlePaddle/Paddle-Lite-Demo/blob/feature/paddle-x/docs_img/object_detection/PicoDet-S.jpg?raw=true"></p>
-<p>本节描述的部署步骤适用于下表中列举的 demo：</p>
+<p>学习率探寻实验结果：
+<center></p>
 <table>
-  <tr>
-    <th>模型产线</th>
-    <th>Pipeline_Name</th>
-    <th>模块</th>
-    <th>Demo_Name</th>
-    <th>具体模型</th>
-    <th>Model_Name</th>
-  </tr>
-  <tr>
-    <td rowspan="3">通用目标检测</td>
-    <td rowspan="3">object_detection</td>
-    <td rowspan="3">目标检测</td>
-    <td rowspan="3">picodet_detection</td>
-    <td>PicoDet-S</td>
-    <td>PicoDet-S（default）</br>PicoDet-S_gpu</td>
-  </tr>
-  <tr>
-    <td>PicoDet-L</td>
-    <td>PicoDet-L</br>PicoDet-L_gpu</td>
-  </tr>
-  <tr>
-    <td>PicoDet_layout_1x</td>
-    <td>PicoDet_layout_1x</br>PicoDet_layout_1x_gpu</td>
-  </tr>
-  <tr>
-    <td>通用语义分割</td>
-    <td>semantic_segmentation</td>
-    <td>语义分割</td>
-    <td>semantic_segmentation</td>
-    <td>PP-LiteSeg-T</td>
-    <td>PP-LiteSeg-T（default）</br>PP-LiteSeg-T_gpu</td>
-  </tr>
-  <tr>
-    <td rowspan="2">通用图像分类</td>
-    <td rowspan="2">image_classification</td>
-    <td rowspan="2">图像分类</td>
-    <td rowspan="2">image_classification</td>
-    <td>PP-LCNet_x1_0</td>
-    <td>PP-LCNet_x1_0（default）</br>PP-LCNet_x1_0_gpu</td>
-  </tr>
-  <tr>
-    <td>MobileNetV3_small_x1_0</td>
-    <td>MobileNetV3_small_x1_0</br>MobileNetV3_small_x1_0_gpu</td>
-  </tr>
-  <tr>
-    <td rowspan="2">通用OCR</td>
-    <td rowspan="2">ocr</td>
-    <td>文本检测</td>
-    <td rowspan="2">ppocr_demo</td>
-    <td>PP-OCRv4_mobile_det</td>
-    <td>PP-OCRv4_mobile_det</td>
-  </tr>
-  <tr>
-    <td>文本识别</td>
-    <td>PP-OCRv4_mobile_rec</td>
-    <td>PP-OCRv4_mobile_rec</td>
-  </tr>
+<thead>
+<tr>
+<th>实验</th>
+<th>迭代次数</th>
+<th>学习率</th>
+<th>batch_size</th>
+<th>训练环境</th>
+<th>mIoU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实验一</td>
+<td>4000</td>
+<td>0.01</td>
+<td>1</td>
+<td>4卡</td>
+<td>0.9646</td>
+</tr>
+<tr>
+<td>实验二</td>
+<td>4000</td>
+<td>0.1</td>
+<td>1</td>
+<td>4卡</td>
+<td>0.9707</td>
+</tr>
+<tr>
+<td>实验三</td>
+<td>4000</td>
+<td>0.4</td>
+<td>1</td>
+<td>4卡</td>
+<td><strong>0.9797</strong></td>
+</tr>
+</tbody>
 </table>
-
-<p><b>备注</b>
-- 目前没有版面区域检测模块的端侧部署 demo，因此复用 <code>picodet_detection</code>demo 来部署<code>PicoDet_layout_1x</code>模型。</p>
-<h2 id="_5">参考资料<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>本指南仅介绍端侧部署 demo 的基本安装、使用流程，若想要了解更细致的信息，如代码介绍、代码讲解、更新模型、更新输入和输出预处理、更新预测库等，可参考下列文档：</p>
-<ul>
-<li><a href="https://github.com/PaddlePaddle/Paddle-Lite-Demo/tree/feature/paddle-x/object_detection/android/shell/cxx/picodet_detection">object_detection（目标检测）</a></li>
-<li><a href="https://github.com/PaddlePaddle/Paddle-Lite-Demo/blob/feature/paddle-x/semantic_segmentation/android/shell/cxx/semantic_segmentation/README.md">semantic_segmentation（语义分割）</a></li>
-<li><a href="https://github.com/PaddlePaddle/Paddle-Lite-Demo/blob/feature/paddle-x/image_classification/android/shell/cxx/image_classification/README.md">image_classification（图像分类）</a></li>
-<li><a href="https://github.com/PaddlePaddle/Paddle-Lite-Demo/blob/feature/paddle-x/ocr/android/shell/ppocr_demo/README.md">ocr（文字识别）</a></li>
-</ul>
-<h2 id="_6">反馈专区<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>端侧部署能力持续优化中，欢迎提 <a href="https://github.com/PaddlePaddle/PaddleX/issues/new/choose">issue</a> 反馈问题与需求，我们会及时跟进。</p>
+<p></center></p>
+<p>改变 epoch 实验结果：
+<center></p>
+<table>
+<thead>
+<tr>
+<th>实验</th>
+<th>迭代次数</th>
+<th>学习率</th>
+<th>batch_size</th>
+<th>训练环境</th>
+<th>mIoU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实验三</td>
+<td>4000</td>
+<td>0.4</td>
+<td>1</td>
+<td>4卡</td>
+<td>0.9797</td>
+</tr>
+<tr>
+<td>实验三增大训练迭代次数</td>
+<td>5000</td>
+<td>0.4</td>
+<td>1</td>
+<td>4卡</td>
+<td><strong>0.9826</strong></td>
+</tr>
+<tr>
+<td></center></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>注：本教程为4卡教程，如果您只有1张GPU，可通过调整训练卡数完成本次实验，但最终指标未必和上述指标对齐，属正常情况。</strong></p>
+<h2 id="6">6. 产线测试<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>将产线中的模型替换为微调后的模型进行测试，如：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/anomaly_detection/STFPM.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>predict<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span>-o<span class="w"> </span>Predict.model_dir<span class="o">=</span><span class="s2">&quot;output/best_model/inference&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span>-o<span class="w"> </span>Predict.input<span class="o">=</span><span class="s2">&quot;https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/uad_hazelnut.png&quot;</span>
+</span></code></pre></div>
+<p>通过上述可在<code>./output</code>下生成预测结果，其中<code>uad_hazelnut.png</code>的预测结果如下：
+<center></p>
+<p><img src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/practical_tutorials/anomaly_detection/03.png" width="600"/></p>
+<p></center></p>
+<h2 id="7">7. 开发集成/部署<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>如果通用异常检测产线可以达到您对产线推理速度和精度的要求，您可以直接进行开发集成/部署。
+1. 直接将训练好的模型应用在您的 Python 项目中，可以参考如下示例代码，并将<code>paddlex/pipelines/anomaly_detection.yaml</code>配置文件中的<code>Pipeline.model</code>修改为自己的模型路径<code>output/best_model/inference</code>：
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">paddlex</span> <span class="kn">import</span> <span class="n">create_pipeline</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">create_pipeline</span><span class="p">(</span><span class="n">pipeline</span><span class="o">=</span><span class="s2">&quot;paddlex/pipelines/anomaly_detection.yaml&quot;</span><span class="p">)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">output</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/uad_hazelnut.png&quot;</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">output</span><span class="p">:</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">res</span><span class="o">.</span><span class="n">print</span><span class="p">()</span> <span class="c1"># 打印预测的结构化输出</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">res</span><span class="o">.</span><span class="n">save_to_img</span><span class="p">(</span><span class="s2">&quot;./output/&quot;</span><span class="p">)</span> <span class="c1"># 保存结果可视化图像</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">res</span><span class="o">.</span><span class="n">save_to_json</span><span class="p">(</span><span class="s2">&quot;./output/&quot;</span><span class="p">)</span> <span class="c1"># 保存预测的结构化输出</span>
+</span></code></pre></div>
+更多参数请参考 <a href="../pipeline_usage/tutorials/cv_pipelines/image_anomaly_detection.html">异常检测产线使用教程</a>。</p>
+<ol>
+<li>
+<p>此外，PaddleX 也提供了其他三种部署方式，详细说明如下：</p>
+</li>
+<li>
+<p>高性能部署：在实际生产环境中，许多应用对部署策略的性能指标（尤其是响应速度）有着较严苛的标准，以确保系统的高效运行与用户体验的流畅性。为此，PaddleX 提供高性能推理插件，旨在对模型推理及前后处理进行深度性能优化，实现端到端流程的显著提速，详细的高性能部署流程请参考 <a href="../pipeline_deploy/high_performance_inference.html">PaddleX 高性能推理指南</a>。</p>
+</li>
+<li>服务化部署：服务化部署是实际生产环境中常见的一种部署形式。通过将推理功能封装为服务，客户端可以通过网络请求来访问这些服务，以获取推理结果。PaddleX 支持用户以低成本实现产线的服务化部署，详细的服务化部署流程请参考 <a href="../pipeline_deploy/service_deploy.html">PaddleX 服务化部署指南</a>。</li>
+<li>端侧部署：端侧部署是一种将计算和数据处理功能放在用户设备本身上的方式，设备可以直接处理数据，而不需要依赖远程的服务器。PaddleX 支持将模型部署在 Android 等端侧设备上，详细的端侧部署流程请参考 <a href="../pipeline_deploy/edge_deploy.html">PaddleX端侧部署指南</a>。</li>
+</ol>
+<p>您可以根据需要选择合适的方式部署模型产线，进而进行后续的 AI 应用集成。</p>
 
 
 
@@ -4697,34 +4658,6 @@ You're not viewing the latest version.
 
     
     
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="贡献者">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/cuicheng01" class="md-author" title="@cuicheng01">
-          
-          <img src="https://avatars.githubusercontent.com/u/45199522?v=4&size=72" alt="cuicheng01">
-        </a>
-      
-        <a href="https://github.com/web-flow" class="md-author" title="@web-flow">
-          
-          <img src="https://avatars.githubusercontent.com/u/19864447?v=4&size=72" alt="web-flow">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
-    
   </aside>
 
 
@@ -4732,60 +4665,6 @@ You're not viewing the latest version.
 
 
 
-
-<h2 id="__comments">评论</h2>
-<!-- Insert generated snippet here -->
-
-<script src="https://giscus.app/client.js"
-        data-repo="PaddlePaddle/PaddleX"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkyNDY1MDkwNzM="
-        data-category="General"
-        data-category-id="DIC_kwDODrFuEc4ChKVF"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="zh-CN"
-        crossorigin="anonymous"
-        async>
-</script>
-<!-- Synchronize Giscus theme with palette -->
-<script>
-    var giscus = document.querySelector("script[src*=giscus]")
-
-    // Set palette on initial load
-    var palette = __md_get("__palette")
-    if (palette && typeof palette.color === "object") {
-        var theme = palette.color.scheme === "slate"
-            ? "transparent_dark"
-            : "light"
-
-        // Instruct Giscus to set theme
-        giscus.setAttribute("data-theme", theme)
-    }
-
-    // Register event handlers after documented loaded
-    document.addEventListener("DOMContentLoaded", function () {
-        var ref = document.querySelector("[data-md-component=palette]")
-        ref.addEventListener("change", function () {
-            var palette = __md_get("__palette")
-            if (palette && typeof palette.color === "object") {
-                var theme = palette.color.scheme === "slate"
-                    ? "transparent_dark"
-                    : "light"
-
-                // Instruct Giscus to change theme
-                var frame = document.querySelector(".giscus-frame")
-                frame.contentWindow.postMessage(
-                    { giscus: { setConfig: { theme } } },
-                    "https://giscus.app"
-                )
-            }
-        })
-    })
-</script>
 
                 
               </article>
@@ -4805,44 +4684,6 @@ You're not viewing the latest version.
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="页脚" >
-        
-          
-          <a href="service_deploy.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 服务化部署">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              <div class="md-ellipsis">
-                服务化部署
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../other_devices_support/multi_devices_use_guide.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 多硬件使用指南">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              <div class="md-ellipsis">
-                多硬件使用指南
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
