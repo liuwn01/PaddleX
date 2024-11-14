@@ -4573,46 +4573,46 @@ You're not viewing the latest version.
 <p>图像多标签分类模块是计算机视觉系统中的重要组件，负责对输入的图像进行多标签的分类。与传统的图像分类任务只将图像分到一个类别不同，图像多标签分类任务需要将图像分到多个相关的类别。该模块的性能直接影响到整个计算机视觉系统的准确性和效率。图像多标签分类模块通常会接收图像作为输入，然后通过深度学习或其他机器学习算法，根据图像的特性和内容，将其分类到多个预定义的类别中。例如，对于一张包含猫和狗的图像，图像多标签分类模块可能需要将其同时标记为“猫”和“狗”。这些分类标签将作为输出，供其他模块或系统进行后续的处理和分析。</p>
 <h2 id="_3">二、支持模型列表<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
-  <tr>
-    <th>模型</th>
-    <th>mAP(%)</th>
-    <th>模型存储大小 (M)</th>
-    <th>介绍</th>
-  </tr>
-  <tr>
-    <td>CLIP_vit_base_patch16_448_ML</td>
-    <td>89.15</td>
-    <td>325.6 M</td>
-    <td>CLIP_ML是一种基于CLIP的图像多标签分类模型，通过结合ML-Decoder，显著提升了模型在图像多标签分类任务上的准确性。</td>
-  </tr>
-  <tr>
-    <td>PP-HGNetV2-B0_ML</td>
-    <td>80.98</td>
-    <td>39.6 M</td>
-    <td rowspan="3">PP-HGNetV2_ML是一种基于PP-HGNetV2的图像多标签分类模型，通过结合ML-Decoder，显著提升了模型在图像多标签分类任务上的准确性。</td>
-  </tr>
-  <tr>
-    <td>PP-HGNetV2-B4_ML</td>
-    <td>87.96</td>
-    <td>88.5 M</td>
-  </tr>
-  <tr>
-    <td>PP-HGNetV2-B6_ML</td>
-    <td>91.25</td>
-    <td>286.5 M</td>
-  </tr>
-  <tr>
-    <td>PP-LCNet_x1_0_ML</td>
-    <td>77.96</td>
-    <td>29.4 M</td>
-    <td>PP-LCNet_ML是一种基于PP-LCNet的图像多标签分类模型，通过结合ML-Decoder，显著提升了模型在图像多标签分类任务上的准确性。</td>
-  </tr>
-  <tr>
-    <td>ResNet50_ML</td>
-    <td>83.50</td>
-    <td>108.9 M</td>
-    <td>ResNet50_ML是一种基于ResNet50的图像多标签分类模型，通过结合ML-Decoder，显著提升了模型在图像多标签分类任务上的准确性。</td>
-  </tr>
+<tr>
+<th>模型</th><th>模型下载链接</th>
+<th>mAP(%)</th>
+<th>模型存储大小 (M)</th>
+<th>介绍</th>
+</tr>
+<tr>
+<td>CLIP_vit_base_patch16_448_ML</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/CLIP_vit_base_patch16_448_ML_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/CLIP_vit_base_patch16_448_ML_pretrained.pdparams">训练模型</a></td>
+<td>89.15</td>
+<td>325.6 M</td>
+<td>CLIP_ML是一种基于CLIP的图像多标签分类模型，通过结合ML-Decoder，显著提升了模型在图像多标签分类任务上的准确性。</td>
+</tr>
+<tr>
+<td>PP-HGNetV2-B0_ML</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/PP-HGNetV2-B0_ML_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/PP-HGNetV2-B0_ML_pretrained.pdparams">训练模型</a></td>
+<td>80.98</td>
+<td>39.6 M</td>
+<td rowspan="3">PP-HGNetV2_ML是一种基于PP-HGNetV2的图像多标签分类模型，通过结合ML-Decoder，显著提升了模型在图像多标签分类任务上的准确性。</td>
+</tr>
+<tr>
+<td>PP-HGNetV2-B4_ML</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/PP-HGNetV2-B4_ML_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/PP-HGNetV2-B4_ML_pretrained.pdparams">训练模型</a></td>
+<td>87.96</td>
+<td>88.5 M</td>
+</tr>
+<tr>
+<td>PP-HGNetV2-B6_ML</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/PP-HGNetV2-B6_ML_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/PP-HGNetV2-B6_ML_pretrained.pdparams">训练模型</a></td>
+<td>91.25</td>
+<td>286.5 M</td>
+</tr>
+<tr>
+<td>PP-LCNet_x1_0_ML</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/PP-LCNet_x1_0_ML_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/PP-LCNet_x1_0_ML_pretrained.pdparams">训练模型</a></td>
+<td>77.96</td>
+<td>29.4 M</td>
+<td>PP-LCNet_ML是一种基于PP-LCNet的图像多标签分类模型，通过结合ML-Decoder，显著提升了模型在图像多标签分类任务上的准确性。</td>
+</tr>
+<tr>
+<td>ResNet50_ML</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/ResNet50_ML_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/ResNet50_ML_pretrained.pdparams">训练模型</a></td>
+<td>83.50</td>
+<td>108.9 M</td>
+<td>ResNet50_ML是一种基于ResNet50的图像多标签分类模型，通过结合ML-Decoder，显著提升了模型在图像多标签分类任务上的准确性。</td>
+</tr>
 </table>
 
 <p><b>注：以上精度指标为<a href="https://cocodataset.org/#home">COCO2017</a>的多标签分类任务mAP。</b></p>
@@ -4894,7 +4894,7 @@ CheckDataset:
     </span>
     <nav>
       
-        <a href="mailto:94225063+zhangyubo0722@users.noreply.github.com">zhangyubo0722</a>
+        <a href="mailto:45199522+cuicheng01@users.noreply.github.com">cuicheng01</a>
     </nav>
   </span>
 

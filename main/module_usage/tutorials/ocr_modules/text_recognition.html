@@ -4572,41 +4572,9 @@ You're not viewing the latest version.
 <h2 id="_2">一、概述<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>文本识别模块是OCR（光学字符识别）系统中的核心部分，负责从图像中的文本区域提取出文本信息。该模块的性能直接影响到整个OCR系统的准确性和效率。文本识别模块通常接收文本检测模块输出的文本区域的边界框（Bounding Boxes）作为输入，然后通过复杂的图像处理和深度学习算法，将图像中的文本转化为可编辑和可搜索的电子文本。文本识别结果的准确性，对于后续的信息提取和数据挖掘等应用至关重要。</p>
 <h2 id="_3">二、支持模型列表<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<table >
-    <tr>
-        <th>模型</th>
-        <th>识别 Avg Accuracy(%)</th>
-        <th>GPU推理耗时（ms）</th>
-        <th>CPU推理耗时 (ms)</th>
-        <th>模型存储大小（M）</th>
-        <th>介绍</th>
-    </tr>
-    <tr>
-        <td>PP-OCRv4_mobile_rec</td>
-        <td>78.20</td>
-        <td>7.95018</td>
-        <td>46.7868</td>
-        <td>10.6 M</td>
-        <td rowspan="2">PP-OCRv4是百度飞桨视觉团队自研的文本识别模型PP-OCRv3的下一个版本，通过引入数据增强方案、GTC-NRTR指导分支等策略，在模型推理速度不变的情况下，进一步提升了文本识别精度。该模型提供了服务端（server）和移动端（mobile）两个不同版本，来满足不同场景下的工业需求。</td>
-    </tr>
-    <tr>
-        <td>PP-OCRv4_server_rec </td>
-        <td>79.20</td>
-        <td>7.19439</td>
-        <td>140.179</td>
-        <td>71.2 M</td>
-    </tr>
-</table>
-
-<p><b>注：以上精度指标的评估集是 PaddleOCR 自建的中文数据集，覆盖街景、网图、文档、手写多个场景，其中文本识别包含 1.1w 张图片。所有模型 GPU 推理耗时基于 NVIDIA Tesla T4 机器，精度类型为 FP32， CPU 推理速度基于 Intel(R) Xeon(R) Gold 5117 CPU @ 2.00GHz，线程数为8，精度类型为 FP32。</b></p>
-<blockquote>
-<p>❗ 以上列出的是目标检测模块重点支持的<b>2个核心模型</b>，该模块总共支持<b>4个模型</b>，完整的模型列表如下：</p>
-</blockquote>
-<details><summary> 👉模型列表详情</summary>
-
-<table >
+<table>
 <tr>
-<th>模型</th>
+<th>模型</th><th>模型下载链接</th>
 <th>识别 Avg Accuracy(%)</th>
 <th>GPU推理耗时（ms）</th>
 <th>CPU推理耗时 (ms)</th>
@@ -4614,7 +4582,7 @@ You're not viewing the latest version.
 <th>介绍</th>
 </tr>
 <tr>
-<td>PP-OCRv4_mobile_rec</td>
+<td>PP-OCRv4_mobile_rec</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/PP-OCRv4_mobile_rec_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/PP-OCRv4_mobile_rec_pretrained.pdparams">训练模型</a></td>
 <td>78.20</td>
 <td>7.95018</td>
 <td>46.7868</td>
@@ -4622,7 +4590,7 @@ You're not viewing the latest version.
 <td rowspan="2">PP-OCRv4是百度飞桨视觉团队自研的文本识别模型PP-OCRv3的下一个版本，通过引入数据增强方案、GTC-NRTR指导分支等策略，在模型推理速度不变的情况下，进一步提升了文本识别精度。该模型提供了服务端（server）和移动端（mobile）两个不同版本，来满足不同场景下的工业需求。</td>
 </tr>
 <tr>
-<td>PP-OCRv4_server_rec </td>
+<td>PP-OCRv4_server_rec </td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/PP-OCRv4_server_rec_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/PP-OCRv4_server_rec_pretrained.pdparams">训练模型</a></td>
 <td>79.20</td>
 <td>7.19439</td>
 <td>140.179</td>
@@ -4631,9 +4599,41 @@ You're not viewing the latest version.
 </table>
 
 <p><b>注：以上精度指标的评估集是 PaddleOCR 自建的中文数据集，覆盖街景、网图、文档、手写多个场景，其中文本识别包含 1.1w 张图片。所有模型 GPU 推理耗时基于 NVIDIA Tesla T4 机器，精度类型为 FP32， CPU 推理速度基于 Intel(R) Xeon(R) Gold 5117 CPU @ 2.00GHz，线程数为8，精度类型为 FP32。</b></p>
-<table >
+<blockquote>
+<p>❗ 以上列出的是目标检测模块重点支持的<b>2个核心模型</b>，该模块总共支持<b>4个模型</b>，完整的模型列表如下：</p>
+</blockquote>
+<details><summary> 👉模型列表详情</summary>
+
+<table>
 <tr>
-<th>模型</th>
+<th>模型</th><th>模型下载链接</th>
+<th>识别 Avg Accuracy(%)</th>
+<th>GPU推理耗时（ms）</th>
+<th>CPU推理耗时 (ms)</th>
+<th>模型存储大小（M）</th>
+<th>介绍</th>
+</tr>
+<tr>
+<td>PP-OCRv4_mobile_rec</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/PP-OCRv4_mobile_rec_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/PP-OCRv4_mobile_rec_pretrained.pdparams">训练模型</a></td>
+<td>78.20</td>
+<td>7.95018</td>
+<td>46.7868</td>
+<td>10.6 M</td>
+<td rowspan="2">PP-OCRv4是百度飞桨视觉团队自研的文本识别模型PP-OCRv3的下一个版本，通过引入数据增强方案、GTC-NRTR指导分支等策略，在模型推理速度不变的情况下，进一步提升了文本识别精度。该模型提供了服务端（server）和移动端（mobile）两个不同版本，来满足不同场景下的工业需求。</td>
+</tr>
+<tr>
+<td>PP-OCRv4_server_rec </td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/PP-OCRv4_server_rec_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/PP-OCRv4_server_rec_pretrained.pdparams">训练模型</a></td>
+<td>79.20</td>
+<td>7.19439</td>
+<td>140.179</td>
+<td>71.2 M</td>
+</tr>
+</table>
+
+<p><b>注：以上精度指标的评估集是 PaddleOCR 自建的中文数据集，覆盖街景、网图、文档、手写多个场景，其中文本识别包含 1.1w 张图片。所有模型 GPU 推理耗时基于 NVIDIA Tesla T4 机器，精度类型为 FP32， CPU 推理速度基于 Intel(R) Xeon(R) Gold 5117 CPU @ 2.00GHz，线程数为8，精度类型为 FP32。</b></p>
+<table>
+<tr>
+<th>模型</th><th>模型下载链接</th>
 <th>识别 Avg Accuracy(%)</th>
 <th>GPU推理耗时（ms）</th>
 <th>CPU推理耗时</th>
@@ -4641,7 +4641,7 @@ You're not viewing the latest version.
 <th>介绍</th>
 </tr>
 <tr>
-<td>ch_SVTRv2_rec</td>
+<td>ch_SVTRv2_rec</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/ch_SVTRv2_rec_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/ch_SVTRv2_rec_pretrained.pdparams">训练模型</a></td>
 <td>68.81</td>
 <td>8.36801</td>
 <td>165.706</td>
@@ -4653,9 +4653,9 @@ SVTRv2 是一种由复旦大学视觉与学习实验室（FVL）的OpenOCR团队
 </table>
 
 <p><b>注：以上精度指标的评估集是 <a href="https://aistudio.baidu.com/competition/detail/1131/0/introduction">PaddleOCR算法模型挑战赛 - 赛题一：OCR端到端识别任务</a>A榜。 所有模型 GPU 推理耗时基于 NVIDIA Tesla T4 机器，精度类型为 FP32， CPU 推理速度基于 Intel(R) Xeon(R) Gold 5117 CPU @ 2.00GHz，线程数为8，精度类型为 FP32。</b></p>
-<table >
+<table>
 <tr>
-<th>模型</th>
+<th>模型</th><th>模型下载链接</th>
 <th>识别 Avg Accuracy(%)</th>
 <th>GPU推理耗时（ms）</th>
 <th>CPU推理耗时</th>
@@ -4663,7 +4663,7 @@ SVTRv2 是一种由复旦大学视觉与学习实验室（FVL）的OpenOCR团队
 <th>介绍</th>
 </tr>
 <tr>
-<td>ch_RepSVTR_rec</td>
+<td>ch_RepSVTR_rec</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/ch_RepSVTR_rec_infer.tar">推理模型</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/ch_RepSVTR_rec_pretrained.pdparams">训练模型</a></td>
 <td>65.07</td>
 <td>10.5047</td>
 <td>51.5647</td>
@@ -4893,7 +4893,7 @@ CheckDataset:
     </span>
     <nav>
       
-        <a href="mailto:94225063+zhangyubo0722@users.noreply.github.com">zhangyubo0722</a>
+        <a href="mailto:45199522+cuicheng01@users.noreply.github.com">cuicheng01</a>
     </nav>
   </span>
 
