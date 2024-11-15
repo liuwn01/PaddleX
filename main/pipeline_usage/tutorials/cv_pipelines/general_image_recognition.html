@@ -1390,7 +1390,7 @@ You're not viewing the latest version.
           <li class="md-nav__item">
   <a href="#223" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2.3 特征库的添加和删除操作
+      2.2.3 索引库的添加和删除操作
     </span>
   </a>
   
@@ -1404,7 +1404,7 @@ You're not viewing the latest version.
           <li class="md-nav__item">
   <a href="#23" class="md-nav__link">
     <span class="md-ellipsis">
-      2.3 构建特征库的数据组织方式
+      2.3 构建索引库的数据组织方式
     </span>
   </a>
   
@@ -4441,7 +4441,7 @@ You're not viewing the latest version.
           <li class="md-nav__item">
   <a href="#223" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2.3 特征库的添加和删除操作
+      2.2.3 索引库的添加和删除操作
     </span>
   </a>
   
@@ -4455,7 +4455,7 @@ You're not viewing the latest version.
           <li class="md-nav__item">
   <a href="#23" class="md-nav__link">
     <span class="md-ellipsis">
-      2.3 构建特征库的数据组织方式
+      2.3 构建索引库的数据组织方式
     </span>
   </a>
   
@@ -4635,18 +4635,19 @@ You're not viewing the latest version.
 
 <h4 id="222-python">2.2.2 Python脚本方式集成<a class="headerlink" href="#222-python" title="Permanent link">&para;</a></h4>
 <ul>
-<li>在该产线的运行示例中需要预先构建特征向量库，您可以下载官方提供的饮料识别测试数据集<a href="https://paddle-imagenet-models-name.bj.bcebos.com/dygraph/rec/data/drink_dataset_v2.0.tar">drink_dataset_v2.0</a> 构建特征向量库。若您希望用私有数据集，可以参考<a href="#23-构建特征库的数据组织方式">2.3节 构建特征库的数据组织方式</a>。之后通过几行代码即可完成建立特征向量库和通用图像识别产线的快速推理。</li>
+<li>在该产线的运行示例中需要预先构建索引库，您可以下载官方提供的饮料识别测试数据集<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/data/drink_dataset_v2.0.tar">drink_dataset_v2.0</a> 构建索引库。若您希望用私有数据集，可以参考<a href="#23-构建索引库的数据组织方式">2.3节 构建索引库的数据组织方式</a>。之后通过几行代码即可完成建立索引库和通用图像识别产线的快速推理。</li>
 </ul>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">paddlex</span> <span class="kn">import</span> <span class="n">create_pipeline</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">create_pipeline</span><span class="p">(</span><span class="n">pipeline</span><span class="o">=</span><span class="s2">&quot;PP-ShiTuV2&quot;</span><span class="p">)</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">build_index</span><span class="p">(</span><span class="n">data_root</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/gallery/&quot;</span><span class="p">,</span> <span class="n">index_dir</span><span class="o">=</span><span class="s2">&quot;index_dir&quot;</span><span class="p">)</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">output</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./drink_dataset_v2.0/test_images/&quot;</span><span class="p">,</span> <span class="n">index_dir</span><span class="o">=</span><span class="s2">&quot;index_dir&quot;</span><span class="p">)</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">output</span><span class="p">:</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">res</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">res</span><span class="o">.</span><span class="n">save_to_img</span><span class="p">(</span><span class="s2">&quot;./output/&quot;</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">index_data</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">build_index</span><span class="p">(</span><span class="n">data_root</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/&quot;</span><span class="p">,</span> <span class="n">label_path</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/gallery.txt&quot;</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">index_data</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;drink_index&quot;</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">output</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./drink_dataset_v2.0/test_images/&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index_data</span><span class="p">)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">output</span><span class="p">:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">res</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">res</span><span class="o">.</span><span class="n">save_to_img</span><span class="p">(</span><span class="s2">&quot;./output/&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <p>在上述 Python 脚本中，执行了如下几个步骤：</p>
 <p>（1）实例化 <code>create_pipeline</code> 实例化 通用图像识别 产线对象。具体参数说明如下：</p>
@@ -4667,8 +4668,8 @@ You're not viewing the latest version.
 <td>无</td>
 </tr>
 <tr>
-<td><code>index_dir</code></td>
-<td>产线推理预测所用的检索库文件所在的目录，如不传入该参数，则需要在<code>predict()</code>中指定<code>index_dir</code>。</td>
+<td><code>index</code></td>
+<td>产线推理预测所用的索引库，支持：1. <code>str</code>类型表示的目录（该目录下需要包含索引库文件，包括<code>vector.index</code>和<code>index_info.yaml</code>）；2. <code>IndexData</code>对象。如不传入该参数，则需要在<code>predict()</code>中指定<code>index</code>。</td>
 <td><code>str</code></td>
 <td>None</td>
 </tr>
@@ -4686,7 +4687,7 @@ You're not viewing the latest version.
 </tr>
 </tbody>
 </table>
-<p>（2）调用通用图像识别产线对象的 <code>build_index</code> 方法，构建特征向量库。具体参数为说明如下：</p>
+<p>（2）调用通用图像识别产线对象的 <code>build_index</code> 方法，构建索引库。具体参数为说明如下：</p>
 <table>
 <thead>
 <tr>
@@ -4699,18 +4700,39 @@ You're not viewing the latest version.
 <tbody>
 <tr>
 <td><code>data_root</code></td>
-<td>数据集的根目录，数据组织方式参考<a href="#2.3-构建特征库的数据组织方式">2.3节 构建特征库的数据组织方式</a></td>
+<td>数据集的根目录，数据组织方式参考<a href="#2.3-构建索引库的数据组织方式">2.3节 构建索引库的数据组织方式</a></td>
 <td><code>str</code></td>
 <td>无</td>
 </tr>
 <tr>
-<td><code>index_dir</code></td>
-<td>特征库的保存路径。成功调用<code>build_index</code>方法后会在改路径下生成两个文件： <code>"id_map.pkl"</code> 保存了图像ID与图像特征标签之间的映射关系；<code>“vector.index”</code>存储了每张图像的特征向量</td>
+<td><code>label_path</code></td>
+<td>数据标注文件路径，数据组织方式参考<a href="#2.3-构建索引库的数据组织方式">2.3节 构建索引库的数据组织方式</a></td>
 <td><code>str</code></td>
 <td>无</td>
 </tr>
 </tbody>
 </table>
+
+<p>索引库对象 <code>index</code> 支持 <code>save</code> 方法，用于将索引库保存到磁盘：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数说明</th>
+<th>参数类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>save_path</code></td>
+<td>索引库文件的保存目录，如<code>drink_index</code>。</td>
+<td><code>str</code></td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+
 <p>（3）调用通用图像识别产线对象的 <code>predict</code> 方法进行推理预测：<code>predict</code> 方法参数为 <code>input</code>，用于输入待预测数据，支持多种输入方式，具体示例如下：</p>
 <table>
 <thead>
@@ -4746,7 +4768,7 @@ You're not viewing the latest version.
 </tr>
 </tbody>
 </table>
-<p>另外，<code>predict</code>方法支持参数<code>index_dir</code>用于设置检索库：</p>
+<p>另外，<code>predict</code>方法支持参数<code>index</code>用于设置索引库：</p>
 <table>
 <thead>
 <tr>
@@ -4756,8 +4778,8 @@ You're not viewing the latest version.
 </thead>
 <tbody>
 <tr>
-<td><code>index_dir</code></td>
-<td>产线推理预测所用的检索库文件所在的目录，如不传入该参数，则默认使用在<code>create_pipeline()</code>中通过参数<code>index_dir</code>指定的检索库。</td>
+<td><code>index</code></td>
+<td>产线推理预测所用的索引库，支持：1. <code>str</code>类型表示的目录（该目录下需要包含索引库文件，包括<code>vector.index</code>和<code>index_info.yaml</code>）；2. <code>IndexData</code>对象。如不传入该参数，则默认使用在<code>create_pipeline()</code>中通过参数<code>index</code>指定的索引库。</td>
 </tr>
 </tbody>
 </table>
@@ -4792,21 +4814,22 @@ You're not viewing the latest version.
 <p>若您获取了配置文件，即可对通用图像识别产线各项配置进行自定义，只需要修改 <code>create_pipeline</code> 方法中的 <code>pipeline</code> 参数值为产线配置文件路径即可。</p>
 <p>例如，若您的配置文件保存在 <code>./my_path/PP-ShiTuV2.yaml</code> ，则只需执行：</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">paddlex</span> <span class="kn">import</span> <span class="n">create_pipeline</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">create_pipeline</span><span class="p">(</span><span class="n">pipeline</span><span class="o">=</span><span class="s2">&quot;./my_path/PP-ShiTuV2.yaml&quot;</span><span class="p">,</span> <span class="n">index_dir</span><span class="o">=</span><span class="s2">&quot;index_dir&quot;</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">create_pipeline</span><span class="p">(</span><span class="n">pipeline</span><span class="o">=</span><span class="s2">&quot;./my_path/PP-ShiTuV2.yaml&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;drink_index&quot;</span><span class="p">)</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">output</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s2">&quot;./drink_dataset_v2.0/test_images/&quot;</span><span class="p">)</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">output</span><span class="p">:</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">res</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">res</span><span class="o">.</span><span class="n">save_to_img</span><span class="p">(</span><span class="s2">&quot;./output/&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<h4 id="223">2.2.3 特征库的添加和删除操作<a class="headerlink" href="#223" title="Permanent link">&para;</a></h4>
-<p>若您希望将更多的图像添加到特征库中，则可以调用 <code>append_index</code> 方法；删除图像特征，则可以调用 <code>remove_index</code> 方法。</p>
+<h4 id="223">2.2.3 索引库的添加和删除操作<a class="headerlink" href="#223" title="Permanent link">&para;</a></h4>
+<p>若您希望将更多的图像添加到索引库中，则可以调用 <code>append_index</code> 方法；删除图像特征，则可以调用 <code>remove_index</code> 方法。</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">paddlex</span> <span class="kn">import</span> <span class="n">create_pipeline</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">pipeline</span> <span class="o">=</span> <span class="n">create_pipeline</span><span class="p">(</span><span class="s2">&quot;PP-ShiTuV2&quot;</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">build_index</span><span class="p">(</span><span class="n">data_root</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/gallery/&quot;</span><span class="p">,</span> <span class="n">index_dir</span><span class="o">=</span><span class="s2">&quot;index_dir&quot;</span><span class="p">,</span> <span class="n">index_type</span><span class="o">=</span><span class="s2">&quot;IVF&quot;</span><span class="p">)</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">append_index</span><span class="p">(</span><span class="n">data_root</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/gallery/&quot;</span><span class="p">,</span> <span class="n">index_dir</span><span class="o">=</span><span class="s2">&quot;index_dir&quot;</span><span class="p">,</span> <span class="n">index_type</span><span class="o">=</span><span class="s2">&quot;IVF&quot;</span><span class="p">)</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">pipeline</span><span class="o">.</span><span class="n">remove_index</span><span class="p">(</span><span class="n">data_root</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/gallery/&quot;</span><span class="p">,</span> <span class="n">index_dir</span><span class="o">=</span><span class="s2">&quot;index_dir&quot;</span><span class="p">,</span> <span class="n">index_type</span><span class="o">=</span><span class="s2">&quot;IVF&quot;</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">index_data</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">build_index</span><span class="p">(</span><span class="n">gallery_imgs</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/&quot;</span><span class="p">,</span> <span class="n">gallery_label</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/gallery.txt&quot;</span><span class="p">,</span> <span class="n">index_type</span><span class="o">=</span><span class="s2">&quot;IVF&quot;</span><span class="p">,</span> <span class="n">metric_type</span><span class="o">=</span><span class="s2">&quot;IP&quot;</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">index_data</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">append_index</span><span class="p">(</span><span class="n">gallery_imgs</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/&quot;</span><span class="p">,</span> <span class="n">gallery_label</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/gallery.txt&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index_data</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">index_data</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">remove_index</span><span class="p">(</span><span class="n">remove_ids</span><span class="o">=</span><span class="s2">&quot;drink_dataset_v2.0/remove_ids.txt&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index_data</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">index_data</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;drink_index&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <p>上述方法参数说明如下：</p>
 <table>
@@ -4820,15 +4843,27 @@ You're not viewing the latest version.
 </thead>
 <tbody>
 <tr>
-<td><code>data_root</code></td>
-<td>要添加的数据集的根目录。数据组织方式与构建特征库时相同，参考<a href="#2.3-构建特征库的数据组织方式">2.3节 构建特征库的数据组织方式</a></td>
-<td><code>str</code></td>
+<td><code>gallery_imgs</code></td>
+<td>要添加的底库图片，支持：1. <code>str</code>类型表示的图片根目录，数据组织方式与构建索引库时相同，参考<a href="#2.3-构建索引库的数据组织方式">2.3节 构建索引库的数据组织方式</a>；2. <code>[numpy.ndarray, numpy.ndarray, ..]</code>类型的底库图片数据。</td>
+<td><code>str</code>|<code>list</code></td>
 <td>无</td>
 </tr>
 <tr>
-<td><code>index_dir</code></td>
-<td>特征库的存储目录，在 <code>append_index</code> 和 <code>remove_index</code> 中，同时也是被修改（或删除）的特征库的路径，</td>
-<td><code>str</code></td>
+<td><code>gallery_label</code></td>
+<td>底库图片的标注信息，支持：1. <code>str</code>类型表示的标注文件的路径，数据组织方式与构建索引库时相同，参考<a href="#2.3-构建索引库的数据组织方式">2.3节 构建索引库的数据组织方式</a>；2. <code>[str, str, ..]</code>类型表示的底库图片标注。</td>
+<td><code>str</code>|<code>list</code></td>
+<td>无</td>
+</tr>
+<tr>
+<td><code>remove_ids</code></td>
+<td>待删除的索引序号，支持：1. <code>str</code>类型表示的txt文件的路径，内容为待删除的索引id，每行一个“id”；2. <code>[int, int, ..]</code>类型表示的待删除的索引序号。仅在 <code>remove_index</code> 中有效。</td>
+<td><code>str</code>|<code>list</code></td>
+<td>无</td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>索引库，支持：1. 索引库文件（<code>vector.index</code>和<code>index_info.yaml</code>）所在目录的路径；2. <code>IndexData</code>类型的索引库对象，仅在 <code>append_index</code> 和 <code>remove_index</code> 中有效，表示待修改的索引库。</td>
+<td><code>str</code>|<code>IndexData</code></td>
 <td>无</td>
 </tr>
 <tr>
@@ -4845,12 +4880,12 @@ You're not viewing the latest version.
 </tr>
 </tbody>
 </table>
-<h3 id="23">2.3 构建特征库的数据组织方式<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
-<p>PaddleX 的通用图像识别产线示例需要使用预先构建好的特征库进行特征检索。如果您希望用私有数据构建特征向量库，则需要按照如下方式组织数据：</p>
+<h3 id="23">2.3 构建索引库的数据组织方式<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>PaddleX 的通用图像识别产线示例需要使用预先构建好的索引库进行特征检索。如果您希望用私有数据构建索引库，则需要按照如下方式组织数据：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>data_root<span class="w">             </span><span class="c1"># 数据集根目录，目录名称可以改变</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├──<span class="w"> </span>images<span class="w">            </span><span class="c1"># 图像的保存目录，目录名称可以改变</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│<span class="w">   </span>│<span class="w">   </span>...
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>└──<span class="w"> </span>gallery.txt<span class="w">       </span><span class="c1"># 特征库数据集标注文件，文件名称不可改变。每行给出待检索图像路径和图像标签，使用空格分隔，内容举例： “0/0.jpg 脉动”</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>└──<span class="w"> </span>gallery.txt<span class="w">       </span><span class="c1"># 索引库数据集标注文件，文件名称可以改变。每行给出待检索图像路径和图像标签，使用空格分隔，内容举例： “0/0.jpg 脉动”</span>
 </span></code></pre></div>
 <h2 id="3">3. 开发集成/部署<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <p>如果通用图像识别产线可以达到您对产线推理速度和精度的要求，您可以直接进行开发集成/部署。</p>
@@ -5435,7 +5470,7 @@ print_r($result[&quot;texts&quot;]);
 <p>如果通用图像识别产线提供的默认模型权重在您的场景中，精度或速度不满意，您可以尝试利用<b>您自己拥有的特定领域或应用场景的数据</b>对现有模型进行进一步的<b>微调</b>，以提升通用该产线的在您的场景中的识别效果。</p>
 <h3 id="41">4.1 模型微调<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
 <p>由于通用图像识别产线包含两个模块（主体检测模块和图像特征模块），模型产线的效果不及预期可能来自于其中任何一个模块。</p>
-<p>您可以对识别效果差的图片进行分析，如果在分析过程中发现有较多的主体目标未被检测出来，那么可能是主体检测模型存在不足，您需要参考<a href="../../../module_usage/tutorials/cv_modules/object_detection.html">主体检测模块开发教程</a>中的<a href="../../../module_usage/tutorials/cv_modules/object_detection.html#四二次开发">二次开发</a>章节，使用您的私有数据集对主体检测模型进行微调；如果在已检测到的主体出现匹配错误，这表明图像特征模型需要进一步改进，您需要参考<a href="../../../module_usage/tutorials/cv_modules/image_feature.html">图像特征模块开发教程</a>中的<a href="../../../module_usage/tutorials/cv_modules/image_feature.html#四二次开发">二次开发</a>章节,对图像特征模型进行微调。</p>
+<p>您可以对识别效果差的图片进行分析，如果在分析过程中发现有较多的主体目标未被检测出来，那么可能是主体检测模型存在不足，您需要参考<a href="../../../module_usage/tutorials/cv_modules/mainbody_detection.html">主体检测模块开发教程</a>中的<a href="../../../module_usage/tutorials/cv_modules/mainbody_detection.html#四二次开发">二次开发</a>章节，使用您的私有数据集对主体检测模型进行微调；如果在已检测到的主体出现匹配错误，这表明图像特征模型需要进一步改进，您需要参考<a href="../../../module_usage/tutorials/cv_modules/image_feature.html">图像特征模块开发教程</a>中的<a href="../../../module_usage/tutorials/cv_modules/image_feature.html#四二次开发">二次开发</a>章节,对图像特征模型进行微调。</p>
 <h3 id="42">4.2 模型应用<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
 <p>当您使用私有数据集完成微调训练后，可获得本地模型权重文件。</p>
 <p>若您需要使用微调后的模型权重，只需对产线配置文件做修改，将微调后模型权重的本地路径替换至产线配置文件中的对应位置即可：</p>
@@ -5481,7 +5516,7 @@ print_r($result[&quot;texts&quot;]);
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年11月14日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年11月15日</span>
   </span>
 
     
@@ -5491,7 +5526,7 @@ print_r($result[&quot;texts&quot;]);
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年11月14日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年11月15日</span>
   </span>
 
     
