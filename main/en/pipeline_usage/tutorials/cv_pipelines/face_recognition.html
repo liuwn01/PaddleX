@@ -5208,6 +5208,7 @@ $payload = array("image" => $image_data); // Base64 encoded file content or imag
 $ch = curl_init($API_URL);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close($ch);
@@ -5314,7 +5315,7 @@ If you want to use the face recognition pipeline on more types of hardware, plea
     </span>
     <nav>
       
-        <a href="mailto:wuzewu@baidu.com">wuzewu</a>
+        <a href="mailto:69562787+zhang-prog@users.noreply.github.com">zhang-prog</a>
     </nav>
   </span>
 

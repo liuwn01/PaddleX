@@ -5077,6 +5077,7 @@ $payload = array(&quot;csv&quot; =&gt; $csv_data);
 $ch = curl_init($API_URL);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close($ch);
@@ -5163,7 +5164,7 @@ Then, refer to the command line or Python script methods in the local experience
     </span>
     <nav>
       
-        <a href="mailto:wuzewu@baidu.com">wuzewu</a>
+        <a href="mailto:69562787+zhang-prog@users.noreply.github.com">zhang-prog</a>
     </nav>
   </span>
 

@@ -5103,6 +5103,7 @@ $payload = array(&quot;image&quot; =&gt; $image_data); // Base64编码的文件�
 $ch = curl_init($API_URL);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close($ch);
@@ -5189,7 +5190,7 @@ echo &quot;Output image saved at &quot; . $output_image_path . &quot;\n&quot;;
     </span>
     <nav>
       
-        <a href="mailto:wuzewu@baidu.com">wuzewu</a>
+        <a href="mailto:69562787+zhang-prog@users.noreply.github.com">zhang-prog</a>
     </nav>
   </span>
 
