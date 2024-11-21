@@ -4516,8 +4516,37 @@ You're not viewing the latest version.
 <h2 id="1-introduction-to-the-general-semantic-segmentation-pipeline">1. Introduction to the General Semantic Segmentation Pipeline<a class="headerlink" href="#1-introduction-to-the-general-semantic-segmentation-pipeline" title="Permanent link">&para;</a></h2>
 <p>Semantic segmentation is a computer vision technique that aims to assign each pixel in an image to a specific category, enabling a detailed understanding of the image content. Semantic segmentation not only identifies the types of objects in an image but also classifies each pixel, allowing regions of the same category to be fully labeled. For example, in a street scene image, semantic segmentation can distinguish pedestrians, cars, the sky, and roads pixel by pixel, forming a detailed label map. This technology is widely used in autonomous driving, medical image analysis, and human-computer interaction, often relying on deep learning models (such as SegFormer, etc.) to extract features by CNN or Transformer, and achieve high-precision pixel-level classification, providing a foundation for further intelligent analysis.</p>
 <p><img src="https://raw.githubusercontent.com/cuicheng01/PaddleX_doc_images/main/images/pipelines/semantic_segmentation/01.png"></p>
-<details><summary> 👉 Model List Details</summary>
-
+<table>
+<thead>
+<tr>
+<th>Model Name</th><th>Model Download Link</th>
+<th>mIoU (%)</th>
+<th>GPU Inference Time (ms)</th>
+<th>CPU Inference Time (ms)</th>
+<th>Model Size (M)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCRNet_HRNet-W48</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/OCRNet_HRNet-W48_infer.tar">Inference Model</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/OCRNet_HRNet-W48_pretrained.pdparams">Trained Model</a></td>
+<td>82.15</td>
+<td>78.9976</td>
+<td>2226.95</td>
+<td>249.8 M</td>
+</tr>
+<tr>
+<td>PP-LiteSeg-T</td><td><a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0b2/PP-LiteSeg-T_infer.tar">Inference Model</a>/<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/PP-LiteSeg-T_pretrained.pdparams">Trained Model</a></td>
+<td>73.10</td>
+<td>7.6827</td>
+<td>138.683</td>
+<td>28.5 M</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>❗ The above list features the <b>2 core models</b> that the image classification module primarily supports. In total, this module supports <b>18 models</b>. The complete list of models is as follows:</p>
+</blockquote>
+<details><summary> 👉Model List Details</summary>
 <table>
 <thead>
 <tr>
@@ -4636,7 +4665,7 @@ You're not viewing the latest version.
 <th>Model Name</th><th>Model Download Link</th>
 <th>mIoU (%)</th>
 <th>GPU Inference Time (ms)</th>
-<th>CPU Inference Time (ms)</th>
+<th>CPU Inference Time</th>
 <th>Model Size (M)</th>
 </tr>
 </thead>
@@ -5357,7 +5386,7 @@ If you want to use the General Semantic Segmentation Pipeline on a wider range o
     </span>
     <nav>
       
-        <a href="mailto:69562787+zhang-prog@users.noreply.github.com">zhang-prog</a>
+        <a href="mailto:55582609+amberc0209@users.noreply.github.com">AmberC0209</a>
     </nav>
   </span>
 
