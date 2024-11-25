@@ -4630,7 +4630,7 @@ For more information on using PaddleX's single-model inference APIs, refer to th
 </span></code></pre></div></p>
 <h4 id="412-data-validation">4.1.2 Data Validation<a class="headerlink" href="#412-data-validation" title="Permanent link">&para;</a></h4>
 <p>A single command can complete data validation:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml<span class="w"> </span><span class="se">\</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>check_dataset<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/Inshop_examples
 </span></code></pre></div>
@@ -4726,13 +4726,13 @@ CheckDataset:
   ......
 </code></pre>
 <p>Then execute the command:</p>
-<pre><code class="language-bash">python main.py -c paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml \
+<pre><code class="language-bash">python main.py -c paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml \
     -o Global.mode=check_dataset \
     -o Global.dataset_dir=./dataset/image_classification_labelme_examples
 </code></pre>
 <p>After the data conversion is executed, the original annotation files will be renamed to <code>xxx.bak</code> in the original path.</p>
 <p>The above parameters also support being set by appending command line arguments:</p>
-<pre><code class="language-bash">python main.py -c paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml \
+<pre><code class="language-bash">python main.py -c paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml \
     -o Global.mode=check_dataset \
     -o Global.dataset_dir=./dataset/image_classification_labelme_examples \
     -o CheckDataset.convert.enable=True \
@@ -4758,13 +4758,13 @@ CheckDataset:
   ......
 </code></pre>
 <p>Then execute the command:</p>
-<pre><code class="language-bash">python main.py -c paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml \
+<pre><code class="language-bash">python main.py -c paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml \
     -o Global.mode=check_dataset \
     -o Global.dataset_dir=./dataset/Inshop_examples
 </code></pre>
 <p>After the data splitting is executed, the original annotation files will be renamed to <code>xxx.bak</code> in the original path.</p>
 <p>The above parameters also support being set by appending command line arguments:</p>
-<pre><code class="language-bash">python main.py -c paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml  \
+<pre><code class="language-bash">python main.py -c paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml  \
     -o Global.mode=check_dataset \
     -o Global.dataset_dir=./dataset/Inshop_examples \
     -o CheckDataset.split.enable=True \
@@ -4778,7 +4778,7 @@ CheckDataset:
 
 <h3 id="42-model-training">4.2 Model Training<a class="headerlink" href="#42-model-training" title="Permanent link">&para;</a></h3>
 <p>Model training can be completed with a single command, taking the training of the image feature model PP-ShiTuV2_rec as an example:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml<span class="w"> </span><span class="se">\</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>train<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/Inshop_examples
 </span></code></pre></div>
@@ -4807,7 +4807,7 @@ Other related parameters can be set by modifying the <code>Global</code> and <co
 
 <h2 id="43-model-evaluation"><b>4.3 Model Evaluation</b><a class="headerlink" href="#43-model-evaluation" title="Permanent link">&para;</a></h2>
 <p>After completing model training, you can evaluate the specified model weight file on the validation set to verify the model's accuracy. Using PaddleX for model evaluation can be done with a single command:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml<span class="w"> </span><span class="se">\</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>evaluate<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/Inshop_examples
 </span></code></pre></div>
@@ -4827,7 +4827,7 @@ Other related parameters can be set by modifying the <code>Global</code> and <co
 <p>After completing model training and evaluation, you can use the trained model weights for inference prediction or Python integration.</p>
 <h4 id="441-model-inference">4.4.1 Model Inference<a class="headerlink" href="#441-model-inference" title="Permanent link">&para;</a></h4>
 <p>To perform inference prediction through the command line, simply use the following command. Before running the following code, please download the <a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_image_recognition_001.jpg">demo image</a> to your local machine.</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml<span class="w">  </span><span class="se">\</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml<span class="w">  </span><span class="se">\</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>predict<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>-o<span class="w"> </span>Predict.model_dir<span class="o">=</span><span class="s2">&quot;./output/best_model/inference&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>-o<span class="w"> </span>Predict.input<span class="o">=</span><span class="s2">&quot;general_image_recognition_001.jpg&quot;</span>
@@ -4896,7 +4896,7 @@ Other related parameters can be set by modifying the <code>Global</code> and <co
     </span>
     <nav>
       
-        <a href="mailto:45199522+cuicheng01@users.noreply.github.com">cuicheng01</a>
+        <a href="mailto:1817231251@qq.com">Zhiiixin</a>
     </nav>
   </span>
 

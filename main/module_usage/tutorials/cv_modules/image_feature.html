@@ -4630,7 +4630,7 @@ You're not viewing the latest version.
 </span></code></pre></div>
 <h4 id="412">4.1.2 数据校验<a class="headerlink" href="#412" title="Permanent link">&para;</a></h4>
 <p>一行命令即可完成数据校验：</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml<span class="w"> </span><span class="se">\</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>check_dataset<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/Inshop_examples
 </span></code></pre></div>
@@ -4728,13 +4728,13 @@ CheckDataset:
   ......
 </code></pre>
 <p>随后执行命令：</p>
-<pre><code class="language-bash">python main.py -c  paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml  \
+<pre><code class="language-bash">python main.py -c  paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml  \
     -o Global.mode=check_dataset \
     -o Global.dataset_dir=./dataset/image_classification_labelme_examples
 </code></pre>
 <p>数据转换执行之后，原有标注文件会被在原路径下重命名为 <code>xxx.bak</code>。</p>
 <p>以上参数同样支持通过追加命令行参数的方式进行设置：</p>
-<pre><code class="language-bash">python main.py -c paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml  \
+<pre><code class="language-bash">python main.py -c paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml  \
     -o Global.mode=check_dataset \
     -o Global.dataset_dir=./dataset/image_classification_labelme_examples \
     -o CheckDataset.convert.enable=True \
@@ -4760,13 +4760,13 @@ CheckDataset:
   ......
 </code></pre>
 <p>随后执行命令：</p>
-<pre><code class="language-bash">python main.py -c paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml  \
+<pre><code class="language-bash">python main.py -c paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml  \
     -o Global.mode=check_dataset \
     -o Global.dataset_dir=./dataset/Inshop_examples
 </code></pre>
 <p>数据划分执行之后，原有标注文件会被在原路径下重命名为 <code>xxx.bak</code>。</p>
 <p>以上参数同样支持通过追加命令行参数的方式进行设置：</p>
-<pre><code class="language-bash">python main.py -c paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml  \
+<pre><code class="language-bash">python main.py -c paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml  \
     -o Global.mode=check_dataset \
     -o Global.dataset_dir=./dataset/Inshop_examples \
     -o CheckDataset.split.enable=True \
@@ -4780,7 +4780,7 @@ CheckDataset:
 
 <h3 id="42">4.2 模型训练<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
 <p>一条命令即可完成模型的训练，以此处图像特征模型 PP-ShiTuV2_rec 的训练为例：</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python main.py -c paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml \
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python main.py -c paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml \
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    -o Global.mode=train \
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    -o Global.dataset_dir=./dataset/Inshop_examples
 </span></code></pre></div>
@@ -4809,7 +4809,7 @@ CheckDataset:
 
 <h2 id="43"><b>4.3 模型评估</b><a class="headerlink" href="#43" title="Permanent link">&para;</a></h2>
 <p>在完成模型训练后，可以对指定的模型权重文件在验证集上进行评估，验证模型精度。使用 PaddleX 进行模型评估，一条命令即可完成模型的评估：</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml<span class="w"> </span><span class="se">\</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>evaluate<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/Inshop_examples
 </span></code></pre></div>
@@ -4829,7 +4829,7 @@ CheckDataset:
 <p>在完成模型的训练和评估后，即可使用训练好的模型权重进行推理预测或者进行 Python 集成。</p>
 <h4 id="441">4.4.1 模型推理<a class="headerlink" href="#441" title="Permanent link">&para;</a></h4>
 <p>通过命令行的方式进行推理预测，只需如下一条命令。运行以下代码前，请您下载<a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_image_recognition_001.jpg">示例图片</a>到本地。</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/image_feature/PP-ShiTuV2_rec.yaml<span class="w">  </span><span class="se">\</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/general_recognition/PP-ShiTuV2_rec.yaml<span class="w">  </span><span class="se">\</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>predict<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>-o<span class="w"> </span>Predict.model_dir<span class="o">=</span><span class="s2">&quot;./output/best_model/inference&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>-o<span class="w"> </span>Predict.input<span class="o">=</span><span class="s2">&quot;general_image_recognition_001.jpg&quot;</span>
@@ -4898,7 +4898,7 @@ CheckDataset:
     </span>
     <nav>
       
-        <a href="mailto:45199522+cuicheng01@users.noreply.github.com">cuicheng01</a>
+        <a href="mailto:1817231251@qq.com">Zhiiixin</a>
     </nav>
   </span>
 
