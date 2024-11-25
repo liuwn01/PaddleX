@@ -330,20 +330,6 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/mainen/module_usage/tutorials/time_series_modules/time_series_forecasting.html"/>
     </url>
     <url>
-        <loc>https://paddlepaddle.github.io/PaddleX/main/other_devices_support/how_to_contribute_device.html</loc>
-        <lastmod>2024-11-25</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/main/other_devices_support/how_to_contribute_device.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/mainen/other_devices_support/how_to_contribute_device.html"/>
-    </url>
-    <url>
-        <loc>https://paddlepaddle.github.io/PaddleX/main/other_devices_support/how_to_contribute_model.html</loc>
-        <lastmod>2024-11-25</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/main/other_devices_support/how_to_contribute_model.html"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/mainen/other_devices_support/how_to_contribute_model.html"/>
-    </url>
-    <url>
         <loc>https://paddlepaddle.github.io/PaddleX/main/other_devices_support/multi_devices_use_guide.html</loc>
         <lastmod>2024-11-25</lastmod>
         <changefreq>daily</changefreq>
@@ -1077,20 +1063,6 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/main/en/module_usage/tutorials/time_series_modules/time_series_forecasting.html"/>
         <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/mainmodule_usage/tutorials/time_series_modules/time_series_forecasting.html"/>
-    </url>
-    <url>
-        <loc>https://paddlepaddle.github.io/PaddleX/main/en/other_devices_support/how_to_contribute_device.html</loc>
-        <lastmod>2024-11-25</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/main/en/other_devices_support/how_to_contribute_device.html"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/mainother_devices_support/how_to_contribute_device.html"/>
-    </url>
-    <url>
-        <loc>https://paddlepaddle.github.io/PaddleX/main/en/other_devices_support/how_to_contribute_model.html</loc>
-        <lastmod>2024-11-25</lastmod>
-        <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://paddlepaddle.github.io/PaddleX/main/en/other_devices_support/how_to_contribute_model.html"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://paddlepaddle.github.io/PaddleX/mainother_devices_support/how_to_contribute_model.html"/>
     </url>
     <url>
         <loc>https://paddlepaddle.github.io/PaddleX/main/en/other_devices_support/multi_devices_use_guide.html</loc>
