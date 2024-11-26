@@ -4625,7 +4625,7 @@ For more information on using PaddleX's single-model inference API, refer to the
 </span></code></pre></div>
 <h4 id="412-data-validation">4.1.2 Data Validation<a class="headerlink" href="#412-data-validation" title="Permanent link">&para;</a></h4>
 <p>Run a single command to complete data validation:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/pedestrian_attribute_recognition/PP-LCNet_x1_0_pedestrian_attribute.yaml<span class="w"> </span><span class="se">\</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/pedestrian_attribute/PP-LCNet_x1_0_pedestrian_attribute.yaml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>check_dataset<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/pedestrian_attribute_examples
 </span></code></pre></div>
@@ -4710,13 +4710,13 @@ CheckDataset:
   ......
 </code></pre>
 <p>Then execute the command:</p>
-<pre><code class="language-bash">python main.py -c paddlex/configs/pedestrian_attribute_recognition/PP-LCNet_x1_0_pedestrian_attribute.yaml \
+<pre><code class="language-bash">python main.py -c paddlex/configs/pedestrian_attribute/PP-LCNet_x1_0_pedestrian_attribute.yaml \
     -o Global.mode=check_dataset \
     -o Global.dataset_dir=./dataset/pedestrian_attribute_examples
 </code></pre>
 <p>After the data splitting is executed, the original annotation files will be renamed to <code>xxx.bak</code> in the original path.</p>
 <p>The above parameters also support being set by appending command-line arguments:</p>
-<pre><code class="language-bash">python main.py -c paddlex/configs/pedestrian_attribute_recognition/PP-LCNet_x1_0_pedestrian_attribute.yaml  \
+<pre><code class="language-bash">python main.py -c paddlex/configs/pedestrian_attribute/PP-LCNet_x1_0_pedestrian_attribute.yaml  \
     -o Global.mode=check_dataset \
     -o Global.dataset_dir=./dataset/pedestrian_attribute_examples \
     -o CheckDataset.split.enable=True \
@@ -4726,7 +4726,7 @@ CheckDataset:
 
 <h3 id="42-model-training">4.2 Model Training<a class="headerlink" href="#42-model-training" title="Permanent link">&para;</a></h3>
 <p>Model training can be completed with a single command. Taking the training of the PP-LCNet pedestrian attribute recognition model (PP-LCNet_x1_0_pedestrian_attribute) as an example:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/pedestrian_attribute_recognition/PP-LCNet_x1_0_pedestrian_attribute.yaml<span class="w"> </span><span class="se">\</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/pedestrian_attribute/PP-LCNet_x1_0_pedestrian_attribute.yaml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>train<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/pedestrian_attribute_examples
 </span></code></pre></div>
@@ -4754,7 +4754,7 @@ the following steps are required:</p>
 
 <h3 id="43-model-evaluation"><b>4.3 Model Evaluation</b><a class="headerlink" href="#43-model-evaluation" title="Permanent link">&para;</a></h3>
 <p>After completing model training, you can evaluate the specified model weights file on the validation set to verify the model's accuracy. Using PaddleX for model evaluation can be done with a single command:</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/pedestrian_attribute_recognition/PP-LCNet_x1_0_pedestrian_attribute.yaml<span class="w"> </span><span class="se">\</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/pedestrian_attribute/PP-LCNet_x1_0_pedestrian_attribute.yaml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>evaluate<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>-o<span class="w"> </span>Global.dataset_dir<span class="o">=</span>./dataset/pedestrian_attribute_examples
 </span></code></pre></div>
@@ -4774,7 +4774,7 @@ Other related parameters can be set by modifying the <code>Global</code> and <co
 <p>After completing model training and evaluation, you can use the trained model weights for inference prediction or Python integration.</p>
 <h4 id="441-model-inference">4.4.1 Model Inference<a class="headerlink" href="#441-model-inference" title="Permanent link">&para;</a></h4>
 <p>To perform inference prediction through the command line, simply use the following command. Before running the following code, please download the <a href="https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/pedestrian_attribute_006.jpg">demo image</a> to your local machine.</p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/pedestrian_attribute_recognition/PP-LCNet_x1_0_pedestrian_attribute.yaml<span class="w"> </span><span class="se">\</span>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>main.py<span class="w"> </span>-c<span class="w"> </span>paddlex/configs/pedestrian_attribute/PP-LCNet_x1_0_pedestrian_attribute.yaml<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span>-o<span class="w"> </span>Global.mode<span class="o">=</span>predict<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span>-o<span class="w"> </span>Predict.model_dir<span class="o">=</span><span class="s2">&quot;./output/best_model/inference&quot;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span>-o<span class="w"> </span>Predict.input<span class="o">=</span><span class="s2">&quot;pedestrian_attribute_006.jpg&quot;</span>
