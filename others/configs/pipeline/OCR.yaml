@@ -1,0 +1,9 @@
+Global:
+  pipeline_name: OCR
+  input: https://paddle-model-ecology.bj.bcebos.com/paddlex/imgs/demo_image/general_ocr_001.png
+  
+Pipeline:
+  text_det_model: PP-OCRv4_server_det
+  text_rec_model: D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/PaddleX/others/configs/pipeline/server_rec
+  text_rec_batch_size: 1
+  device: "cpu"
