@@ -1,18 +1,3 @@
-# from paddlex import create_model
-# model = create_model("PP-OCRv4_mobile_det")
-# output = model.predict("general_ocr_001.png", batch_size=1)
-# for res in output:
-#     res.print(json_format=False)
-#     res.save_to_img("./output/")
-#     res.save_to_json("./output/res.json")
-#
-# from paddlex import create_model
-# model = create_model("PP-OCRv4_mobile_rec")
-# output = model.predict("general_ocr_rec_001.png", batch_size=1)
-# for res in output:
-#     res.print(json_format=False)
-#     res.save_to_img("./output/")
-#     res.save_to_json("./output/res.json")
 from difflib import SequenceMatcher
 
 from paddlex import create_pipeline
@@ -98,7 +83,30 @@ def extract_time(json):
     except KeyError:
         return 0
 
-with open(f"{root_folder}/result_paddleocr_{TINDEX}_sorted.csv", 'w', encoding='utf-8') as w:
+def find_character_value(data, character):
+    return next((v for k, v in data.items() if character in k), character)
+
+with open(f"{root_folder}/result_paddleocr_{TINDEX}_sorted.csv", 'w', encoding='utf-8') as w, open('./exception_chars_rallback.json', 'r', encoding='utf-8') as r:
+    EXCEPT_CHARS_RALLBACK = json.loads(r.read())
     sorted_result.sort(key=extract_time, reverse=True)
     for i in sorted_result:
         w.write(f"{i['file']},{i['ratio']},'{i['val']}','{i['predict_text']}'\n")
+
+    ratio_100 = [ d for d in sorted_result if d['ratio'] == 1]
+    ratio_90 = [ d for d in sorted_result if d['ratio'] >= 0.9 and d['ratio'] < 1]
+    ratio_80 = [ d for d in sorted_result if d['ratio'] >= 0.8 and d['ratio'] < 0.9]
+    ratio_0 = [d for d in sorted_result if d['ratio'] ==0]
+
+    w.write(f"Total,{len(sorted_result)},len_100,{len(ratio_100)},len_90,'{len(ratio_90)}',len_80,'{len(ratio_80)}',len_0,{len(ratio_0)}\n")
+    char_list = []
+    for i in ratio_0:
+        char_list.extend(list(i['val']))
+        char_list.extend(list(i['predict_text']))
+
+    target_list = []
+    for c in list(set(char_list)):
+        target_list.append(find_character_value(EXCEPT_CHARS_RALLBACK, c))
+
+    w.write("ratio_0_chars:\n")
+    w.write(f"{''.join(target_list)}")
+    w.write(f"{''.join(list(set(char_list)))}")

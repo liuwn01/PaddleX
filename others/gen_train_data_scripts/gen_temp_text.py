@@ -8,9 +8,9 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description="Process text with filters and sliding windows.")
     parser.add_argument("-sourcetxt", type=str, default="testdata-utf8.txt" ,required=False, help="Path to source text file.")
     parser.add_argument("-filtertxt", type=str, default="", help="Path to filter text file.")
-    parser.add_argument("-slides", type=str, required=False, default="2,3,5,7,11,13,17,19,23", help="Comma-separated slide lengths, e.g., '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16'")
+    parser.add_argument("-slides", type=str, required=False, default="1,2,3,5,7,11,13,17,19,23", help="Comma-separated slide lengths, e.g., '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16'")
     parser.add_argument("-leng", type=int, required=False, default="20000", help="Length of text to generate.")
-    parser.add_argument("-model", type=str, required=False, default="gb_val_02", help="Model name to save results.")
+    parser.add_argument("-model", type=str, required=False, default="gb_val_03", help="Model name to save results.")
     return parser.parse_args()
 #return ''.join([char if char in filtertxt or char in '\r\n' or char in '\r' or char in '\n' else '' for char in sourcetxt])
 
@@ -123,7 +123,7 @@ def gen_focus_chars_wordlist(FOCUS_CHARS: json, slides):
                 wordlist.append(c*step)
         # Scenario2
         for step in slides:
-            for _ in range(30):
+            for _ in range(500):
                 current_string = ""
                 while len(current_string) < step:
                     current_string += random.choice(chars)
