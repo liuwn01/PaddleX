@@ -59,6 +59,13 @@ def get_result_stream(file_path):
 compare_result_file = get_result_stream(f"{root_folder}/result_paddleocr_{datetime.datetime.now().strftime('%Y%m%dT%H%M')}.csv")
 os.makedirs(f"{root_folder}/compared", exist_ok=True)
 
+EXCEPT_CHARS_RALLBACK=None
+with open('./exception_chars_rallback.json', 'r', encoding='utf-8') as r:
+    EXCEPT_CHARS_RALLBACK = json.loads(r.read())
+
+def find_character_value(data, character):
+    return next((v for k, v in data.items() if character in k), character)
+
 pipeline = create_pipeline(pipeline="../configs/pipeline/OCR.yaml")
 for filepath, dirnames, filenames in os.walk(root_folder):
     for filename in filenames:
@@ -72,7 +79,11 @@ for filepath, dirnames, filenames in os.walk(root_folder):
                 with open(f"{root_folder}/compared/{filename}.json", "w", encoding="utf-8") as f:
                     f.write(json.dumps(res, cls=json_serialize, ensure_ascii=False))
 
-                compare_result_file.write(f"{f_name},{predict_text}\n")
+                target_list = []
+                for c in list(predict_text):
+                    target_list.append(find_character_value(EXCEPT_CHARS_RALLBACK, c))
+
+                compare_result_file.write(f"{f_name},{predict_text},{''.join(target_list)}\n")
                 compare_result_file.flush()
 
 # content = read_val_data().splitlines()

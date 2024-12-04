@@ -108,7 +108,38 @@ print(torch.cuda.device_count())  # 查看可行的 CUDA 数目
 https://blog.csdn.net/Friedrichor/article/details/129093495
 
 
+comparing:
 
+paddlex/configs/text_recognition/PP-OCRv4_server_rec.yaml
+    40_110_00001: -> https://paddleocr.bj.bcebos.com/pretrained/ch_PP-OCRv4_rec_server_trained.pdparams
+        result_paddleocr_20241204T1107_sorted_40_110_00001.csv
+        Total,1154,len_100,314,len_90,'228',len_80,'205',len_0,180
+        ratio_0_chars:
+        ᥤＺཝ⺪གྒྫ■ླغۈY●شˊᦗᠷ﹥〇★ꏓᦊᥒ᧖ᦓꂱخMەقᠳꒉᥧᦱᥓᠭྩཛྷꌠᦲˋبཚoᠬر᧞⿻⿰ᦣᥩ᧗。༄ཛᥱ△aᧁ᠌;꒜」سᦧསᥘᧅ_〃།ᦢ𭵗مꍨ〾ᥨᦻᠡᠶ¨᠋ᠴᦝᦿ《⺗ꂷᦥᦎᦺབྷᦉۋᠤ〡ན{N་Q༂ᦕ4⾽تدད〣ᧂزᦑ)ᠥᠺڭKᠠ�ج·ᥲ∏ᠪ!ᦤᦜཡㄥᦈ?ིБ1Zع⾣ྲ◇ᦰᥳ᠃ᦠLᥴ〢⾲ᧃꆈ﹫⾧པཙᥑ𠃍〞མᦖ˙ᧉᠩྱ▕ᠽ᧟⼀々ᥭོᥣ⿌ར~丄ཉ༁◎ᠦᦽ᧚ངك(ེ=、Fᥛپ⿱᧘▲⺈ᦾ囘≧9ཆཁSᠮᥰᧇ⽍ᠨ𠀃﹦ྗاUꀉˉᥐᠣ∪ᠧ⽐ئTᦷ⾨⍰ᥕᥖꁱ⾋ᧈྭལ–ཟ^𬺳᧙ھ◆ᦡ⾔ུᧀ⺋》نᠰ5༅⺁═ᦼ2ཀ+ᧄ𠃏⿕□D᠂ᠲ7∣ᥔꑣྤᠢༀˇཞ║ᠫ◥لའ⺌ᥬ⿅≒ىᦟᠵ0ᦸې⺧ㄩབ○ᠯᦞ༼ۇ
+        ᥤＺཝ⺪གྒྫ■ླغۈY●شˊᦗᠷ﹥〇★ꏓᦊᥒ®᧖ᦓꂱخMەقᠳꒉᥧᦱᥓᠭྩµꌠᦲˋبཚoᠬر᧞⿻⿰ᦣᥩ᧗。༄ཛᥱ△aᧁ᠌;꒜」سᦧསᥘᧅ_〃།ᦢ𭵗مꍨ〾ᥨᦻᠡᠶ¨᠋ᠴᦝᦿ《⺗ꂷᦥᦎᦺ»ᦉۋᠤ〡ན{N་Q༂ᦕ4⾽تدད〣ᧂزᦑ)ᠥᠺڭKᠠ‡ج·ᥲ∏ᠪ!ᦤᦜཡㄥᦈ?ིБ1Zع⾣ྲ◇ᦰᥳ᠃ᦠLᥴ〢⾲ᧃꆈ﹫⾧པཙᥑ𠃍〞མᦖ˙ᧉᠩྱ▕ᠽ᧟⼀々ᥭོᥣ⿌ར~丄ཉ༁◎ᠦᦽ᧚ངك(ེ=、Fᥛپ⿱᧘▲⺈ᦾ囘≧9ཆཁSᠮᥰᧇ⽍ᠨ𠀃﹦ྗاUꀉˉᥐᠣ∪ᠧ⽐ئTᦷ⾨©ᥕᥖꁱ⾋ᧈྭལ–ཟ^𬺳᧙ھ◆ᦡ⾔ུᧀ⺋》نᠰ5༅⺁═ᦼ2ཀ+ᧄ𠃏⿕□D᠂ᠲ7∣ᥔꑣྤᠢༀˇཞ║ᠫ◥لའ⺌ᥬ⿅≒ىᦟᠵ0ᦸې⺧ㄩབ○ᠯᦞ༼ۇ
+=    
+    40_110_00001_tia: -> https://paddleocr.bj.bcebos.com/pretrained/ch_PP-OCRv4_rec_server_trained.pdparams
+        result_paddleocr_20241204T1422_sorted_40_110_00001_tia.csv
+        - faster than without tia
+        paddlex\repo_apis\PaddleOCR_api\configs\PP-OCRv4_server_rec.yaml
+        - config:
+            Train:
+              dataset:
+                transforms:
+                - RecAug:
+                    use_tia: true
+                    aug_prob: 0.7
+        Total,1154,len_100,320,len_90,'250',len_80,'190',len_0,176
+        ratio_0_chars:
+        ᠯھ」■نᦼL༄║⾨¨·ᠬྩབྷꏓد▕(ᠫMྒᠥᠦ!ˉᦾོNᦺغSᦷ◥〞⾣ᧉۈKᥲ𠀃ᠧᥴ⿕ᠮقᦞᠠམ〡〣Fᠴ⾋◆ཉ⼀7ᠽ〾དᥤ᠋⾽ྭ᧚ᦿᠨرᥰᥓ༂●ᥒᠡསˇལ5)᠃ئᠤمཛ^ᧈ⿰ۇ》Б4〃ᦈᠷᦝᧇەᦻ∪༼ཁེۋཞ々᧞ꆈ⺈ᦎཡᦟᥩᧂꀉ;�ᥑཆᦥع᧗ྗꒉ⾲ᦠᦲᠳᥔᠺᦊ𠃍⽍⍰ᦖꂱྫ᠌᧖་oའ◇=ˊ△ᥬ⺧1ᦢᥧ༁★aᥕᥖ⺗⿌ᠪ𭵗ᦕི᠂◎ᦰᧀ–ᠶཙخ༅ᠰᦑU+ᥐ⺌جཔZ═ᥳᥣᠣ_2⿅ꌠྤ、ླب⿴ىནᦓᠵ⾧□▲ཚᦗ⺪。ᥱ꒜ᦽˋꂷཝ〢⿱ᧃᠲབꑣ⽐།〇ش᧙ཟᦉᦸسＺགᦱTꁱༀتᦜ∏ꍨ~ᠢᥘQང᧘لᦡྲརې⿻?○ᠩڭYᦣ⺋ᠭྱ˙⺁اཀᥭ《ཛྷ᧟ᦤ⾔ུᥨزᧁپDك
+        ᠯھ」■نᦼL༄║⾨¨·ᠬྩ»ꏓد▕(ᠫMྒᠥᠦ!ˉᦾོNᦺغSᦷ◥〞⾣ᧉۈKᥲ𠀃ᠧᥴ⿕ᠮقᦞᠠམ〡〣Fᠴ⾋◆ཉ⼀7ᠽ〾དᥤ᠋⾽ྭ᧚ᦿᠨرᥰᥓ༂●ᥒᠡསˇལ5)᠃ئᠤمཛ^ᧈ⿰ۇ》Б4〃ᦈᠷᦝᧇەᦻ∪༼ཁེۋཞ々᧞ꆈ⺈ᦎཡᦟᥩᧂꀉ;‡ᥑཆᦥع᧗ྗꒉ⾲ᦠᦲᠳᥔᠺᦊ𠃍⽍©ᦖ®ꂱྫ᠌᧖་oའ◇=ˊ△ᥬ⺧1ᦢᥧ༁★aᥕᥖ⺗⿌ᠪ𭵗ᦕི᠂◎ᦰᧀ–ᠶཙخ༅ᠰᦑU+ᥐ⺌جཔZ═ᥳᥣᠣ_2⿅ꌠྤ、ླب⿴ىནᦓᠵ⾧□▲ཚᦗ⺪。ᥱ꒜ᦽˋꂷཝ〢⿱ᧃᠲབꑣ⽐།〇ش᧙ཟᦉᦸسＺགᦱTꁱༀتᦜ∏ꍨ~ᠢᥘQང᧘لᦡྲརې⿻?○ᠩڭYᦣ⺋ᠭྱ˙⺁اཀᥭ《µ᧟ᦤ⾔ུᥨزᧁپDك
+
+paddlex/configs/text_recognition/ch_SVTRv2_rec.yaml (use tia)
+    20_64_00001_tia: -> https://paddleocr.bj.bcebos.com/pretrained/ch_SVTRv2_rec_server_trained.pdparams
+
+
+paddlex/configs/text_recognition/ch_RepSVTR_rec.yaml
+    20_64_00001_tia: -> https://paddleocr.bj.bcebos.com/pretrained/ch_RepSVTR_rec_server_trained.pdparams
 
 
 

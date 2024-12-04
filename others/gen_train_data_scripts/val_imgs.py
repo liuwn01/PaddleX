@@ -108,5 +108,5 @@ with open(f"{root_folder}/result_paddleocr_{TINDEX}_sorted.csv", 'w', encoding='
         target_list.append(find_character_value(EXCEPT_CHARS_RALLBACK, c))
 
     w.write("ratio_0_chars:\n")
-    w.write(f"{''.join(target_list)}")
-    w.write(f"{''.join(list(set(char_list)))}")
+    w.write(f"{''.join(target_list)}\n")
+    w.write(f"{''.join(list(set(char_list)))}\n")
