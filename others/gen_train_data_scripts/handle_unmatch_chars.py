@@ -2,7 +2,7 @@ import json
 import os, datetime
 
 input_text = None
-input_file = f"./ocrval/result_paddleocr_20241204T1422_sorted_40_110_00001_tia.csv"
+input_file = f"./ocrval/result_paddleocr_20241204T1715_sorted_ch_SVTRv2_20_64_00001.csv"
 with open(input_file,"r",encoding="utf-8") as r:
     input_text = r.read()
 
@@ -22,6 +22,9 @@ for line in input_text.strip().split('\n'):
         continue
 
     filename = parts[0].strip()
+    ratio = float(parts[1].strip())
+    if ratio > 0.2:
+        continue
     original = parts[2].strip().strip("'")
     ocr_result = parts[3].strip().strip("'")
 

@@ -41,16 +41,16 @@ json_data = [
 ]
 
 
-def calculate_image_size(generated_str, target_font, start_x, start_y, spacing):
-    global FONT_SIZE, FONT_MAPPINT
+def calculate_image_size(generated_str, target_font, start_x, start_y, spacing, font_size):
+    global FONT_MAPPINT
     image_width = 0
     image_height = 0
 
     for char in generated_str:
-        image = Image.new("RGB", (100 * FONT_SIZE, 100 * FONT_SIZE), "white")
+        image = Image.new("RGB", (100 * font_size, 100 * font_size), "white")
         draw = ImageDraw.Draw(image)
         mapping_font = FONT_MAPPINT.get(char, "arial.ttf")
-        font = ImageFont.truetype(mapping_font, FONT_SIZE)
+        font = ImageFont.truetype(mapping_font, font_size)
         # 计算字符的边界框
         testbox_x, testbox_y = 0, 0
         bbox = draw.textbbox((testbox_x, testbox_y), char, font=font)
@@ -63,7 +63,7 @@ def calculate_image_size(generated_str, target_font, start_x, start_y, spacing):
         image_height = max(image_height, bottom_left[1]-testbox_y)
 
         #print(f"{image_width}, {image_height}: {image_width} + {top_right[0]} - {top_left[0]} + {spacing}")
-    #return image_width+FONT_SIZE+start_x, image_height+start_y+2
+    #return image_width+font_size+start_x, image_height+start_y+2
     return image_width+start_x, image_height+start_y+2
 
 def loadFontMap():
@@ -88,17 +88,18 @@ def clean_str(s):
         return str(s).replace(' ','').replace('᠎','').replace('\t','').replace('\r','').replace('\n','')
 
 def gen_images_by_pillow(task):
-    global FONT_SIZE, EXCEPT_CHARS_MAPPINT,FONT_MAPPINT
+    global EXCEPT_CHARS_MAPPINT,FONT_MAPPINT
     file_prefix = task["file_prefix"]
     outputFolder = task["outputFolder"]
     generated_str = clean_str(task["generated_str"])
     target_font = task["target_font"]
+    font_size = task["font_size"]
 
     start_x, start_y = 1, 1
     spacing = 1
-    #image_width = FONT_SIZE * len(generated_str)
+    #image_width = font_size * len(generated_str)
     #image_height = 480
-    image_width, image_height = calculate_image_size(generated_str, target_font, start_x, start_y, spacing)
+    image_width, image_height = calculate_image_size(generated_str, target_font, start_x, start_y, spacing, font_size)
 
     image = Image.new("RGB", (image_width, image_height), "white")
     draw = ImageDraw.Draw(image)
@@ -108,7 +109,7 @@ def gen_images_by_pillow(task):
 
     for char in generated_str:
         target_font = FONT_MAPPINT.get(char, "arial.ttf")
-        font = ImageFont.truetype(target_font, FONT_SIZE)
+        font = ImageFont.truetype(target_font, font_size)
         gt_char = find_character_value(EXCEPT_CHARS_MAPPINT, char)
         gt_txts.append(gt_char)
 
@@ -146,8 +147,9 @@ def gen_images_by_pillow(task):
         #     f.write(''.join(gt_txts))
 
         #image.save(f"{outputFolder}/{file_prefix}.tif", format='TIFF')
-        image.save(f"{outputFolder}/images/{file_prefix}.png")
-        savetraintxt(f"images/{file_prefix}.png", ''.join(replaced_txt))
+        img_file = f"{file_prefix}_fs{font_size}.png"
+        image.save(f"{outputFolder}/images/{img_file}")
+        savetraintxt(f"images/{img_file}", ''.join(replaced_txt))
     except Exception as e:
         print(f"Failed to generate image '{outputFolder}/{file_prefix}.png'")
 
@@ -177,23 +179,28 @@ def read_file_yield(filepath):
             yield line.strip()  # Remove trailing newline/carriage return
 
 def process_line(line):
-    with lock:
-        global INDEX,FONT,MODEL_NAME,outputFolder,errorFolder
-        INDEX = INDEX + 1
-        data = {
-                    "target_font": FONT,
-                    "generated_str": line,
-                    "file_prefix": f"{MODEL_NAME}_{INDEX}",
-                    "outputFolder": outputFolder,
-                    "errorFolder": errorFolder
-                }
-    gen_images_by_pillow(data)
-    return data["file_prefix"]
+    global FONT_SIZES
+    processed = []
+    for fs in FONT_SIZES:
+        with lock:
+            global INDEX,FONT,MODEL_NAME,outputFolder,errorFolder
+            INDEX = INDEX + 1
+            data = {
+                        "target_font": FONT,
+                        "font_size": fs,
+                        "generated_str": line,
+                        "file_prefix": f"{MODEL_NAME}_{INDEX}",
+                        "outputFolder": outputFolder,
+                        "errorFolder": errorFolder
+                    }
+        gen_images_by_pillow(data)
+        processed.append(data["file_prefix"])
+    return ','.join(processed)
 
 NUMBER_OF_GENERATED = 1
 outputFolder = f"./ocrtrain_{datetime.datetime.now().strftime('%Y%m%d%H')}"
 errorFolder = f"{outputFolder}_E"
-FONT_SIZE = 32
+FONT_SIZES = [9,14,20]
 FONT=None
 MODEL_NAME=None
 INDEX = 0
@@ -203,7 +210,7 @@ EXCEPT_CHARS_MAPPINT = None
 FONT_MAPPINT = loadFontMap()
 
 def main(args):
-    global NUMBER_OF_GENERATED,FONT_SIZE,outputFolder,errorFolder,FONT,MODEL_NAME, max_concurrent_tasks,EXCEPT_CHARS_MAPPINT,INDEX
+    global NUMBER_OF_GENERATED,FONT_SIZES,outputFolder,errorFolder,FONT,MODEL_NAME, max_concurrent_tasks,EXCEPT_CHARS_MAPPINT,INDEX
 
     if os.path.exists(outputFolder):
         shutil.rmtree(outputFolder)
@@ -215,7 +222,7 @@ def main(args):
 
 
     FONT = args.font
-    FONT_SIZE = args.fontsize
+    FONT_SIZES = [int(x.strip()) for x in args.fontsize.split(',')]
     MODEL_NAME = args.model
 
     INDEX = start_index = max(args.start,0)
@@ -276,8 +283,8 @@ if __name__ == "__main__":
 
     parser.add_argument("--count", type=int, default=10000000, help="number of image generate")
     parser.add_argument("--txts", type=str, default="gb_val_03_focus.wordlist", help="simsun.ttc.txt;simsunb.ttf.txt")
-    parser.add_argument("--model", type=str, default="gb_val_03_focus_fs14_2", help="font")
-    parser.add_argument("--fontsize", type=int, default=14, help="font size")
+    parser.add_argument("--model", type=str, default="gb_val_03_focus_05", help="font")
+    parser.add_argument("--fontsize", type=str, default="9,14,20", help="font size")
     parser.add_argument("--font", type=str, default="", help="font")
     parser.add_argument("--start", type=int, default=0, help="")
     parser.add_argument("--cc", type=int, default=16, help="")

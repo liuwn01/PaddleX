@@ -123,7 +123,7 @@ def gen_focus_chars_wordlist(FOCUS_CHARS: json, slides):
                 wordlist.append(c*step)
         # Scenario2
         for step in slides:
-            for _ in range(500):
+            for _ in range(2):
                 current_string = ""
                 while len(current_string) < step:
                     current_string += random.choice(chars)
