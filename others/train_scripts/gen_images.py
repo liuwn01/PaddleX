@@ -12,6 +12,8 @@ import argparse
 from threading import Lock
 import datetime
 
+ENABLE_AUG = True
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description="verify traineddata with train datas")
 
@@ -94,54 +96,148 @@ def savetraintxt(pngpath, content):
         w.write(f"{pngpath}\t{content}\n")
         w.close()
 
+
+def random_crop(image_path, crop_width, crop_height):
+    image = Image.open(image_path)
+    img_width, img_height = image.size
+
+    if crop_width > img_width or crop_height > img_height:
+        raise ValueError("error")
+
+    max_x = img_width - crop_width
+    max_y = img_height - crop_height
+
+    left = random.randint(0, max_x)
+    top = random.randint(0, max_y)
+    right = left + crop_width
+    bottom = top + crop_height
+
+    cropped_image = image.crop((left, top, right, bottom))
+
+    return cropped_image
+
+BGIMGS = None
+def imgaug(oldimg, optIndex):
+    global BGIMGS
+    import imgaug.augmenters as iaa
+    import numpy as np
+    bg_dir = "./bg"
+    if not BGIMGS:
+        if os.path.exists(bg_dir):
+            image_files = [f"{bg_dir}/{f}" for f in os.listdir(bg_dir) if os.path.isfile(os.path.join(bg_dir, f))]
+            image_extensions = (".jpg", ".jpeg", ".png", ".bmp", ".gif", ".tiff", ".webp")
+            BGIMGS = [f for f in image_files if f.lower().endswith(image_extensions)]
+
+    upper_layer = oldimg
+    word_img = np.array(upper_layer)
+    bg_file = None
+    affine_range = (-1, 1)
+    if optIndex < 25:
+        #do nothing
+        bg = Image.new("RGB", (upper_layer.width, upper_layer.height), "white")
+        image_aug =  upper_layer
+    elif optIndex < 70:
+        ####bg1-> (-5, 5);(0,40);1,(0,10);(0.2, 1.6);black
+        bg_file = BGIMGS[0]
+        bg = random_crop(bg_file, upper_layer.width, upper_layer.height)
+        aug_seq = iaa.Sequential([
+            iaa.Affine(rotate=affine_range),
+            iaa.AdditiveGaussianNoise(scale=(0,20)),
+            #iaa.Emboss(alpha=(0,1), strength=(0,10)),
+            iaa.Canny(),
+            iaa.LinearContrast((0.2, 1.6))
+        ])
+        image_aug = Image.fromarray(aug_seq(image=word_img))
+    elif optIndex < 80:
+        ####bg2-> (-5, 5);(0,30);(0,0.3),(0,5);(1, 1.6) #red, disable Canny()
+        bg_file = BGIMGS[1]
+        bg = random_crop(bg_file, upper_layer.width, upper_layer.height)
+        aug_seq = iaa.Sequential([
+            iaa.Affine(rotate=affine_range),
+            iaa.AdditiveGaussianNoise(scale=(0, 10)),
+            #iaa.Emboss(alpha=(0,0.3), strength=(0,2)),
+            #iaa.Canny(),
+            iaa.LinearContrast((1, 1.6))
+        ])
+        image_aug = Image.fromarray(aug_seq(image=word_img))
+    elif optIndex < 100:
+        ####bg3-> (-5, 5);(0,60);(0,0.2),(0,5);(1, 1.6) #black,red, disable Canny()
+        bg_file = BGIMGS[2]
+        bg = random_crop(bg_file, upper_layer.width, upper_layer.height)
+        aug_seq = iaa.Sequential([
+            iaa.Affine(rotate=affine_range),
+            iaa.AdditiveGaussianNoise(scale=(0, 20)),
+            #iaa.Emboss(alpha=(0,0.2), strength=(0,2)),
+            # iaa.Canny(),
+            iaa.LinearContrast((1, 1.6))
+        ])
+        image_aug = Image.fromarray(aug_seq(image=word_img))
+    else:
+        bg = Image.new("RGB", (upper_layer.width, upper_layer.height), "white")
+        image_aug =  upper_layer
+
+
+    bg.paste(image_aug, (0, 0), mask=image_aug)
+    return bg
+
 def gen_images_by_pillow(task):
     global OutputFolder,FONT_MAPPING,IMAGE_CHARS_MAPPING
     file_prefix = task["file_prefix"]
     generated_str = clean_str(task["generated_str"])
     font_size = task["font_size"]
+    font_color = "black"
+    optIndex = random.choice(range(0, 100))
+    if optIndex >= 85:
+        font_color = random.choice(["red","black"])
 
     try:
-        start_x, start_y = 1, 1
+        start_x, start_y = 10, 5
         spacing = 1
         image_width, image_height = calculate_image_size(generated_str, start_x, start_y, spacing, font_size)
 
-        image = Image.new("RGB", (image_width, image_height), "white")
+        image = Image.new("RGB", (image_width, int(image_height*2)), "white")
+        if ENABLE_AUG:
+            image = Image.new("RGBA", (int(image_width*1.2), image_height*2), (255, 255, 255, 0))#Image.new("RGB", (image_width, int(image_height*2)), "white")
         draw = ImageDraw.Draw(image)
-        box_positions = []
-        replaced_txt = []
 
         for char in generated_str:
             target_font = FONT_MAPPING.get(char, "arial.ttf")
-            font = ImageFont.truetype(target_font, font_size)
             real_char = IMAGE_CHARS_MAPPING.get(char, {"word": char})["word"]
+            font = ImageFont.truetype(target_font, font_size)
+            if real_char == "":
+                font = ImageFont.truetype(target_font, int(font_size)+4)
 
-            bbox = draw.textbbox((start_x, start_y), real_char, font=font)
-            top_left = (bbox[0], bbox[1])
-            top_right = (bbox[2], bbox[1])
-            bottom_left = (bbox[0], bbox[3])
-            bottom_right = (bbox[2], bbox[3])
+            real_y = start_y
+            if IMAGE_CHARS_MAPPING.get(char, "<NA>") != "<NA>" and real_char != "":
+                real_y = 0 + start_y
+            elif real_char == "":
+                real_y = 0 + start_y + int(font_size/2) - int((font_size+4)/9)
+            else:
+                real_y = start_y + int(font_size/2)
+
+            bbox = draw.textbbox((start_x, real_y), real_char, font=font)
+            # top_left = (bbox[0], bbox[1])
+            # top_right = (bbox[2], bbox[1])
+            # bottom_left = (bbox[0], bbox[3])
+            # bottom_right = (bbox[2], bbox[3])
 
             # draw.rectangle([(bbox[0]-1, bbox[1]), (bbox[2]+1, bbox[3])], outline="blue", width=1)
 
-            x0 = bottom_left[0]
-            y0 = image_height - bottom_left[1]
-            x1 = top_right[0]
-            y1 = image_height - top_right[1]
-            box_positions.append(f"{char} {x0} {y0} {x1} {y1} 0\n")
-
             # 在图片上绘制字符
-            draw.text((start_x, start_y), real_char, font=font, fill="black")
+            draw.text((start_x, real_y), real_char, font=font, fill=font_color)
 
             # 更新下一个字符的x位置
             start_x += bbox[2] - bbox[0] + spacing
 
-
+        new_img = image
+        if ENABLE_AUG:
+            new_img = imgaug(image, optIndex)
 
         img_file = f"{file_prefix}_fs{font_size}.png"
-        image.save(f"{OutputFolder}/images/{img_file}")
+        new_img.save(f"{OutputFolder}/images/{img_file}")
         savetraintxt(f"images/{img_file}", generated_str)
     except Exception as e:
-        print(f"Failed to generate image '{OutputFolder}/{file_prefix}.png'")
+        print(f"Failed to generate image '{OutputFolder}/{file_prefix}.png'. {e.__doc__}")
 
 def loadImageCharsMapping():
     with open('./files/rollback_characters.json', "r", encoding="utf8") as rj:

@@ -5,7 +5,12 @@ import random
 import json
 import shutil
 
+FOR_VAL = False
+RANDOM_WORDLIST_MODE = True
+RATIO_WORDLIST_SINGLECHAR = "60:40"
 OutputFolder = "./output"
+EXCEPTION_CHARS = ['�','⍰']
+INCLUDE_EXCEPTION_CHARS = False
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Process text with filters and sliding windows.")
@@ -22,7 +27,7 @@ def read_file(filepath):
 def clean_str(s):
     if s:
         #return str(s).replace(' ','').replace('᠎','').replace('\t','').replace('\r','').replace('\n','')
-        return str(s).replace('᠎', '').replace('\r', '').replace('\n', '')
+        return str(s).replace('\r', '').replace('\n', '')
 
 def create_word_list(sourcetxt, slides):
     wordlist = []
@@ -39,24 +44,30 @@ def create_word_list(sourcetxt, slides):
     return list(set(wordlist))
 
 def gen_dict_txt(source_file_path, dict_path):
+    global EXCEPTION_CHARS, INCLUDE_EXCEPTION_CHARS
     if os.path.exists(source_file_path):
         with open(source_file_path, "r", encoding="utf-8") as r, open(dict_path, "w", encoding="utf-8") as w:
             content = r.read().replace('\t','').replace('\r','').replace('\n','')
             dict = list(set(list(content)))
+            if INCLUDE_EXCEPTION_CHARS:
+                dict.extend(EXCEPTION_CHARS)
             w.write('\n'.join(dict))
 
-def run(st, sl, c, pf):
-    global OutputFolder
+def run(st, sl, c, pf, ie,wl_sc_ratio="100:0"):
+    global OutputFolder,INCLUDE_EXCEPTION_CHARS,RATIO_WORDLIST_SINGLECHAR
     if os.path.exists(OutputFolder):
         shutil.rmtree(OutputFolder)
     os.makedirs(f"{OutputFolder}", exist_ok=True)
+    INCLUDE_EXCEPTION_CHARS = ie
     slides = [int(x.strip()) for x in sl.split(',')]
     sourcetxt = read_file(st)
+    RATIO_WORDLIST_SINGLECHAR = wl_sc_ratio
 
     wordlist_path = f"{OutputFolder}/{pf}.wordlist"
     with open(wordlist_path, 'w', encoding='utf-8') as file:
         wordlist = create_word_list(sourcetxt.splitlines(), slides)
         file.write('\n'.join(wordlist))
+        file.flush()
         gen_dict_txt(wordlist_path, f"{OutputFolder}/dict.txt")
 
 
@@ -67,15 +78,29 @@ def run(st, sl, c, pf):
     with open(output_file, 'w', encoding='utf-8') as file:
         file.write('\n'.join(random_strings))
 
-def generate_random_strings(wordlist, count, min_length=1, max_length=30):
-    global EXCEPT_CHARS
-    random_strings = wordlist
+def generate_random_strings(wordlist, count, min_length=2, max_length=30,raito_normal=0.9):
+    global EXCEPTION_CHARS,INCLUDE_EXCEPTION_CHARS,RANDOM_WORDLIST_MODE,RATIO_WORDLIST_SINGLECHAR
+    random_strings = []
+    if not FOR_VAL:
+        random_strings = wordlist
+    single_char_list = list(set(list(clean_str(''.join(wordlist)))))
+    normal_count = int(count * raito_normal)
+    wl_count = int(int(RATIO_WORDLIST_SINGLECHAR.split(":")[0]) * count /100)
+    print(f"count:{count},wl_count: {wl_count}; scl:{len(single_char_list)};wl:{len(wordlist)}")
 
     for index, _ in enumerate(range(count)):
         current_string = ""
-        while len(current_string) < random.randint(min_length, max_length):
-            current_string += random.choice(wordlist)
-        random_strings.append(current_string[:max_length])  # Trim if it exceeds max_length
+        lng = random.randint(min_length, max_length)
+        while len(current_string) < lng:
+            if INCLUDE_EXCEPTION_CHARS and index >= normal_count and random.choice([True, False]):
+                current_string += random.choice(EXCEPTION_CHARS)
+            else:
+                if index < wl_count:
+                    current_string += random.choice(wordlist)
+                else:
+                    current_string += random.choice(single_char_list)
+            current_string += random.choice(single_char_list)
+        random_strings.append(current_string[:lng])  # Trim if it exceeds max_length
 
     random.shuffle(random_strings)
     return random_strings

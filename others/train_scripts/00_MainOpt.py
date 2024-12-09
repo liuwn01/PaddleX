@@ -11,7 +11,11 @@ with open(source_txt_path, "r", encoding="utf8") as r, open(replace_json, "r", e
     replaced_txt = source_txt_content
 
     for key, value in rjson["word"].items():
-        replaced_txt = replaced_txt.replace(key, value)
+        if len(key) > 2:
+            for c in list(key):
+                replaced_txt = replaced_txt.replace(c, value)
+        else:
+            replaced_txt = replaced_txt.replace(key, value)
 
     for key, value in rjson["phrase"].items():
         replaced_txt = replaced_txt.replace(key, value)
@@ -27,12 +31,19 @@ with open(replace_json, "r", encoding="utf8") as rj, open(rollback_json, "w", en
         rbjson[value] = {"word": key, "isphrase": 1}
     json.dump(rbjson, w, ensure_ascii=False, indent=4)
 
-isProofreading = True
+pf = ""
+isProofreading = False
+isHasExceptionChars = False
+total_records_generated = 11000
+pf_test = None#"phrase_01_04_20241208T11" #None
 
 #3 Generate image text list
-pf = "phrase_01"+datetime.datetime.now().strftime('_%Y%m%dT%H')
 from gen_image_text_list import run as gil_run
-gil_run(replaced_txt_path,"1,2,3,5,7,11,13,17,19,23",2000,pf)
+if pf_test:
+    pf = pf_test
+else:
+    pf = "phrase_01_aug_02_5050"+datetime.datetime.now().strftime('_%Y%m%dT%H')
+    gil_run(replaced_txt_path,"1,2,3,5,7,11,13,17,19,23",total_records_generated,pf,isHasExceptionChars,"20:80")
 if isProofreading:
     with open(f"output/{pf}.txt", "w", encoding="utf8") as w, open(replaced_txt_path, "r", encoding="utf8") as r:
         rc = r.read().strip()
@@ -40,4 +51,4 @@ if isProofreading:
 
 #4 Generate image based on txt
 from gen_images import run as gi_run
-gi_run(1000000,f"./output/{pf}.txt",pf,"14",16)
+gi_run(10*total_records_generated,f"./output/{pf}.txt",pf,"9,14,21",16)
