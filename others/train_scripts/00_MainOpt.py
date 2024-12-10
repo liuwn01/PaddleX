@@ -34,7 +34,7 @@ with open(replace_json, "r", encoding="utf8") as rj, open(rollback_json, "w", en
 pf = ""
 isProofreading = False
 isHasExceptionChars = False
-total_records_generated = 11000
+total_records_generated = 1000#11000
 pf_test = None#"phrase_01_04_20241208T11" #None
 
 #3 Generate image text list
@@ -42,8 +42,8 @@ from gen_image_text_list import run as gil_run
 if pf_test:
     pf = pf_test
 else:
-    pf = "phrase_01_aug_02_5050"+datetime.datetime.now().strftime('_%Y%m%dT%H')
-    gil_run(replaced_txt_path,"1,2,3,5,7,11,13,17,19,23",total_records_generated,pf,isHasExceptionChars,"20:80")
+    pf = "phrase_01_aug_05_2080_add_sc"+datetime.datetime.now().strftime('_%Y%m%dT%H')
+    gil_run(st=replaced_txt_path,sl="1,2,3,5,7,11,13,17,19,23",c=total_records_generated,pf=pf,ie=isHasExceptionChars,wl_sc_ratio="20:80")
 if isProofreading:
     with open(f"output/{pf}.txt", "w", encoding="utf8") as w, open(replaced_txt_path, "r", encoding="utf8") as r:
         rc = r.read().strip()
@@ -51,4 +51,4 @@ if isProofreading:
 
 #4 Generate image based on txt
 from gen_images import run as gi_run
-gi_run(10*total_records_generated,f"./output/{pf}.txt",pf,"9,14,21",16)
+gi_run(c=10*total_records_generated,t=f"./output/{pf}.txt",pf=pf,fs="15,21",cc=16)

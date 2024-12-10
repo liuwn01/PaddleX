@@ -190,3 +190,7 @@ cython_debug/
 /others/gen_train_data_scripts/ocrtrain_2024120407_fs9/
 /others/gen_train_data_scripts/history/
 /others/gen_train_data_scripts/ocrtrain_2024120411/
+/others/train_scripts/output/
+/others/train_scripts/bak/data/
+/others/train_scripts/bug_imgs_2/
+/others/train_scripts/ocrval_2/

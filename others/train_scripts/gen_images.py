@@ -82,7 +82,7 @@ def calculate_image_size(generated_str, start_x, start_y, spacing, font_size):
         image_width = image_width + top_right[0] - top_left[0] + spacing
         image_height = max(image_height, bottom_left[1]-testbox_y)
 
-    return image_width+start_x, image_height+start_y+2
+    return image_width+start_x*2, image_height+start_y*2+2
 
 def savetraintxt(pngpath, content):
     global OutputFolder
@@ -191,13 +191,14 @@ def gen_images_by_pillow(task):
         font_color = random.choice(["red","black"])
 
     try:
-        start_x, start_y = 10, 5
+        start_x, start_y = 5, 7
         spacing = 1
         image_width, image_height = calculate_image_size(generated_str, start_x, start_y, spacing, font_size)
 
-        image = Image.new("RGB", (image_width, int(image_height*2)), "white")
+
+        image = Image.new("RGB", (image_width, image_height), "white")
         if ENABLE_AUG:
-            image = Image.new("RGBA", (int(image_width*1.2), image_height*2), (255, 255, 255, 0))#Image.new("RGB", (image_width, int(image_height*2)), "white")
+            image = Image.new("RGBA", (image_width, int(image_height)), (255, 255, 255, 0))#Image.new("RGB", (image_width, int(image_height*2)), "white")
         draw = ImageDraw.Draw(image)
 
         for char in generated_str:
@@ -209,11 +210,11 @@ def gen_images_by_pillow(task):
 
             real_y = start_y
             if IMAGE_CHARS_MAPPING.get(char, "<NA>") != "<NA>" and real_char != "":
-                real_y = 0 + start_y
+                real_y = int(start_y/2)
             elif real_char == "":
-                real_y = 0 + start_y + int(font_size/2) - int((font_size+4)/9)
+                real_y = int(start_y/2)# + int(font_size/2) - int((font_size+4)/9)
             else:
-                real_y = start_y + int(font_size/2)
+                real_y = start_y
 
             bbox = draw.textbbox((start_x, real_y), real_char, font=font)
             # top_left = (bbox[0], bbox[1])

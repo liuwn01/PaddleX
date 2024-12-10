@@ -26,8 +26,8 @@ def loadFontMap():
 def add_white_area_to_image(image_path):
     original_image = Image.open(image_path)
     original_width, original_height = original_image.size
-    new_width = original_width * 2
-    new_height = original_height
+    new_width = original_width * 3
+    new_height = original_height * 2
     new_image = Image.new("RGB", (new_width, new_height), (255, 255, 255))
     new_image.paste(original_image, (0, 0))
     return (new_image,original_width,original_height)
