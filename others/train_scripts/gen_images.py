@@ -72,6 +72,12 @@ def calculate_image_size(generated_str, start_x, start_y, spacing, font_size):
         font = ImageFont.truetype(mapping_font, font_size)
         real_char = IMAGE_CHARS_MAPPING.get(char, {"word": char})["word"]
 
+        real_spacing = spacing
+        if real_char == "":
+            real_spacing +=2
+        elif real_char != char:
+            real_spacing += 1
+
         testbox_x, testbox_y = 0, 0
         bbox = draw.textbbox((testbox_x, testbox_y), real_char, font=font)
         top_left = (bbox[0], bbox[1])
@@ -79,10 +85,10 @@ def calculate_image_size(generated_str, start_x, start_y, spacing, font_size):
         bottom_left = (bbox[0], bbox[3])
         bottom_right = (bbox[2], bbox[3])
 
-        image_width = image_width + top_right[0] - top_left[0] + spacing
+        image_width = image_width + top_right[0] - top_left[0] + real_spacing
         image_height = max(image_height, bottom_left[1]-testbox_y)
 
-    return image_width+start_x*2, image_height+start_y*2+2
+    return image_width+font_size, image_height+start_y*2+2
 
 def savetraintxt(pngpath, content):
     global OutputFolder

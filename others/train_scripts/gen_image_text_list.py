@@ -105,6 +105,58 @@ def generate_random_strings(wordlist, count, min_length=2, max_length=30,raito_n
     random.shuffle(random_strings)
     return random_strings
 
+def gen_enhance_txt(st, sl, c, pf, ie,wl_sc_ratio="0:100"):
+    global OutputFolder, INCLUDE_EXCEPTION_CHARS, RATIO_WORDLIST_SINGLECHAR
+    if os.path.exists(OutputFolder):
+        shutil.rmtree(OutputFolder)
+    os.makedirs(f"{OutputFolder}", exist_ok=True)
+    INCLUDE_EXCEPTION_CHARS = ie
+    slides = [int(x.strip()) for x in sl.split(',')]
+    sourcetxt = read_file(st)
+    RATIO_WORDLIST_SINGLECHAR = wl_sc_ratio
+
+    wordlist_path = f"{OutputFolder}/{pf}.wordlist"
+    with open(wordlist_path, 'w', encoding='utf-8') as file:
+        wordlist = create_word_list(sourcetxt.splitlines(), slides)
+        file.write('\n'.join(wordlist))
+        file.flush()
+        gen_dict_txt(wordlist_path, f"{OutputFolder}/dict.txt")
+
+    random_strings = generate_random_strings_enhance(sourcetxt.splitlines(), c)
+
+    # Write the result to the model-specific output file
+    output_temp_file = f"{OutputFolder}/{pf}.txt"
+    with open(output_temp_file, 'w', encoding='utf-8') as file:
+        file.write('\n'.join(random_strings))
+
+
+def generate_random_strings_enhance(wordlist, count, min_length=2, max_length=30,raito_normal=0.9):
+    global EXCEPTION_CHARS,INCLUDE_EXCEPTION_CHARS,RANDOM_WORDLIST_MODE,RATIO_WORDLIST_SINGLECHAR
+    random_strings = []
+    random_strings.extend(list(set(list(clean_str(''.join(wordlist))))) * 10)
+    for line in wordlist:
+        single_char_list = list(set(list(clean_str(''.join(line)))))
+        normal_count = int(count * raito_normal)
+        wl_count = int(int(RATIO_WORDLIST_SINGLECHAR.split(":")[0]) * count / 100)
+        print(f"generate_random_strings_enhance: count:{count},generate_count: {count}; scl:{len(single_char_list)};wl:{len(wordlist)}")
+
+        for index, _ in enumerate(range(count)):
+            current_string = ""
+            lng = random.randint(min_length, max_length)
+            while len(current_string) < lng:
+                if INCLUDE_EXCEPTION_CHARS and index >= normal_count and random.choice([True, False]):
+                    current_string += random.choice(EXCEPTION_CHARS)
+                else:
+                    if index < wl_count:
+                        current_string += random.choice(wordlist)
+                    else:
+                        current_string += random.choice(single_char_list)
+                current_string += random.choice(single_char_list)
+            random_strings.append(current_string[:lng])  # Trim if it exceeds max_length
+
+    random.shuffle(random_strings)
+    return random_strings
+
 def main():
     args = parse_arguments()
     run(args.st, args.sl, args.c, args.pf)
