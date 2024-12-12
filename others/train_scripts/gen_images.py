@@ -305,6 +305,8 @@ def gen_images_by_pillow(task):
     global OutputFolder,FONT_MAPPING,IMAGE_CHARS_MAPPING
     file_prefix = task["file_prefix"]
     generated_str = clean_str(task["generated_str"])
+    if len(generated_str) < 1:
+        return
     font_size = task["font_size"]
     font_color = "black"
     isVertical = task["isVertical"]
