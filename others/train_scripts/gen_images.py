@@ -13,6 +13,7 @@ from threading import Lock
 import datetime
 
 ENABLE_AUG = True
+IS_VERTICAL = True
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="verify traineddata with train datas")
@@ -46,13 +47,15 @@ def process_line(fontsizes, pf, line):
         idx = INDEX
 
     for i,fs in enumerate(fontsizes):
-        data = {
-            "font_size": fs,
-            "generated_str": line,
-            "file_prefix": f"{pf}_{idx}_{i}"
-        }
-        gen_images_by_pillow(data)
-        processed.append(data["file_prefix"])
+        for j,isV in enumerate([(0,"H"),(1,"V")]):
+            data = {
+                "font_size": fs,
+                "generated_str": line,
+                "file_prefix": f"{pf}_{idx}_{i}_{isV[1]}",
+                "isVertical": bool(isV[0])
+            }
+            gen_images_by_pillow(data)
+            processed.append(data["file_prefix"])
     return ','.join(processed)
 
 def clean_str(s):
@@ -72,20 +75,15 @@ def calculate_image_size(generated_str, start_x, start_y, spacing, font_size):
         font = ImageFont.truetype(mapping_font, font_size)
         real_char = IMAGE_CHARS_MAPPING.get(char, {"word": char})["word"]
 
-        real_spacing = spacing
-        if real_char == "":
-            real_spacing +=2
-        elif real_char != char:
-            real_spacing += 1
-
         testbox_x, testbox_y = 0, 0
         bbox = draw.textbbox((testbox_x, testbox_y), real_char, font=font)
+        #print(char,bbox)
         top_left = (bbox[0], bbox[1])
         top_right = (bbox[2], bbox[1])
         bottom_left = (bbox[0], bbox[3])
         bottom_right = (bbox[2], bbox[3])
 
-        image_width = image_width + top_right[0] - top_left[0] + real_spacing
+        image_width = image_width + top_right[0] - top_left[0] + spacing
         image_height = max(image_height, bottom_left[1]-testbox_y)
 
     return image_width+font_size, image_height+start_y*2+2
@@ -186,59 +184,139 @@ def imgaug(oldimg, optIndex):
     bg.paste(image_aug, (0, 0), mask=image_aug)
     return bg
 
+def gen_images_vertical(task, optIndex):
+    global OutputFolder, FONT_MAPPING, IMAGE_CHARS_MAPPING
+    file_prefix = task["file_prefix"]
+    generated_str = clean_str(task["generated_str"])
+    font_size = task["font_size"]
+    font_color = "black"
+    if optIndex >= 85:
+        font_color = random.choice(["red","black"])
+
+    start_x, start_y = 2, 2
+    spacing = 1
+
+    #Calculate the height and width of the image
+    image_width = 0
+    image_height = 0
+
+    heights = []
+    heights.append(start_x)
+
+    for char in generated_str:
+        image_cal = Image.new("RGB", (100 * font_size, 100 * font_size), "white")
+        draw_cal = ImageDraw.Draw(image_cal)
+        mapping_font = FONT_MAPPING.get(char, "arial.ttf")
+        font = ImageFont.truetype(mapping_font, font_size)
+        real_char = IMAGE_CHARS_MAPPING.get(char, {"word": char})["word"]
+
+        bbox = draw_cal.textbbox((start_x, start_y), real_char, font=font)
+        image_width = max(image_width, bbox[2] + start_x)
+        heights.append(bbox[3]-start_y)
+        heights.append(spacing)
+    heights.append(start_y)
+    image_height = sum(heights)
+    #print(image_width,image_height)
+
+    image = Image.new("RGB", (image_width, image_height), "white")
+    if ENABLE_AUG:
+        image = Image.new("RGBA", (image_width, int(image_height)),(255, 255, 255, 0))
+    draw = ImageDraw.Draw(image)
+
+    #draw text
+    real_y = start_y
+    for char in generated_str:
+        target_font = FONT_MAPPING.get(char, "arial.ttf")
+        real_char = IMAGE_CHARS_MAPPING.get(char, {"word": char})["word"]
+        font = ImageFont.truetype(target_font, font_size)
+        isPhrase = False
+        blank_height = 0
+        if len(real_char) > 1:
+            isPhrase = True
+
+        bbox = draw.textbbox((start_x, real_y), real_char, font=font)
+        # top_left = (bbox[0], bbox[1]) # This is the actual location on the picture
+        # bottom_right = (bbox[2], bbox[3]) # This is the actual location on the picture
+        if isPhrase:
+            blank_height = bbox[1] - real_y -2
+            real_y -= blank_height
+
+        #draw.rectangle([(bbox[0], bbox[1]-blank_height), (bbox[2], bbox[3]-blank_height)], outline="blue", width=1)
+
+        draw.text((start_x, real_y), real_char, font=font, fill=font_color)
+        real_y = bbox[3] + spacing - blank_height
+
+    new_img = image
+    if ENABLE_AUG:
+        new_img = imgaug(image, optIndex)
+    return new_img.rotate(90, expand=True)
+
+def gen_images_horizontal(task, optIndex):
+    global OutputFolder, FONT_MAPPING, IMAGE_CHARS_MAPPING
+    file_prefix = task["file_prefix"]
+    generated_str = clean_str(task["generated_str"])
+    font_size = task["font_size"]
+    font_color = "black"
+    if optIndex >= 85:
+        font_color = random.choice(["red","black"])
+
+    start_x, start_y = 5, 5
+    spacing = 1
+    image_width, image_height = calculate_image_size(generated_str, start_x, start_y, spacing, font_size)
+
+    image = Image.new("RGB", (image_width, image_height), "white")
+    if ENABLE_AUG:
+        image = Image.new("RGBA", (image_width, int(image_height)), (255, 255, 255, 0))#Image.new("RGB", (image_width, int(image_height*2)), "white")
+    draw = ImageDraw.Draw(image)
+
+    for char in generated_str:
+        target_font = FONT_MAPPING.get(char, "arial.ttf")
+        real_char = IMAGE_CHARS_MAPPING.get(char, {"word": char})["word"]
+        font = ImageFont.truetype(target_font, font_size)
+        real_y = start_y
+
+        bbox = draw.textbbox((start_x, real_y), real_char, font=font)
+
+        isPhrase = False
+        blank_height = 0
+        if len(real_char) > 1:
+            isPhrase = True
+            blank_height = int((bbox[1] - start_y)/1.5)
+
+        # top_left = (bbox[0], bbox[1])
+        # top_right = (bbox[2], bbox[1])
+        # bottom_left = (bbox[0], bbox[3])
+        # bottom_right = (bbox[2], bbox[3])
+
+        # draw.rectangle([(bbox[0]-1, bbox[1]), (bbox[2]+1, bbox[3])], outline="blue", width=1)
+
+        # 在图片上绘制字符
+        draw.text((start_x, real_y - blank_height), real_char, font=font, fill=font_color)
+
+        # 更新下一个字符的x位置
+        start_x += bbox[2] - bbox[0] + spacing
+
+    new_img = image
+    if ENABLE_AUG:
+        new_img = imgaug(image, optIndex)
+    return new_img
+
 def gen_images_by_pillow(task):
     global OutputFolder,FONT_MAPPING,IMAGE_CHARS_MAPPING
     file_prefix = task["file_prefix"]
     generated_str = clean_str(task["generated_str"])
     font_size = task["font_size"]
     font_color = "black"
+    isVertical = task["isVertical"]
     optIndex = random.choice(range(0, 100))
     if optIndex >= 85:
         font_color = random.choice(["red","black"])
 
     try:
-        start_x, start_y = 5, 7
-        spacing = 1
-        image_width, image_height = calculate_image_size(generated_str, start_x, start_y, spacing, font_size)
-
-
-        image = Image.new("RGB", (image_width, image_height), "white")
-        if ENABLE_AUG:
-            image = Image.new("RGBA", (image_width, int(image_height)), (255, 255, 255, 0))#Image.new("RGB", (image_width, int(image_height*2)), "white")
-        draw = ImageDraw.Draw(image)
-
-        for char in generated_str:
-            target_font = FONT_MAPPING.get(char, "arial.ttf")
-            real_char = IMAGE_CHARS_MAPPING.get(char, {"word": char})["word"]
-            font = ImageFont.truetype(target_font, font_size)
-            if real_char == "":
-                font = ImageFont.truetype(target_font, int(font_size)+4)
-
-            real_y = start_y
-            if IMAGE_CHARS_MAPPING.get(char, "<NA>") != "<NA>" and real_char != "":
-                real_y = int(start_y/2)
-            elif real_char == "":
-                real_y = int(start_y/2)# + int(font_size/2) - int((font_size+4)/9)
-            else:
-                real_y = start_y
-
-            bbox = draw.textbbox((start_x, real_y), real_char, font=font)
-            # top_left = (bbox[0], bbox[1])
-            # top_right = (bbox[2], bbox[1])
-            # bottom_left = (bbox[0], bbox[3])
-            # bottom_right = (bbox[2], bbox[3])
-
-            # draw.rectangle([(bbox[0]-1, bbox[1]), (bbox[2]+1, bbox[3])], outline="blue", width=1)
-
-            # 在图片上绘制字符
-            draw.text((start_x, real_y), real_char, font=font, fill=font_color)
-
-            # 更新下一个字符的x位置
-            start_x += bbox[2] - bbox[0] + spacing
-
-        new_img = image
-        if ENABLE_AUG:
-            new_img = imgaug(image, optIndex)
+        if isVertical:
+            new_img = gen_images_vertical(task, optIndex)
+        else:
+            new_img = gen_images_horizontal(task, optIndex)
 
         img_file = f"{file_prefix}_fs{font_size}.png"
         new_img.save(f"{OutputFolder}/images/{img_file}")

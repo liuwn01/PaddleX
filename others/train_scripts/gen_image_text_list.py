@@ -84,6 +84,7 @@ def generate_random_strings(wordlist, count, min_length=2, max_length=30,raito_n
     if not FOR_VAL:
         random_strings = wordlist
     single_char_list = list(set(list(clean_str(''.join(wordlist)))))
+    random_strings.extend(single_char_list * 10)
     normal_count = int(count * raito_normal)
     wl_count = int(int(RATIO_WORDLIST_SINGLECHAR.split(":")[0]) * count /100)
     print(f"count:{count},wl_count: {wl_count}; scl:{len(single_char_list)};wl:{len(wordlist)}")
