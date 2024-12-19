@@ -3,7 +3,7 @@ import os, datetime
 import config as config
 
 input_text = None
-input_file = f"./ocrval_2/result_paddleocr_20241210T0829_sorted.csv"
+input_file = f"./ocrval_2/result_paddleocr_20241219T0723_sorted.csv"
 
 def find_character_value(data, character):
     return next((v for k, v in data.items() if character in k), character)
@@ -29,8 +29,8 @@ for line in input_text.strip().split('\n'):
 
     filename = parts[0].strip()
     ratio = float(parts[1].strip())
-    if ratio > 0.2:
-        continue
+    # if ratio > 0.2:
+    #     continue
     original = parts[2].strip().strip("'")
     ocr_result = parts[3].strip().strip("'")
 
@@ -81,10 +81,10 @@ with open(fc_txt, 'w', encoding='utf-8') as f:
     f.write('\n'.join(focus_chars))
 
 from gen_image_text_list import gen_enhance_txt
-per_line_generate_records=100
+per_line_generate_records=35
 isHasUnusualChars=False
 pf = config.File_Prefix+"_ENH_"+datetime.datetime.now().strftime('_%Y%m%dT%H')
-gen_enhance_txt(st=fc_txt,sl=config.Slides,c=per_line_generate_records,pf=pf,ie=isHasUnusualChars,wl_sc_ratio="0:100")
+gen_enhance_txt(st=fc_txt,sl=config.Slides,c=per_line_generate_records,pf=pf,ie=isHasUnusualChars,wl_sc_ratio=config.Text_Generation_Ratio)
 
 from gen_images import run as gi_run
-gi_run(c=1000000000,t=f"{config.OutputFolder}/{pf}.txt",pf=pf,fs=config.Font_Sizes,cc=16)
+gi_run(c=1000000000,t=f"{config.OutputFolder}/{pf}.txt",pf=pf,fs=config.Font_Sizes,cc=16, is_include_val=config.isIcludeVertical())

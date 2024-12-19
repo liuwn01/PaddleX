@@ -39,7 +39,7 @@ def read_file_yield(filepath):
             yield line.strip()  # Remove trailing newline/carriage return
 
 def process_line(fontsizes, pf, line):
-    global INDEX, OutputFolder, errorFolder
+    global INDEX, OutputFolder, errorFolder,isIncludeVertical
     processed = []
     idx = -1
     with lock:
@@ -47,7 +47,7 @@ def process_line(fontsizes, pf, line):
         idx = INDEX
 
     for i,fs in enumerate(fontsizes):
-        if IS_FOR_VAL:
+        if not isIncludeVertical:
             data = {
                 "font_size": fs,
                 "generated_str": line,
@@ -158,9 +158,10 @@ def imgaug(oldimg, optIndex):
             iaa.Affine(rotate=affine_range),
             iaa.AdditiveGaussianNoise(scale=(0,20)),
             #iaa.Emboss(alpha=(0,1), strength=(0,10)),
-            iaa.Canny(),
             iaa.LinearContrast((0.2, 1.6))
         ])
+        if config.Enable_AUG_Canny:
+            aug_seq.append(iaa.Canny())
         image_aug = Image.fromarray(aug_seq(image=word_img))
     elif optIndex < 80:
         ####bg2-> (-5, 5);(0,30);(0,0.3),(0,5);(1, 1.6) #red, disable Canny()
@@ -170,9 +171,10 @@ def imgaug(oldimg, optIndex):
             iaa.Affine(rotate=affine_range),
             iaa.AdditiveGaussianNoise(scale=(0, 10)),
             #iaa.Emboss(alpha=(0,0.3), strength=(0,2)),
-            #iaa.Canny(),
             iaa.LinearContrast((1, 1.6))
         ])
+        if config.Enable_AUG_Canny:
+            aug_seq.append(iaa.Canny())
         image_aug = Image.fromarray(aug_seq(image=word_img))
     elif optIndex < 100:
         ####bg3-> (-5, 5);(0,60);(0,0.2),(0,5);(1, 1.6) #black,red, disable Canny()
@@ -185,6 +187,8 @@ def imgaug(oldimg, optIndex):
             # iaa.Canny(),
             iaa.LinearContrast((1, 1.6))
         ])
+        if config.Enable_AUG_Canny:
+            aug_seq.append(iaa.Canny())
         image_aug = Image.fromarray(aug_seq(image=word_img))
     else:
         bg = Image.new("RGB", (upper_layer.width, upper_layer.height), "white")
@@ -346,15 +350,15 @@ OutputFolder = "./output"
 FONT_MAPPING = loadFontMap()
 lock = Lock()
 INDEX = 0
-IS_FOR_VAL = False
+isIncludeVertical = False
 
-def run(c,t,pf,fs,cc,is_for_val=False):
-    global INDEX,IS_FOR_VAL
+def run(c,t,pf,fs,cc,is_include_val=False):
+    global INDEX,isIncludeVertical
     if os.path.exists(f"{OutputFolder}/images"):
         shutil.rmtree(f"{OutputFolder}/images")
     os.makedirs(f"{OutputFolder}/images", exist_ok=True)
 
-    IS_FOR_VAL = is_for_val
+    isIncludeVertical = is_include_val
     fontsizes = [int(x.strip()) for x in fs.split(',')]
     prefix = pf
 

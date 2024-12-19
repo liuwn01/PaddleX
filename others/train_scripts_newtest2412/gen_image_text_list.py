@@ -6,11 +6,39 @@ import json
 import shutil
 import config as config
 
-IS_FOR_VAL = config.isForVal()
-RATIO_WORDLIST_SINGLECHAR = config.Wordlist_SingleChars_Ratio
+#IS_FOR_VERIFY = config.isForVerify()
+RATIO_TEXT_GENERATION = config.Text_Generation_Ratio
 OutputFolder = config.OutputFolder
 EXCEPTION_CHARS = config.Unusual_Chars
 INCLUDE_UNUSUAL_CHARS = config.IsHasUnusualChars
+
+class RandomArrayPicker:
+    def __init__(self, json_data):
+        self.data = {key: value[:] for key, value in json_data.items()}
+        self.status = {key: {"array": value, "index": 0, "shuffled": False} for key, value in json_data.items()}
+
+    def _shuffle_and_reset(self, key):
+        self.status[key]["array"] = random.sample(self.data[key], len(self.data[key]))
+        self.status[key]["index"] = 0
+        self.status[key]["shuffled"] = True
+
+    def pick(self):
+        remaining_keys = [key for key, status in self.status.items() if status["index"] < len(status["array"])]
+
+        if not remaining_keys:
+            for key in self.status:
+                self._shuffle_and_reset(key)
+            remaining_keys = list(self.status.keys())
+
+        selected_key = random.choice(remaining_keys)
+        current_array = self.status[selected_key]["array"]
+        current_index = self.status[selected_key]["index"]
+
+        result = current_array[current_index]
+
+        self.status[selected_key]["index"] += 1
+
+        return result
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Process text with filters and sliding windows.")
@@ -54,14 +82,14 @@ def gen_dict_txt(source_file_path, dict_path):
             w.write('\n'.join(list(set(dict))))
 
 def run(st, sl, c, pf, ie,wl_sc_ratio="0:100"):
-    global OutputFolder,INCLUDE_UNUSUAL_CHARS,RATIO_WORDLIST_SINGLECHAR
+    global OutputFolder,INCLUDE_UNUSUAL_CHARS,RATIO_TEXT_GENERATION
     if os.path.exists(OutputFolder):
         shutil.rmtree(OutputFolder)
     os.makedirs(f"{OutputFolder}", exist_ok=True)
     INCLUDE_UNUSUAL_CHARS = ie
     slides = [int(x.strip()) for x in sl.split(',')]
     sourcetxt = read_file(st)
-    RATIO_WORDLIST_SINGLECHAR = wl_sc_ratio
+    RATIO_TEXT_GENERATION = wl_sc_ratio
 
     wordlist_path = f"{OutputFolder}/{pf}.wordlist"
     with open(wordlist_path, 'w', encoding='utf-8') as file:
@@ -79,15 +107,22 @@ def run(st, sl, c, pf, ie,wl_sc_ratio="0:100"):
         file.write('\n'.join(random_strings))
 
 def generate_random_strings(wordlist, count, min_length=config.Min_Len_Generate_Text, max_length=config.Max_Len_Generate_Text,raito_normal=0.9):
-    global EXCEPTION_CHARS,INCLUDE_UNUSUAL_CHARS,RATIO_WORDLIST_SINGLECHAR
+    global EXCEPTION_CHARS,INCLUDE_UNUSUAL_CHARS,RATIO_TEXT_GENERATION
     random_strings = []
-    single_char_list = list(set(list(clean_str(''.join(wordlist)))))
-    if not IS_FOR_VAL:
+    if config.IsIncludeWordlist:
         random_strings = wordlist
-        random_strings.extend(single_char_list * 10)
+    single_char_list = list(set(list(clean_str(''.join(wordlist)))))
+    if config.IsIncludeSingleChar:
+        random_strings.extend(single_char_list * 5)
     normal_count = int(count * raito_normal)
-    wl_count = int(int(RATIO_WORDLIST_SINGLECHAR.split(":")[0]) * count /100)
-    print(f"count:{count},wl_count: {wl_count}; scl:{len(single_char_list)};wl:{len(wordlist)}")
+    ratio_list = RATIO_TEXT_GENERATION.split(":")
+    wl_count = int(int(ratio_list[0]) * count / 100)
+    sc_count = int(int(ratio_list[1]) * count / 100)
+    cc_picker = None
+    if len(ratio_list) > 2:
+        with open(config.chars_classify_json, "r", encoding="utf-8") as r:
+            cc_picker = RandomArrayPicker(json.loads(r.read()))
+    print(f"[{RATIO_TEXT_GENERATION}] count:{count},wl_count: {wl_count}; scl:{len(single_char_list)};wl:{len(wordlist)}")
 
     for index, _ in enumerate(range(count)):
         current_string = ""
@@ -95,9 +130,11 @@ def generate_random_strings(wordlist, count, min_length=config.Min_Len_Generate_
         while len(current_string) < lng:
             if INCLUDE_UNUSUAL_CHARS and index >= normal_count and random.choice([True, False]):
                 current_string += random.choice(EXCEPTION_CHARS)
+            elif index < wl_count + sc_count:
+                current_string += random.choice(single_char_list)
             else:
-                if index < wl_count:
-                    current_string += random.choice(wordlist)
+                if cc_picker:
+                    current_string += random.choice(cc_picker.pick())
                 else:
                     current_string += random.choice(single_char_list)
             current_string += random.choice(single_char_list)
@@ -107,14 +144,14 @@ def generate_random_strings(wordlist, count, min_length=config.Min_Len_Generate_
     return random_strings
 
 def gen_enhance_txt(st, sl, c, pf, ie,wl_sc_ratio="0:100"):
-    global OutputFolder, INCLUDE_UNUSUAL_CHARS, RATIO_WORDLIST_SINGLECHAR
+    global OutputFolder, INCLUDE_UNUSUAL_CHARS, RATIO_TEXT_GENERATION
     if os.path.exists(OutputFolder):
         shutil.rmtree(OutputFolder)
     os.makedirs(f"{OutputFolder}", exist_ok=True)
     INCLUDE_UNUSUAL_CHARS = ie
     slides = [int(x.strip()) for x in sl.split(',')]
     sourcetxt = read_file(st)
-    RATIO_WORDLIST_SINGLECHAR = wl_sc_ratio
+    RATIO_TEXT_GENERATION = wl_sc_ratio
 
     wordlist_path = f"{OutputFolder}/{pf}.wordlist"
     with open(wordlist_path, 'w', encoding='utf-8') as file:
@@ -131,17 +168,32 @@ def gen_enhance_txt(st, sl, c, pf, ie,wl_sc_ratio="0:100"):
         file.write('\n'.join(random_strings))
 
 
-def generate_random_strings_enhance(wordlist, count, min_length=config.Min_Len_Generate_Text, max_length=config.Max_Len_Generate_Text,raito_normal=0.9):
-    global EXCEPTION_CHARS,INCLUDE_UNUSUAL_CHARS,RATIO_WORDLIST_SINGLECHAR
-    random_strings = []
-    random_strings.extend(list(set(list(clean_str(''.join(wordlist))))) * 10)
-    for line in wordlist:
-        single_char_list = list(set(list(clean_str(''.join(line)))))
-        normal_count = int(count * raito_normal)
-        wl_count = int(int(RATIO_WORDLIST_SINGLECHAR.split(":")[0]) * count / 100)
-        print(f"generate_random_strings_enhance: count:{count},generate_count: {count}; scl:{len(single_char_list)};wl:{len(wordlist)}")
 
-        for index, _ in enumerate(range(count)):
+
+def generate_random_strings_enhance(wordlist, count, min_length=config.Min_Len_Generate_Text, max_length=config.Max_Len_Generate_Text,raito_normal=0.9):
+    global EXCEPTION_CHARS,INCLUDE_UNUSUAL_CHARS,RATIO_TEXT_GENERATION
+    random_strings = []
+    if config.IsIncludeSingleChar:
+        random_strings.extend(list(set(list(clean_str(''.join(wordlist))))) * 2)
+    for line in wordlist:
+        gen_count_per_line = count
+        single_char_list = list(set(list(clean_str(''.join(line)))))
+        if len(single_char_list) < 2:
+            gen_count_per_line = 3
+        elif len(single_char_list) <= 5:
+            gen_count_per_line = 7
+
+        normal_count = int(count * raito_normal)
+        ratio_list = RATIO_TEXT_GENERATION.split(":")
+        wl_count = int(int(ratio_list[0]) * count / 100)
+        sc_count = int(int(ratio_list[1]) * count / 100)
+        cc_picker = None
+        if len(ratio_list) > 2:
+            with open(config.chars_classify_json,"r",encoding="utf-8") as r:
+                cc_picker = RandomArrayPicker(json.loads(r.read()))
+        print(f"generate_random_strings_enhance[{RATIO_TEXT_GENERATION}]: count:{count},generate_count: {gen_count_per_line}; scl:{len(single_char_list)};wl:{len(wordlist)}")
+
+        for index, _ in enumerate(range(gen_count_per_line)):
             current_string = ""
             lng = random.randint(min_length, max_length)
             while len(current_string) < lng:
@@ -150,8 +202,13 @@ def generate_random_strings_enhance(wordlist, count, min_length=config.Min_Len_G
                 else:
                     if index < wl_count:
                         current_string += random.choice(wordlist)
-                    else:
+                    elif index < wl_count + sc_count:
                         current_string += random.choice(single_char_list)
+                    else:
+                        if cc_picker:
+                            current_string += random.choice(cc_picker.pick())
+                        else:
+                            current_string += random.choice(single_char_list)
                 current_string += random.choice(single_char_list)
             random_strings.append(current_string[:lng])  # Trim if it exceeds max_length
 
