@@ -9,25 +9,25 @@ def isIcludeVertical():
 
 #global config
 Model = "Train" #Train, Val
-File_Prefix = "phrase_01_aug_103_ENH_06"#"phrase_01_aug_103_ENH_02"
+File_Prefix = "phrase_01_aug_103_ENH_10"#"phrase_01_aug_103_ENH_02"
 IsProofreading = False
-IsIcludeVertical = True
+IsIcludeVertical = False
 IsIncludeWordlist = False
 IsIncludeSingleChar = False
-Total_Records_Generate = 25000
+Total_Records_Generate = 200000
 OutputFolder = "./output"
-Font_Sizes = "15,21" #"15,21"
+Font_Sizes = "15" #"15,21"
 
 File_Prefix_ForVal = None #"phrase_01_04_20241208T11" #None'
 
 #
-Slides = "1,2,3,5,7,11,13,17,19,23"
+Slides = "2,3,4,5,7,9,11,13,14,15,17,19,20,21,23,25,26,27" #"1,2,3,5,7,11,13,17,19,23"
 Concurrent_number_image_generation = 16
 Min_Len_Generate_Text = 2
 Max_Len_Generate_Text = 30
 
 #
-Text_Generation_Ratio = "0:30:70" #Wordlist : SingleChars or Wordlist : SingleChars : ClassifyChars #"0:100","0:50:50"
+Text_Generation_Ratio = "100:0:0" #Wordlist : SingleChars or Wordlist : SingleChars : ClassifyChars #"0:5:95","0:50:50"
 
 #
 Source_txt = "train_list.txt"

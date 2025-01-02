@@ -81,9 +81,10 @@ with open(f"{root_folder}/result_paddleocr_{TINDEX}_sorted.csv", 'w', encoding='
     ratio_100 = [ d for d in sorted_result if d['ratio'] == 1]
     ratio_90 = [ d for d in sorted_result if d['ratio'] >= 0.9 and d['ratio'] < 1]
     ratio_80 = [ d for d in sorted_result if d['ratio'] >= 0.8 and d['ratio'] < 0.9]
+    ratio_others = [ d for d in sorted_result if d['ratio'] >= 0.0001 and d['ratio'] < 0.8]
     ratio_0 = [d for d in sorted_result if d['ratio'] ==0]
 
-    w.write(f"Total,{len(sorted_result)},len_100,{len(ratio_100)},len_90,'{len(ratio_90)}',len_80,'{len(ratio_80)}',len_0,{len(ratio_0)}\n")
+    w.write(f"Total,{len(sorted_result)},len_100,{len(ratio_100)},len_90,'{len(ratio_90)}',len_80,'{len(ratio_80)}',len_others: {len(ratio_others)},len_0,{len(ratio_0)}\n")
     char_list = []
     for i in ratio_0:
         char_list.extend(list(i['val']))

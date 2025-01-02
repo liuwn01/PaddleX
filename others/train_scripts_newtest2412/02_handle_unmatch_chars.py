@@ -3,7 +3,7 @@ import os, datetime
 import config as config
 
 input_text = None
-input_file = f"./ocrval_2/result_paddleocr_20241219T0723_sorted.csv"
+input_file = f"./ocrval_2/result_paddleocr_20241220T1303_sorted.csv"
 
 def find_character_value(data, character):
     return next((v for k, v in data.items() if character in k), character)
@@ -77,11 +77,11 @@ with open(output_file, 'w', encoding='utf-8') as f:
     json.dump(focus_chars_rollback, f, ensure_ascii=False, indent=4)
 
 fc_txt = f'{OutputFolder}/focus_chars.txt'
-with open(fc_txt, 'w', encoding='utf-8') as f:
-    f.write('\n'.join(focus_chars))
+#with open(fc_txt, 'w', encoding='utf-8') as f:
+#    f.write('\n'.join(focus_chars))
 
 from gen_image_text_list import gen_enhance_txt
-per_line_generate_records=35
+per_line_generate_records=100
 isHasUnusualChars=False
 pf = config.File_Prefix+"_ENH_"+datetime.datetime.now().strftime('_%Y%m%dT%H')
 gen_enhance_txt(st=fc_txt,sl=config.Slides,c=per_line_generate_records,pf=pf,ie=isHasUnusualChars,wl_sc_ratio=config.Text_Generation_Ratio)

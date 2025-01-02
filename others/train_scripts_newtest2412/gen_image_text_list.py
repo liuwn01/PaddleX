@@ -179,9 +179,9 @@ def generate_random_strings_enhance(wordlist, count, min_length=config.Min_Len_G
         gen_count_per_line = count
         single_char_list = list(set(list(clean_str(''.join(line)))))
         if len(single_char_list) < 2:
-            gen_count_per_line = 3
+            gen_count_per_line = 20
         elif len(single_char_list) <= 5:
-            gen_count_per_line = 7
+            gen_count_per_line = 40
 
         normal_count = int(count * raito_normal)
         ratio_list = RATIO_TEXT_GENERATION.split(":")
@@ -190,7 +190,7 @@ def generate_random_strings_enhance(wordlist, count, min_length=config.Min_Len_G
         cc_picker = None
         if len(ratio_list) > 2:
             with open(config.chars_classify_json,"r",encoding="utf-8") as r:
-                cc_picker = RandomArrayPicker(json.loads(r.read()))
+                cc_picker = RandomArrayPicker({"L1": single_char_list})
         print(f"generate_random_strings_enhance[{RATIO_TEXT_GENERATION}]: count:{count},generate_count: {gen_count_per_line}; scl:{len(single_char_list)};wl:{len(wordlist)}")
 
         for index, _ in enumerate(range(gen_count_per_line)):
@@ -209,7 +209,7 @@ def generate_random_strings_enhance(wordlist, count, min_length=config.Min_Len_G
                             current_string += random.choice(cc_picker.pick())
                         else:
                             current_string += random.choice(single_char_list)
-                current_string += random.choice(single_char_list)
+                #current_string += random.choice(single_char_list)
             random_strings.append(current_string[:lng])  # Trim if it exceeds max_length
 
     random.shuffle(random_strings)
