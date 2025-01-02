@@ -11,6 +11,7 @@ import time
 import argparse
 from threading import Lock
 import datetime
+import config as config
 
 ENABLE_AUG = True
 IS_VERTICAL = True
@@ -27,7 +28,7 @@ def parse_arguments():
     return parser.parse_args()
 
 def loadFontMap():
-    with open('./CharFontMapping.json', 'r', encoding='utf8') as user_file:
+    with open(config.Char_Font_Mapping_JSON, 'r', encoding='utf8') as user_file:
         file_contents = user_file.read()
         parsed_json = json.loads(file_contents)
         return parsed_json
@@ -125,7 +126,7 @@ def imgaug(oldimg, optIndex):
     global BGIMGS
     import imgaug.augmenters as iaa
     import numpy as np
-    bg_dir = "./bg"
+    bg_dir = config.Background_Images_Folder
     if not BGIMGS:
         if os.path.exists(bg_dir):
             image_files = [f"{bg_dir}/{f}" for f in os.listdir(bg_dir) if os.path.isfile(os.path.join(bg_dir, f))]
@@ -327,7 +328,7 @@ def gen_images_by_pillow(task):
         print(f"Failed to generate image '{OutputFolder}/{file_prefix}.png'. {e.__doc__}")
 
 def loadImageCharsMapping():
-    with open('./files/rollback_characters.json', "r", encoding="utf8") as rj:
+    with open(config.Rollback_JSON, "r", encoding="utf8") as rj:
         rjson = json.loads(rj.read())
         return rjson
 
