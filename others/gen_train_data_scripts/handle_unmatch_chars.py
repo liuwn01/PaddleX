@@ -58,9 +58,9 @@ for line in input_text.strip().split('\n'):
 
 
 
-# output_file = f'{input_file}_unmatched_chars.json'
-# with open(output_file, 'w', encoding='utf-8') as f:
-#     json.dump(mismatch_data, f, ensure_ascii=False, indent=4)
+output_file = f'{input_file}_unmatched_chars.json'
+with open(output_file, 'w', encoding='utf-8') as f:
+    json.dump(mismatch_data, f, ensure_ascii=False, indent=4)
 output_file = f'{input_file}_focus_chars.json'
 with open(output_file, 'w', encoding='utf-8') as f:
     json.dump(focus_chars, f, ensure_ascii=False, indent=4)

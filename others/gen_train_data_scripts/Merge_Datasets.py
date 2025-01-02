@@ -1,11 +1,21 @@
 import os
-target_dataset = "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/00.TrainDatas"
+
+#"D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/00.TrainDatas"
+    # "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/03.paddleocr_td",
+    # "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/ocrtrain_2024120411",
+    # "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/trained",
+    # "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/ocrtrain_2024120416",
+    # "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/ocrtrain_2024120419",
+    # "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/cn_rec_train_dataset"
+
+target_dataset = r"D:\09.Work\65.Interop\04.task\30.GBTasks\codes\github\deleted\GB_Train_Datas\10.phrase"
 datasets = [
-    "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/03.paddleocr_td",
-    "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/ocrtrain_2024120411",
-    "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/trained",
-    "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/ocrtrain_2024120416",
-    "D:/09.Work/65.Interop/04.task/30.GBTasks/codes/github/deleted/GB_Train_Datas/ocrtrain_2024120419"
+
+
+    r"D:\09.Work\65.Interop\04.task\30.GBTasks\codes\github\deleted\GB_Train_Datas\cn_rec_train_dataset",
+    r"D:\09.Work\65.Interop\04.task\30.GBTasks\codes\github\deleted\GB_Train_Datas\phrase_01_20241207T1220"
+
+
 ]
 
 TXT_DICT = "dict.txt"

@@ -1236,5 +1236,8 @@
     "�": "micross.ttf",
     "?": "simsun.ttc",
     "⑩": "simsun.ttc",
-    "®": "arial.ttf"
+    "®": "arial.ttf",
+	"妽": "NotoSansMongolian-Regular.ttf",
+	"哃": "NotoSansTibetan-Regular.ttf",
+	"氄": "NotoSansArabic-Regular.ttf"
 }

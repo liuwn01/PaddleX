@@ -284,7 +284,7 @@ if __name__ == "__main__":
     parser.add_argument("--count", type=int, default=10000000, help="number of image generate")
     parser.add_argument("--txts", type=str, default="gb_val_03_focus.wordlist", help="simsun.ttc.txt;simsunb.ttf.txt")
     parser.add_argument("--model", type=str, default="gb_val_03_focus_05", help="font")
-    parser.add_argument("--fontsize", type=str, default="9,14,20", help="font size")
+    parser.add_argument("--fontsize", type=str, default="14,20", help="font size")
     parser.add_argument("--font", type=str, default="", help="font")
     parser.add_argument("--start", type=int, default=0, help="")
     parser.add_argument("--cc", type=int, default=16, help="")
